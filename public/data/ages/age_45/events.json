@@ -4,25 +4,15 @@
     "effect": {
       "sanity": 2,
       "health": -2
-    }
+    },
+    "cashEffect": 0
   },
   {
     "text": "定期体检，和老友相约喝茶散步，家庭关系渐趋和睦稳固。",
     "effect": {
       "sanity": 3
-    }
-  },
-  {
-    "text": "你继续为考试做准备，在复习之外也认真安排生活开销。",
-    "condition": {
-      "lifeState": {
-        "career": "preparing"
-      }
     },
-    "effect": {
-      "knowledge": 2,
-      "wealth": -1
-    }
+    "cashEffect": 0
   },
   {
     "id": "extra_45_0",

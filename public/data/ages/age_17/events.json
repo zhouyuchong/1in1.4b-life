@@ -8,7 +8,8 @@
       "lifeState": {
         "schooling": "high_school"
       }
-    }
+    },
+    "cashEffect": 0
   },
   {
     "text": "自习课上低头刷题，抬头看着窗外金黄的夕阳，在草稿纸边缘写下对未来的模糊畅想。",
@@ -19,7 +20,8 @@
       "lifeState": {
         "schooling": "high_school"
       }
-    }
+    },
+    "cashEffect": 0
   },
   {
     "text": "17岁这一年，你在实训车间磨练手艺，慢慢掌握一门能安身立命的技术。",
@@ -30,7 +32,8 @@
     },
     "effect": {
       "knowledge": 3
-    }
+    },
+    "cashEffect": 0
   },
   {
     "text": "17岁这一年，你在工作中积累经验，领到工资后认真盘算生活开销。",
@@ -42,24 +45,34 @@
     "effect": {
       "wealth": 3,
       "health": -1
+    },
+    "cashEffect": 6000
+  },
+  {
+    "id": "childhood_17_0",
+    "text": "你整理这一年的作品和笔记，发现自己已经悄悄进步了很多。",
+    "cashEffect": 0,
+    "effect": {
+      "sanity": 2,
+      "knowledge": 1
     }
   },
   {
-    "id": "extra_17_0",
-    "text": "你在图书馆翻到一本喜欢的书，开始对一种新的职业产生好奇。",
+    "id": "childhood_17_1",
+    "text": "你和朋友认真聊起未来，发现每个人想走的路都不同。",
     "cashEffect": 0,
-    "effect": {}
+    "effect": {
+      "sanity": 2,
+      "knowledge": 1
+    }
   },
   {
-    "id": "extra_17_1",
-    "text": "一场社区运动活动让你结识了新朋友，也发现了自己擅长的事情。",
+    "id": "childhood_17_2",
+    "text": "你为自己做了一份简单预算，开始思考成年后的独立生活。",
     "cashEffect": 0,
-    "effect": {}
-  },
-  {
-    "id": "extra_17_2",
-    "text": "你试着安排一周的学习与休息，发现给自己留出时间也很重要。",
-    "cashEffect": 0,
-    "effect": {}
+    "effect": {
+      "sanity": 2,
+      "knowledge": 1
+    }
   }
 ]

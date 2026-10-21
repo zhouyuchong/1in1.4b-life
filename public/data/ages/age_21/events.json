@@ -8,7 +8,8 @@
       "lifeState": {
         "schooling": "university"
       }
-    }
+    },
+    "cashEffect": 0
   },
   {
     "text": "身边有人开始海投简历面试大厂暑期实习，有人每天在打卡背行测申论常识。",
@@ -19,7 +20,8 @@
       "lifeState": {
         "schooling": "university"
       }
-    }
+    },
+    "cashEffect": 0
   },
   {
     "text": "你在大专院校参加专业实训，在课程与实习中积累职业技能。",
@@ -30,7 +32,8 @@
     },
     "effect": {
       "knowledge": 3
-    }
+    },
+    "cashEffect": 0
   },
   {
     "text": "你在工作中熟悉业务，靠自己的劳动支付日常开销。",
@@ -47,7 +50,8 @@
     "effect": {
       "wealth": 2,
       "knowledge": 1
-    }
+    },
+    "cashEffect": 6000
   },
   {
     "id": "extra_21_0",

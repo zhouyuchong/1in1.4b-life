@@ -7,7 +7,8 @@
     "stateEffect": {
       "career": "retired"
     },
-    "required": true
+    "required": true,
+    "cashEffect": 0
   },
   {
     "id": "extra_60_0",

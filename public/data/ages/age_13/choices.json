@@ -1,1 +1,36 @@
-[]
+[
+  {
+    "id": "everyday_choice_13",
+    "title": "青春期的心事",
+    "description": "你对一个同学产生了好感，也开始在意如何表达和相处。",
+    "options": [
+      {
+        "text": "先从朋友做起，尊重彼此的节奏",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 3,
+          "knowledge": 2
+        },
+        "resultText": "你选择先从朋友做起，尊重彼此的节奏。这个小小的决定，成为13岁值得记住的一段经历。"
+      },
+      {
+        "text": "把心事写在日记里，慢慢理解自己",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 3,
+          "knowledge": 2
+        },
+        "resultText": "你选择把心事写在日记里，慢慢理解自己。这个小小的决定，成为13岁值得记住的一段经历。"
+      },
+      {
+        "text": "找信任的长辈聊聊感情与边界",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 4,
+          "knowledge": 1
+        },
+        "resultText": "你选择找信任的长辈聊聊感情与边界。这个小小的决定，成为13岁值得记住的一段经历。"
+      }
+    ]
+  }
+]

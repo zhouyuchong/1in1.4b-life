@@ -9,7 +9,8 @@
         "education": "high_school",
         "career": "none"
       }
-    }
+    },
+    "cashEffect": 0
   },
   {
     "text": "18岁这一年，你在实训车间磨练手艺，慢慢掌握一门能安身立命的技术。",
@@ -20,7 +21,8 @@
     },
     "effect": {
       "knowledge": 3
-    }
+    },
+    "cashEffect": 0
   },
   {
     "text": "18岁这一年，你在工作中积累经验，领到工资后认真盘算生活开销。",
@@ -32,7 +34,8 @@
     "effect": {
       "wealth": 3,
       "health": -1
-    }
+    },
+    "cashEffect": 9000
   },
   {
     "id": "extra_18_0",

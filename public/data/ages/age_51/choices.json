@@ -1,1 +1,36 @@
-[]
+[
+  {
+    "id": "everyday_choice_51",
+    "title": "一顿特别的晚饭",
+    "description": "你想让平凡的一天多一点值得记住的事情。",
+    "options": [
+      {
+        "text": "动手做一顿拿手菜",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 3,
+          "knowledge": 2
+        },
+        "resultText": "你选择动手做一顿拿手菜。这个小小的决定，成为51岁值得记住的一段经历。"
+      },
+      {
+        "text": "和熟悉的人分享这一年的收获",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 3,
+          "knowledge": 2
+        },
+        "resultText": "你选择和熟悉的人分享这一年的收获。这个小小的决定，成为51岁值得记住的一段经历。"
+      },
+      {
+        "text": "为自己摆好餐桌，慢慢吃饭",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 4,
+          "knowledge": 1
+        },
+        "resultText": "你选择为自己摆好餐桌，慢慢吃饭。这个小小的决定，成为51岁值得记住的一段经历。"
+      }
+    ]
+  }
+]

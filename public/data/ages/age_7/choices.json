@@ -1,1 +1,36 @@
-[]
+[
+  {
+    "id": "everyday_choice_7",
+    "title": "课间的一点勇气",
+    "description": "同学邀请你一起玩，而你还不太熟悉游戏规则。",
+    "options": [
+      {
+        "text": "主动加入，边玩边学",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 3,
+          "knowledge": 2
+        },
+        "resultText": "你选择主动加入，边玩边学。这个小小的决定，成为7岁值得记住的一段经历。"
+      },
+      {
+        "text": "先看一会儿，再请同学教我",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 3,
+          "knowledge": 2
+        },
+        "resultText": "你选择先看一会儿，再请同学教我。这个小小的决定，成为7岁值得记住的一段经历。"
+      },
+      {
+        "text": "邀请他们一起玩自己熟悉的游戏",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 4,
+          "knowledge": 1
+        },
+        "resultText": "你选择邀请他们一起玩自己熟悉的游戏。这个小小的决定，成为7岁值得记住的一段经历。"
+      }
+    ]
+  }
+]

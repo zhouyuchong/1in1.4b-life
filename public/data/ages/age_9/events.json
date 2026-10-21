@@ -4,30 +4,41 @@
     "effect": {
       "knowledge": 3,
       "sanity": -3
-    }
+    },
+    "cashEffect": 0
   },
   {
     "text": "同桌悄悄去上了周末的奥数思维班，你发现他解题的速度快得惊人。",
     "effect": {
       "sanity": -2
+    },
+    "cashEffect": 0
+  },
+  {
+    "id": "childhood_9_0",
+    "text": "你给班级黑板报画了插图，放学后特意回头看了一眼。",
+    "cashEffect": 0,
+    "effect": {
+      "sanity": 2,
+      "knowledge": 1
     }
   },
   {
-    "id": "extra_9_0",
-    "text": "你在图书馆翻到一本喜欢的书，开始对一种新的职业产生好奇。",
+    "id": "childhood_9_1",
+    "text": "你尝试做科学小实验，看着纸桥真的托住硬币，惊讶得大叫。",
     "cashEffect": 0,
-    "effect": {}
+    "effect": {
+      "sanity": 2,
+      "knowledge": 1
+    }
   },
   {
-    "id": "extra_9_1",
-    "text": "一场社区运动活动让你结识了新朋友，也发现了自己擅长的事情。",
+    "id": "childhood_9_2",
+    "text": "你把积攒的零用钱记进小本子，开始理解攒钱的意义。",
     "cashEffect": 0,
-    "effect": {}
-  },
-  {
-    "id": "extra_9_2",
-    "text": "你试着安排一周的学习与休息，发现给自己留出时间也很重要。",
-    "cashEffect": 0,
-    "effect": {}
+    "effect": {
+      "sanity": 2,
+      "knowledge": 1
+    }
   }
 ]

@@ -3,13 +3,15 @@
     "text": "满周岁了，家里举行了热闹的抓周仪式，你抓起了一根算盘（或者一支笔），长辈们笑得合不拢嘴。",
     "effect": {
       "sanity": 3
-    }
+    },
+    "cashEffect": 0
   },
   {
     "text": "妈妈按照接种本带你去社区卫生院接种一类免费疫苗，你哇哇大哭。",
     "effect": {
       "health": 3
-    }
+    },
+    "cashEffect": 0
   },
   {
     "condition": {
@@ -18,7 +20,8 @@
     "text": "老家村里的同龄小孩大多是由爷爷奶奶用米糊和普通奶粉喂养长大。",
     "effect": {
       "wealth": 0
-    }
+    },
+    "cashEffect": 0
   },
   {
     "condition": {
@@ -27,24 +30,34 @@
     "text": "父母在母婴群里货比三家，对比各种进口一段二段奶粉的DHA和益生菌成分。",
     "effect": {
       "wealth": -2
+    },
+    "cashEffect": -2000
+  },
+  {
+    "id": "childhood_1_0",
+    "text": "你扶着沙发迈出了独立走路的第一步，家人赶紧伸手护着你。",
+    "cashEffect": 0,
+    "effect": {
+      "sanity": 2,
+      "knowledge": 1
     }
   },
   {
-    "id": "extra_1_0",
-    "text": "你学会了一项新的生活小技能，家人把这个小小进步记了下来。",
+    "id": "childhood_1_1",
+    "text": "你第一次自己用勺子吃饭，米粒洒了一桌，仍然笑得很开心。",
     "cashEffect": 0,
-    "effect": {}
+    "effect": {
+      "sanity": 2,
+      "knowledge": 1
+    }
   },
   {
-    "id": "extra_1_1",
-    "text": "一次家庭出游让你见到了熟悉街道之外的风景，对世界又多了一分好奇。",
+    "id": "childhood_1_2",
+    "text": "你在雨后看见一只蜗牛，蹲在旁边看了很久。",
     "cashEffect": 0,
-    "effect": {}
-  },
-  {
-    "id": "extra_1_2",
-    "text": "你和同龄伙伴一起玩耍，第一次学着表达自己的想法。",
-    "cashEffect": 0,
-    "effect": {}
+    "effect": {
+      "sanity": 2,
+      "knowledge": 1
+    }
   }
 ]

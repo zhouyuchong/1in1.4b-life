@@ -8,25 +8,15 @@
       "lifeState": {
         "parenthood": "parent"
       }
-    }
+    },
+    "cashEffect": 0
   },
   {
     "text": "自己身体的多项指标也在衰退，老花镜第一次架上了鼻梁。",
     "effect": {
       "health": -5
-    }
-  },
-  {
-    "text": "你继续为考试做准备，在复习之外也认真安排生活开销。",
-    "condition": {
-      "lifeState": {
-        "career": "preparing"
-      }
     },
-    "effect": {
-      "knowledge": 2,
-      "wealth": -1
-    }
+    "cashEffect": 0
   },
   {
     "id": "extra_48_0",

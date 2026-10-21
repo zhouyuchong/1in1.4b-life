@@ -1,3 +1,4 @@
+import { addExtraContent } from './extra_content.js';
 // 年度数据生成时补充事实条件与状态变更，确保重新生成不会丢失剧情约束。
 const optionStates = {
   '重点高中做题家': { schooling: 'high_school' },
@@ -67,7 +68,7 @@ export function connectLifeContent(age, data) {
     gate(1, { housing: 'renting' });
   }
   if (age === 24) { gate(0, employed); events[0].text = '工作后的例行体检里，第一次出现了脂肪肝、颈椎和尿酸指标的警报。'; }
-  if (age === 25) gate(1, { education: ['college', 'bachelor'] });
+  if (age === 25) { gate(1, { education: ['college', 'bachelor'] }); events[1].cashEffect = -600; }
   if (age === 26) {
     gate(0, { career: 'private' });
     choices[0].condition = condition({ career: 'private' });
@@ -82,10 +83,10 @@ export function connectLifeContent(age, data) {
   if (age === 28) {
     events.forEach(e => { e.text = '你开始认真思考亲密关系与成家计划，衡量彼此的期待和生活成本。'; e.effect = { sanity: -1 }; });
     choices.push({
-      id: 'choice_age28_marriage', title: '成家还是保持独立？',
+      id: 'choice_age28_marriage', condition: condition({ marriage: 'single' }), title: '成家还是保持独立？',
       description: '是否进入婚姻，由你结合感情与生活安排做出决定。买房与否不会替你决定婚姻。',
       options: [
-        { text: '与伴侣登记结婚，共同经营小家庭', effect: { wealth: -8, sanity: 3 }, stateEffect: { marriage: 'married' }, tag: '携手成家', resultText: '你们决定携手，开始共同承担生活中的责任。' },
+        { text: '与伴侣登记结婚，共同经营小家庭', condition: condition({ relationship: 'dating' }), effect: { wealth: -8, sanity: 3 }, stateEffect: { marriage: 'married' }, tag: '携手成家', resultText: '你们决定携手，开始共同承担生活中的责任。' },
         { text: '暂不结婚，按自己的节奏生活', effect: { sanity: 4 }, stateEffect: { marriage: 'single' }, tag: '独立生活', resultText: '你把时间留给自己，继续经营工作、朋友与个人生活。' }
       ]
     });
@@ -154,7 +155,7 @@ export function connectLifeContent(age, data) {
     events.push(event(`${age}岁这一年，你与老友散步聊天，照料花草，享受属于自己的日常。`, { hasGrandchildren: false }, { sanity: 3, health: -3 }));
   }
   if (age === 70) { gate(1, { hasGrandchildren: true }); events[1].text = '儿孙们逢年过节齐聚一堂，满堂欢笑，新的合影又挂上了客厅的墙面。'; }
-  if (age >= 23 && age < 60) {
+  if (age >= 23 && age < 38) {
     events.push(event('你继续为考试做准备，在复习之外也认真安排生活开销。', { career: 'preparing' }, { knowledge: 2, wealth: -1 }));
   }
   if (age === 75) {
@@ -183,7 +184,7 @@ export function connectLifeContent(age, data) {
     '你尝试了一项新的兴趣，发现慢下来之后仍然可以有新的开始。',
     '你整理旧照片和通信记录，把一段值得记住的经历认真写了下来。'
   ];
-  extras.forEach((text, index) => events.push({ id: `extra_${age}_${index}`, text, cashEffect: 0, effect: {} }));
+  (age >= 18 ? extras : []).forEach((text, index) => events.push({ id: `extra_${age}_${index}`, text, cashEffect: 0, effect: {} }));
   const milestones = {
     18: '成年这一年，你开始独立了解身份证件、银行卡和个人信息保护，第一次认真考虑自己的责任。',
     22: '你为未来三年写下一份计划：想靠什么生活、想住在哪里，以及愿意为什么投入时间。',
@@ -194,5 +195,10 @@ export function connectLifeContent(age, data) {
     80: '八十岁，你写下一段人生回忆。那些当年艰难做出的决定，最终组成了属于你的生活。'
   };
   if (milestones[age]) events.push({ id: `milestone_${age}`, text: milestones[age], required: true, cashEffect: 0, effect: {} });
-  return data;
+  // 所有金额在生成时明确落为元，文案中的固定支出单独指定，避免财富分数放大。
+  const unit = age < 6 ? 1000 : age < 18 ? 2000 : 3000;
+  for (const entry of [...events, ...choices.flatMap(choice => choice.options)]) {
+    entry.cashEffect ??= (entry.effect?.wealth || 0) * unit;
+  }
+  return addExtraContent(age, data);
 }

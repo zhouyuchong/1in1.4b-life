@@ -1,1 +1,36 @@
-[]
+[
+  {
+    "id": "everyday_choice_4",
+    "title": "第一次兴趣体验",
+    "description": "家人愿意陪你尝试新事物，你最想做什么？",
+    "options": [
+      {
+        "text": "画画，画下想象中的世界",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 3,
+          "knowledge": 2
+        },
+        "resultText": "你选择画画，画下想象中的世界。这个小小的决定，成为4岁值得记住的一段经历。"
+      },
+      {
+        "text": "去户外观察小虫和树叶",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 3,
+          "knowledge": 2
+        },
+        "resultText": "你选择去户外观察小虫和树叶。这个小小的决定，成为4岁值得记住的一段经历。"
+      },
+      {
+        "text": "听音乐，跟着节拍唱歌",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 4,
+          "knowledge": 1
+        },
+        "resultText": "你选择听音乐，跟着节拍唱歌。这个小小的决定，成为4岁值得记住的一段经历。"
+      }
+    ]
+  }
+]

@@ -15,7 +15,8 @@
           "self_employed"
         ]
       }
-    }
+    },
+    "cashEffect": 9000
   },
   {
     "text": "按时偿还住房按揭，日子在柴米油盐中一天天流淌。",
@@ -40,18 +41,6 @@
       "sanity": 1
     },
     "cashEffect": 0
-  },
-  {
-    "text": "你继续为考试做准备，在复习之外也认真安排生活开销。",
-    "condition": {
-      "lifeState": {
-        "career": "preparing"
-      }
-    },
-    "effect": {
-      "knowledge": 2,
-      "wealth": -1
-    }
   },
   {
     "id": "extra_39_0",

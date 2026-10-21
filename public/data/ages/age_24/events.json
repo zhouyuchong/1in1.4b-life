@@ -14,13 +14,15 @@
           "self_employed"
         ]
       }
-    }
+    },
+    "cashEffect": 0
   },
   {
     "text": "过年回家，发现父母头上的白发明显变多了，原本挺拔的脊背也有些微驼。",
     "effect": {
       "sanity": -3
-    }
+    },
+    "cashEffect": 0
   },
   {
     "text": "你继续为考试做准备，在复习之外也认真安排生活开销。",
@@ -32,7 +34,8 @@
     "effect": {
       "knowledge": 2,
       "wealth": -1
-    }
+    },
+    "cashEffect": -3000
   },
   {
     "id": "extra_24_0",

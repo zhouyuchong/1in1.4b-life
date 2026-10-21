@@ -1,1 +1,36 @@
-[]
+[
+  {
+    "id": "everyday_choice_81",
+    "title": "与朋友的分歧",
+    "description": "一次聊天中，你和朋友的观点不太一样。",
+    "options": [
+      {
+        "text": "认真听完对方的理由",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 3,
+          "knowledge": 2
+        },
+        "resultText": "你选择认真听完对方的理由。这个小小的决定，成为81岁值得记住的一段经历。"
+      },
+      {
+        "text": "温和表达自己的看法",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 3,
+          "knowledge": 2
+        },
+        "resultText": "你选择温和表达自己的看法。这个小小的决定，成为81岁值得记住的一段经历。"
+      },
+      {
+        "text": "约好求同存异，换个话题",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 4,
+          "knowledge": 1
+        },
+        "resultText": "你选择约好求同存异，换个话题。这个小小的决定，成为81岁值得记住的一段经历。"
+      }
+    ]
+  }
+]

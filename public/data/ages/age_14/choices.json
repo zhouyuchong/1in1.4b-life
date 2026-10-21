@@ -1,1 +1,36 @@
-[]
+[
+  {
+    "id": "everyday_choice_14",
+    "title": "压力来了怎么办",
+    "description": "学习与成长让你有些疲惫，你想怎样调整？",
+    "options": [
+      {
+        "text": "约朋友运动，出一身汗",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 3,
+          "knowledge": 2
+        },
+        "resultText": "你选择约朋友运动，出一身汗。这个小小的决定，成为14岁值得记住的一段经历。"
+      },
+      {
+        "text": "向老师求助，重新安排学习计划",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 3,
+          "knowledge": 2
+        },
+        "resultText": "你选择向老师求助，重新安排学习计划。这个小小的决定，成为14岁值得记住的一段经历。"
+      },
+      {
+        "text": "和家人认真聊聊自己的压力",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 4,
+          "knowledge": 1
+        },
+        "resultText": "你选择和家人认真聊聊自己的压力。这个小小的决定，成为14岁值得记住的一段经历。"
+      }
+    ]
+  }
+]

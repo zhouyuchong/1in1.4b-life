@@ -1,1 +1,36 @@
-[]
+[
+  {
+    "id": "everyday_choice_24",
+    "title": "给生活留点空白",
+    "description": "一个空闲周末，你决定听听自己的想法。",
+    "options": [
+      {
+        "text": "在附近步行，发现没去过的街巷",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 3,
+          "knowledge": 2
+        },
+        "resultText": "你选择在附近步行，发现没去过的街巷。这个小小的决定，成为24岁值得记住的一段经历。"
+      },
+      {
+        "text": "做一道一直想学的菜",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 3,
+          "knowledge": 2
+        },
+        "resultText": "你选择做一道一直想学的菜。这个小小的决定，成为24岁值得记住的一段经历。"
+      },
+      {
+        "text": "关掉消息提醒，好好休息半天",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 4,
+          "knowledge": 1
+        },
+        "resultText": "你选择关掉消息提醒，好好休息半天。这个小小的决定，成为24岁值得记住的一段经历。"
+      }
+    ]
+  }
+]

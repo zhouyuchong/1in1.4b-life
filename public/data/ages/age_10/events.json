@@ -3,30 +3,41 @@
     "text": "班里不少同学拥有了自己的电话手表或者旧智能手机，大家课间都在聊热门网络游戏和短视频梗。",
     "effect": {
       "sanity": 2
-    }
+    },
+    "cashEffect": 0
   },
   {
     "text": "学校开始强调护眼防控近视，每天做两次眼保健操，还要定期做视力筛查。",
     "effect": {
       "health": 1
+    },
+    "cashEffect": 0
+  },
+  {
+    "id": "childhood_10_0",
+    "text": "你第一次在家人的指导下煎蛋，边缘焦了，仍然吃得很香。",
+    "cashEffect": 0,
+    "effect": {
+      "sanity": 2,
+      "knowledge": 1
     }
   },
   {
-    "id": "extra_10_0",
-    "text": "你在图书馆翻到一本喜欢的书，开始对一种新的职业产生好奇。",
+    "id": "childhood_10_1",
+    "text": "你在班级辩论中发表自己的看法，声音从发抖变得坚定。",
     "cashEffect": 0,
-    "effect": {}
+    "effect": {
+      "sanity": 2,
+      "knowledge": 1
+    }
   },
   {
-    "id": "extra_10_1",
-    "text": "一场社区运动活动让你结识了新朋友，也发现了自己擅长的事情。",
+    "id": "childhood_10_2",
+    "text": "你和同学一起观察月亮，认真画下每天不同的形状。",
     "cashEffect": 0,
-    "effect": {}
-  },
-  {
-    "id": "extra_10_2",
-    "text": "你试着安排一周的学习与休息，发现给自己留出时间也很重要。",
-    "cashEffect": 0,
-    "effect": {}
+    "effect": {
+      "sanity": 2,
+      "knowledge": 1
+    }
   }
 ]

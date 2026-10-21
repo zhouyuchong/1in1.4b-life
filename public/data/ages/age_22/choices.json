@@ -21,7 +21,8 @@
           "career": "private",
           "careerTrack": "general",
           "housing": "renting"
-        }
+        },
+        "cashEffect": 45000
       },
       {
         "text": "全职备战考研二战/三战：不甘心本科学历，誓要冲进名校研究生",
@@ -39,7 +40,8 @@
           "career": "preparing",
           "careerTrack": "general",
           "housing": "renting"
-        }
+        },
+        "cashEffect": -30000
       },
       {
         "text": "回老家二三线城市考公考编：直奔选调生、事业单位与国企稳妥上岸",
@@ -54,7 +56,8 @@
         "stateEffect": {
           "career": "public",
           "careerTrack": "public"
-        }
+        },
+        "cashEffect": 9000
       },
       {
         "text": "灵活就业：做自媒体博主、做兼职或外卖骑手过渡，等待转机",
@@ -70,7 +73,8 @@
           "career": "self_employed",
           "careerTrack": "general",
           "housing": "renting"
-        }
+        },
+        "cashEffect": 15000
       }
     ],
     "condition": {

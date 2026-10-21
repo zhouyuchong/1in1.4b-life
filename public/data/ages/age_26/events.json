@@ -8,7 +8,8 @@
       "lifeState": {
         "career": "private"
       }
-    }
+    },
+    "cashEffect": 0
   },
   {
     "text": "你继续为考试做准备，在复习之外也认真安排生活开销。",
@@ -20,7 +21,8 @@
     "effect": {
       "knowledge": 2,
       "wealth": -1
-    }
+    },
+    "cashEffect": -3000
   },
   {
     "id": "extra_26_0",

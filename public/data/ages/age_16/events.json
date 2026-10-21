@@ -10,7 +10,8 @@
       "lifeState": {
         "schooling": "high_school"
       }
-    }
+    },
+    "cashEffect": 0
   },
   {
     "text": "月考排名大榜贴在年级走廊上，哪怕差一分都能甩下几十名同学，走廊里弥漫着无声的硝烟。",
@@ -21,7 +22,8 @@
       "lifeState": {
         "schooling": "high_school"
       }
-    }
+    },
+    "cashEffect": 0
   },
   {
     "text": "16岁这一年，你在实训车间磨练手艺，慢慢掌握一门能安身立命的技术。",
@@ -32,7 +34,8 @@
     },
     "effect": {
       "knowledge": 3
-    }
+    },
+    "cashEffect": 0
   },
   {
     "text": "16岁这一年，你在工作中积累经验，领到工资后认真盘算生活开销。",
@@ -44,24 +47,34 @@
     "effect": {
       "wealth": 3,
       "health": -1
+    },
+    "cashEffect": 6000
+  },
+  {
+    "id": "childhood_16_0",
+    "text": "你用手机拍下傍晚的云，第一次认真想把普通日子记录下来。",
+    "cashEffect": 0,
+    "effect": {
+      "sanity": 2,
+      "knowledge": 1
     }
   },
   {
-    "id": "extra_16_0",
-    "text": "你在图书馆翻到一本喜欢的书，开始对一种新的职业产生好奇。",
+    "id": "childhood_16_1",
+    "text": "你参加一次职业体验，发现想象中的工作和实际很不一样。",
     "cashEffect": 0,
-    "effect": {}
+    "effect": {
+      "sanity": 2,
+      "knowledge": 1
+    }
   },
   {
-    "id": "extra_16_1",
-    "text": "一场社区运动活动让你结识了新朋友，也发现了自己擅长的事情。",
+    "id": "childhood_16_2",
+    "text": "你在一次集体合作里学会表达意见，也学会听别人把话说完。",
     "cashEffect": 0,
-    "effect": {}
-  },
-  {
-    "id": "extra_16_2",
-    "text": "你试着安排一周的学习与休息，发现给自己留出时间也很重要。",
-    "cashEffect": 0,
-    "effect": {}
+    "effect": {
+      "sanity": 2,
+      "knowledge": 1
+    }
   }
 ]

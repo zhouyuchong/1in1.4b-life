@@ -11,14 +11,16 @@
           "public"
         ]
       }
-    }
+    },
+    "cashEffect": 0
   },
   {
     "text": "给父母买了百万医疗险，但在核保时发现父亲已经有了高血压而不得不除外承保。",
     "effect": {
       "wealth": -2,
       "sanity": -2
-    }
+    },
+    "cashEffect": -6000
   },
   {
     "text": "你继续为考试做准备，在复习之外也认真安排生活开销。",
@@ -30,7 +32,8 @@
     "effect": {
       "knowledge": 2,
       "wealth": -1
-    }
+    },
+    "cashEffect": -3000
   },
   {
     "id": "extra_31_0",

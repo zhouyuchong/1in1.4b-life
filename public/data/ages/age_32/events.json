@@ -10,13 +10,15 @@
       },
       "minChildAge": 3,
       "maxChildAge": 6
-    }
+    },
+    "cashEffect": 0
   },
   {
     "text": "发现自己越来越喝不惯冰水，保温杯里泡上了枸杞，下班回家只想静静躺平。",
     "effect": {
       "health": 1
-    }
+    },
+    "cashEffect": 0
   },
   {
     "text": "你们把时间留给彼此，安排了一次共同期待的出游。",
@@ -31,7 +33,8 @@
     },
     "effect": {
       "sanity": 3
-    }
+    },
+    "cashEffect": 0
   },
   {
     "text": "你继续为考试做准备，在复习之外也认真安排生活开销。",
@@ -43,7 +46,8 @@
     "effect": {
       "knowledge": 2,
       "wealth": -1
-    }
+    },
+    "cashEffect": -3000
   },
   {
     "id": "extra_32_0",

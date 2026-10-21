@@ -9,7 +9,8 @@
       "lifeState": {
         "schooling": "university"
       }
-    }
+    },
+    "cashEffect": 0
   },
   {
     "text": "第一次离开父母独自生活，学会了精打细算每月一千多元的生活费，兼职送过快递或做家教。",
@@ -21,7 +22,8 @@
       "lifeState": {
         "schooling": "university"
       }
-    }
+    },
+    "cashEffect": 6000
   },
   {
     "text": "你在大专院校参加专业实训，在课程与实习中积累职业技能。",
@@ -32,7 +34,8 @@
     },
     "effect": {
       "knowledge": 3
-    }
+    },
+    "cashEffect": 0
   },
   {
     "text": "你在工作中熟悉业务，靠自己的劳动支付日常开销。",
@@ -49,7 +52,8 @@
     "effect": {
       "wealth": 2,
       "knowledge": 1
-    }
+    },
+    "cashEffect": 6000
   },
   {
     "id": "extra_19_0",

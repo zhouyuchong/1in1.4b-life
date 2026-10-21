@@ -34,7 +34,8 @@
     "effect": {
       "knowledge": 2,
       "wealth": -1
-    }
+    },
+    "cashEffect": -3000
   },
   {
     "id": "extra_33_0",

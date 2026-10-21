@@ -3,30 +3,41 @@
     "text": "3岁达到入园年龄，家长们开始在各大家长群打听附近幼儿园的口碑与师资。",
     "effect": {
       "sanity": -2
-    }
+    },
+    "cashEffect": 0
   },
   {
     "text": "你有了自己的小小社交圈，学会了和同龄小朋友分享玩具和饼干。",
     "effect": {
       "sanity": 4
+    },
+    "cashEffect": 0
+  },
+  {
+    "id": "childhood_3_0",
+    "text": "你第一次在幼儿园午睡，紧紧抱着自己带来的小毛巾。",
+    "cashEffect": 0,
+    "effect": {
+      "sanity": 2,
+      "knowledge": 1
     }
   },
   {
-    "id": "extra_3_0",
-    "text": "你学会了一项新的生活小技能，家人把这个小小进步记了下来。",
+    "id": "childhood_3_1",
+    "text": "你用彩泥捏出一只不像小狗的小狗，老师把它摆上展示架。",
     "cashEffect": 0,
-    "effect": {}
+    "effect": {
+      "sanity": 2,
+      "knowledge": 1
+    }
   },
   {
-    "id": "extra_3_1",
-    "text": "一次家庭出游让你见到了熟悉街道之外的风景，对世界又多了一分好奇。",
+    "id": "childhood_3_2",
+    "text": "放学时你主动和新认识的小伙伴挥手道别。",
     "cashEffect": 0,
-    "effect": {}
-  },
-  {
-    "id": "extra_3_2",
-    "text": "你和同龄伙伴一起玩耍，第一次学着表达自己的想法。",
-    "cashEffect": 0,
-    "effect": {}
+    "effect": {
+      "sanity": 2,
+      "knowledge": 1
+    }
   }
 ]

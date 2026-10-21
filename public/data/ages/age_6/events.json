@@ -3,30 +3,41 @@
     "text": "6周岁到了法定入学年龄！全家开始对照学区划片政策核实户口与房产证一致性。",
     "effect": {
       "sanity": -2
-    }
+    },
+    "cashEffect": 0
   },
   {
     "text": "你背上了人生中第一个崭新的书包，胸前挂着水壶，对小学生活充满敬畏与向往。",
     "effect": {
       "sanity": 4
+    },
+    "cashEffect": 0
+  },
+  {
+    "id": "childhood_6_0",
+    "text": "你认真包好第一本课本的书皮，在姓名栏一笔一画写上名字。",
+    "cashEffect": 0,
+    "effect": {
+      "sanity": 2,
+      "knowledge": 1
     }
   },
   {
-    "id": "extra_6_0",
-    "text": "你学会了一项新的生活小技能，家人把这个小小进步记了下来。",
+    "id": "childhood_6_1",
+    "text": "你第一次自己收拾书包，第二天发现还是漏了一块橡皮。",
     "cashEffect": 0,
-    "effect": {}
+    "effect": {
+      "sanity": 2,
+      "knowledge": 1
+    }
   },
   {
-    "id": "extra_6_1",
-    "text": "一次家庭出游让你见到了熟悉街道之外的风景，对世界又多了一分好奇。",
+    "id": "childhood_6_2",
+    "text": "放学路上你认出了新学的几个字，兴奋地念给家人听。",
     "cashEffect": 0,
-    "effect": {}
-  },
-  {
-    "id": "extra_6_2",
-    "text": "你和同龄伙伴一起玩耍，第一次学着表达自己的想法。",
-    "cashEffect": 0,
-    "effect": {}
+    "effect": {
+      "sanity": 2,
+      "knowledge": 1
+    }
   }
 ]

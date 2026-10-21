@@ -188,7 +188,7 @@ test('暂缓生育、不买房的所有成年年份都没有奶粉和房贷账�
 test('每年呈现2到3条不重复叙事，支出明细可逐项核对', async t => {
   t.mock.method(Math, 'random', () => 0.8);
   let character = life();
-  character = await until(character, 14);
+  character = await until(character, 22);
   for (const year of character.history.filter(year => year.age > 0)) {
     const narratives = year.events.filter(event => !event.ledger);
     assert.ok(narratives.length >= 2 && narratives.length <= (year.isChoice ? 4 : 3));
@@ -228,6 +228,7 @@ test('进修只扣一次学费，一年只能行动一次，次年触发后续�
   character = await stepNextYear(character);
   assert.match(character.history[0].text, /作品集/);
   assert.equal(character.scheduledEvents.length, 0);
+  if (character.pendingChoice) character = resolveChoice(character, character.pendingChoice.choice.options[0]);
   assert.ok(getLifeActions(character).length);
 });
 
@@ -333,4 +334,137 @@ test('100条包含主动求变的人生可完成，逐笔资金与期末余额�
     }
     assert.equal(character.isGameOver, true);
   }
+});
+
+test('旅游、礼物、兴趣与社交可主动发起，支出与文案一致且各有免费选项', () => {
+  for (const [id, cost] of [['travel', 3000], ['gift', 600], ['hobby', 800], ['social', 0]]) {
+    let character = life(); character.age = 25;
+    assert.ok(getLifeActions(character).some(action => action.id === id));
+    character = startLifeAction(character, id);
+    assert.ok(character.pendingChoice.choice.options.some(option => !option.cancel && option.cashEffect === 0));
+    const before = character.finances.cash;
+    character = resolveChoice(character, character.pendingChoice.choice.options[0]);
+    assert.equal(before - character.finances.cash, cost);
+    assert.equal(character.history[0].cashChange, cost ? -cost : 0);
+    if (cost) assert.match(character.history[0].text, new RegExp(`${cost}元`));
+  }
+});
+
+test('婚礼份子钱明确为600元，实际结算不会扩大十倍', async t => {
+  t.mock.method(Math, 'random', () => 0.5);
+  const character = await until(life(), 25);
+  const gift = character.history.flatMap(row => row.events || []).find(event => /六百元份子钱/.test(event.text));
+  assert.ok(gift);
+  assert.equal(gift.cashChange, -600);
+});
+
+test('备考期间无钱也能免费投简历，旧考试结果不会覆盖转行', async t => {
+  t.mock.method(Math, 'random', () => 0);
+  let character = life(); character.age = 30;
+  character.lifeState.career = 'private'; character.lifeState.schooling = 'none';
+  character = startLifeAction(character, 'career');
+  character = resolveChoice(character, character.pendingChoice.choice.options[1]);
+  character = { ...character, age: 31, lastActionAge: null };
+  character.finances.cash = -1000;
+  character = startLifeAction(character, 'career');
+  const resume = character.pendingChoice.choice.options[0];
+  assert.equal(canSelectOption(resume, character), true);
+  character = resolveChoice(character, resume);
+  assert.equal(character.lifeState.career, 'private');
+  character = await until(character, 32);
+  assert.equal(character.lifeState.career, 'private');
+  assert.doesNotMatch(character.history[0].text, /通过了招录/);
+});
+
+test('连续七年落选后仍有退出入口，38岁转向且此后不能重新全职备考', async t => {
+  t.mock.method(Math, 'random', () => 0.99);
+  let character = life(); character.age = 30;
+  character.lifeState = { ...character.lifeState, schooling: 'none', career: 'private' };
+  character = startLifeAction(character, 'career');
+  character = resolveChoice(character, character.pendingChoice.choice.options[1]);
+  for (let age = 31; age <= 37; age++) {
+    character = await stepNextYear(character);
+    assert.equal(character.pendingChoice.choice.id, `career_review_${age}`);
+    assert.ok(character.pendingChoice.choice.options.some(option => /免费投简历/.test(option.text)));
+    assert.match(character.history[0].text, /没有入围/);
+    character = resolveChoice(character, character.pendingChoice.choice.options.find(option => option.stateEffect?.career === 'preparing'));
+  }
+  character = await stepNextYear(character);
+  assert.equal(character.age, 38);
+  assert.equal(character.lifeState.career, 'unemployed');
+  assert.match(character.pendingChoice.choice.title, /38岁/);
+  assert.ok(character.pendingChoice.choice.options.every(option => option.stateEffect?.career !== 'preparing'));
+  character = resolveChoice(character, character.pendingChoice.choice.options.find(option => option.stateEffect?.career === 'worker'));
+  assert.equal(character.lifeState.career, 'worker');
+  character = startLifeAction(character, 'career');
+  assert.ok(character.pendingChoice.choice.options.every(option => option.stateEffect?.career !== 'preparing'));
+});
+
+test('同年重新备考不会堆积多个考试结果', async t => {
+  t.mock.method(Math, 'random', () => 0.99);
+  let character = life(); character.age = 30; character.lifeState.schooling = 'none';
+  character = startLifeAction(character, 'career');
+  character = resolveChoice(character, character.pendingChoice.choice.options[1]);
+  character = await stepNextYear(character);
+  character = resolveChoice(character, character.pendingChoice.choice.options[1]);
+  character = startLifeAction(character, 'career');
+  character = resolveChoice(character, character.pendingChoice.choice.options[1]);
+  assert.equal(character.scheduledEvents.filter(event => event.id === 'exam_result').length, 1);
+});
+
+test('18岁以前各年补充独有事件，八个原无抉择的年龄现在都有三个选项', () => {
+  const allTexts = new Set();
+  for (let age = 1; age < 18; age++) {
+    const entries = data(age, 'events').filter(event => event.id?.startsWith('childhood_'));
+    assert.equal(entries.length, 3);
+    for (const event of entries) { assert.ok(!allTexts.has(event.text)); allTexts.add(event.text); }
+  }
+  for (const age of [4, 7, 8, 11, 12, 13, 14, 16]) assert.equal(data(age, 'choices')[0].options.length, 3);
+});
+
+test('没有恋爱经历不能直接结婚，恋爱、沟通、分手和婚姻都由选择决定', () => {
+  let character = life(); character.age = 28;
+  const marriage = data(28, 'choices')[0];
+  assert.equal(canSelectOption(marriage.options[0], character), false);
+  character = startLifeAction(character, 'romance');
+  character = resolveChoice(character, character.pendingChoice.choice.options[0]);
+  assert.equal(character.lifeState.relationship, 'dating');
+  assert.equal(character.lifeState.marriage, 'single');
+  assert.ok(character.lifeState.partnerName);
+  assert.equal(canSelectOption(marriage.options[0], character), true);
+  character = { ...character, age: 29 };
+  character = startLifeAction(character, 'romance');
+  const dating = character;
+  const separated = resolveChoice(dating, dating.pendingChoice.choice.options[1]);
+  assert.equal(separated.lifeState.relationship, 'single');
+  assert.equal(separated.lifeState.partnerName, null);
+  character = resolveChoice(dating, dating.pendingChoice.choice.options[2]);
+  assert.equal(character.lifeState.marriage, 'married');
+  assert.ok(!getLifeActions({ ...character, age: 30 }).some(action => action.id === 'romance'));
+});
+
+test('父母告别分别发生且只发生一次，朋友姓名贯穿结交、相聚和告别', async t => {
+  t.mock.method(Math, 'random', () => 0);
+  let character = await until(life(), 7);
+  const friend = character.lifeState.friends[0];
+  assert.equal(friend.name, '林晓');
+  assert.equal(friend.metAge, 7);
+  assert.match(character.history[0].text, /7岁.*结识了林晓/);
+  character = { ...character, age: 16 };
+  character = startLifeAction(character, 'social');
+  const meet = character.pendingChoice.choice.options.find(option => option.text.includes('约朋友林晓'));
+  character = resolveChoice(character, meet);
+  assert.match(character.history[0].text, /16岁.*林晓.*很开心/);
+  character.lifeState = { ...character.lifeState, fatherFarewellAge: 18, motherFarewellAge: 19, friends: [{ ...friend, deathAge: 20 }] };
+  character = await until(character, 22);
+  const texts = character.history.map(row => row.text).join('\n');
+  assert.equal((texts.match(/父亲因年老与疾病离世/g) || []).length, 1);
+  assert.equal((texts.match(/母亲因年老与疾病离世/g) || []).length, 1);
+  assert.equal((texts.match(/朋友林晓去世/g) || []).length, 1);
+  assert.match(texts, /20岁.*林晓去世.*7岁初识/);
+  assert.equal(character.lifeState.fatherAlive, false);
+  assert.equal(character.lifeState.motherAlive, false);
+  assert.equal(character.lifeState.friends.find(friend => friend.name === '林晓').alive, false);
+  character = startLifeAction(character, 'social');
+  assert.ok(!character.pendingChoice.choice.options.some(option => /约朋友林晓/.test(option.text)));
 });

@@ -1,1 +1,36 @@
-[]
+[
+  {
+    "id": "everyday_choice_12",
+    "title": "新学校里的选择",
+    "description": "社团招新时，你被几种不同的活动吸引。",
+    "options": [
+      {
+        "text": "加入科学社，试着动手实验",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 3,
+          "knowledge": 2
+        },
+        "resultText": "你选择加入科学社，试着动手实验。这个小小的决定，成为12岁值得记住的一段经历。"
+      },
+      {
+        "text": "参加戏剧社，练习表达自己",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 3,
+          "knowledge": 2
+        },
+        "resultText": "你选择参加戏剧社，练习表达自己。这个小小的决定，成为12岁值得记住的一段经历。"
+      },
+      {
+        "text": "进入体育社，认识一起运动的人",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 4,
+          "knowledge": 1
+        },
+        "resultText": "你选择进入体育社，认识一起运动的人。这个小小的决定，成为12岁值得记住的一段经历。"
+      }
+    ]
+  }
+]

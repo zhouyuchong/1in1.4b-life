@@ -8,7 +8,8 @@
       "lifeState": {
         "parenthood": "parent"
       }
-    }
+    },
+    "cashEffect": 0
   },
   {
     "text": "母亲突发心脑血管疾病住院，你连夜在医院走廊陪护陪床，闻着消毒水气味百感交集。",
@@ -16,19 +17,8 @@
       "wealth": -6,
       "health": -4,
       "sanity": -5
-    }
-  },
-  {
-    "text": "你继续为考试做准备，在复习之外也认真安排生活开销。",
-    "condition": {
-      "lifeState": {
-        "career": "preparing"
-      }
     },
-    "effect": {
-      "knowledge": 2,
-      "wealth": -1
-    }
+    "cashEffect": -18000
   },
   {
     "id": "extra_40_0",

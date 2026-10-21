@@ -1,1 +1,36 @@
-[]
+[
+  {
+    "id": "everyday_choice_48",
+    "title": "完成一个小心愿",
+    "description": "清单上有个拖延了很久的个人目标。",
+    "options": [
+      {
+        "text": "把目标拆成几步，从今天开始",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 3,
+          "knowledge": 2
+        },
+        "resultText": "你选择把目标拆成几步，从今天开始。这个小小的决定，成为48岁值得记住的一段经历。"
+      },
+      {
+        "text": "找个伙伴互相鼓励",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 3,
+          "knowledge": 2
+        },
+        "resultText": "你选择找个伙伴互相鼓励。这个小小的决定，成为48岁值得记住的一段经历。"
+      },
+      {
+        "text": "重新确认它是否仍然是自己想做的事",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 4,
+          "knowledge": 1
+        },
+        "resultText": "你选择重新确认它是否仍然是自己想做的事。这个小小的决定，成为48岁值得记住的一段经历。"
+      }
+    ]
+  }
+]

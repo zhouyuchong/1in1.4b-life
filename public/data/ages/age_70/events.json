@@ -4,7 +4,8 @@
     "effect": {
       "sanity": -4,
       "health": -8
-    }
+    },
+    "cashEffect": 0
   },
   {
     "text": "儿孙们逢年过节齐聚一堂，满堂欢笑，新的合影又挂上了客厅的墙面。",
@@ -15,7 +16,8 @@
       "lifeState": {
         "hasGrandchildren": true
       }
-    }
+    },
+    "cashEffect": 0
   },
   {
     "id": "extra_70_0",

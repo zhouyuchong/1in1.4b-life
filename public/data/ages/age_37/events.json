@@ -15,7 +15,8 @@
           "self_employed"
         ]
       }
-    }
+    },
+    "cashEffect": 9000
   },
   {
     "text": "按时偿还住房按揭，日子在柴米油盐中一天天流淌。",
@@ -51,7 +52,8 @@
     "effect": {
       "knowledge": 2,
       "wealth": -1
-    }
+    },
+    "cashEffect": -3000
   },
   {
     "id": "extra_37_0",

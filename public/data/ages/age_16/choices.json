@@ -1,1 +1,36 @@
-[]
+[
+  {
+    "id": "everyday_choice_16",
+    "title": "自己的小小世界",
+    "description": "课余时间有限，你仍然想保留一个属于自己的爱好。",
+    "options": [
+      {
+        "text": "练习画画，留下每周一张速写",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 3,
+          "knowledge": 2
+        },
+        "resultText": "你选择练习画画，留下每周一张速写。这个小小的决定，成为16岁值得记住的一段经历。"
+      },
+      {
+        "text": "学一点乐器或唱歌",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 3,
+          "knowledge": 2
+        },
+        "resultText": "你选择学一点乐器或唱歌。这个小小的决定，成为16岁值得记住的一段经历。"
+      },
+      {
+        "text": "坚持跑步，观察沿途的季节变化",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 4,
+          "knowledge": 1
+        },
+        "resultText": "你选择坚持跑步，观察沿途的季节变化。这个小小的决定，成为16岁值得记住的一段经历。"
+      }
+    ]
+  }
+]

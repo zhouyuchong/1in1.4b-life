@@ -3,31 +3,42 @@
     "text": "距离幼升小只剩一年，同龄小朋友不少已经开始突击识字量和百以内加减法。",
     "effect": {
       "sanity": -3
-    }
+    },
+    "cashEffect": 0
   },
   {
     "text": "你在公园里学会了骑带辅助轮的童车，摔倒了拍拍泥土自己站了起来。",
     "effect": {
       "health": 3,
       "sanity": 2
+    },
+    "cashEffect": 0
+  },
+  {
+    "id": "childhood_5_0",
+    "text": "你给自己系好了鞋带，迫不及待向家人展示。",
+    "cashEffect": 0,
+    "effect": {
+      "sanity": 2,
+      "knowledge": 1
     }
   },
   {
-    "id": "extra_5_0",
-    "text": "你学会了一项新的生活小技能，家人把这个小小进步记了下来。",
+    "id": "childhood_5_1",
+    "text": "你在自然博物馆看见巨大的恐龙骨架，问了整整一路问题。",
     "cashEffect": 0,
-    "effect": {}
+    "effect": {
+      "sanity": 2,
+      "knowledge": 1
+    }
   },
   {
-    "id": "extra_5_1",
-    "text": "一次家庭出游让你见到了熟悉街道之外的风景，对世界又多了一分好奇。",
+    "id": "childhood_5_2",
+    "text": "你和伙伴用纸箱搭起秘密基地，约定轮流做小队长。",
     "cashEffect": 0,
-    "effect": {}
-  },
-  {
-    "id": "extra_5_2",
-    "text": "你和同龄伙伴一起玩耍，第一次学着表达自己的想法。",
-    "cashEffect": 0,
-    "effect": {}
+    "effect": {
+      "sanity": 2,
+      "knowledge": 1
+    }
   }
 ]

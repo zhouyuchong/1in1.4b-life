@@ -13,7 +13,8 @@
           "self_employed"
         ]
       }
-    }
+    },
+    "cashEffect": 0
   },
   {
     "text": "你猛然发现自己成了家庭唯一的顶梁柱：上有渐渐年迈多病的双亲，下有牙牙学语的幼子，身边是疲惫的伴侣。",
@@ -25,7 +26,8 @@
         "marriage": "married",
         "parenthood": "parent"
       }
-    }
+    },
+    "cashEffect": 0
   },
   {
     "text": "你继续为考试做准备，在复习之外也认真安排生活开销。",
@@ -37,7 +39,8 @@
     "effect": {
       "knowledge": 2,
       "wealth": -1
-    }
+    },
+    "cashEffect": -3000
   },
   {
     "id": "extra_30_0",

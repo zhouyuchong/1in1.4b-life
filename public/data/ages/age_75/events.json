@@ -9,13 +9,15 @@
       "lifeState": {
         "marriage": "married"
       }
-    }
+    },
+    "cashEffect": 0
   },
   {
     "text": "社区医生上门做老年人健康随访量血压，夸你心态好。",
     "effect": {
       "health": 2
-    }
+    },
+    "cashEffect": 0
   },
   {
     "text": "腿脚有些不利索了，你拄着拐杖在社区公园散步，和熟悉的邻居聊聊天。",
@@ -27,7 +29,8 @@
     "effect": {
       "health": -8,
       "sanity": 2
-    }
+    },
+    "cashEffect": 0
   },
   {
     "id": "extra_75_0",

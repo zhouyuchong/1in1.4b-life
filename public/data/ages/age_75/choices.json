@@ -1,1 +1,36 @@
-[]
+[
+  {
+    "id": "everyday_choice_75",
+    "title": "一次志愿服务邀请",
+    "description": "社区征集志愿者，你愿意怎样参与？",
+    "options": [
+      {
+        "text": "帮助整理公共图书",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 3,
+          "knowledge": 2
+        },
+        "resultText": "你选择帮助整理公共图书。这个小小的决定，成为75岁值得记住的一段经历。"
+      },
+      {
+        "text": "参与附近的环境清理",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 3,
+          "knowledge": 2
+        },
+        "resultText": "你选择参与附近的环境清理。这个小小的决定，成为75岁值得记住的一段经历。"
+      },
+      {
+        "text": "分享一项自己擅长的小技能",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 4,
+          "knowledge": 1
+        },
+        "resultText": "你选择分享一项自己擅长的小技能。这个小小的决定，成为75岁值得记住的一段经历。"
+      }
+    ]
+  }
+]

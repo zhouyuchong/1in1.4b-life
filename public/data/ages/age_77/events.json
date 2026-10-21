@@ -9,13 +9,15 @@
       "lifeState": {
         "hasGrandchildren": true
       }
-    }
+    },
+    "cashEffect": 0
   },
   {
     "text": "晒着温暖的冬日暖阳，听着收音机里的老歌，心中一片安宁。",
     "effect": {
       "sanity": 4
-    }
+    },
+    "cashEffect": 0
   },
   {
     "text": "77岁这一年，你与老友散步聊天，照料花草，享受属于自己的日常。",
@@ -27,7 +29,8 @@
     "effect": {
       "sanity": 3,
       "health": -3
-    }
+    },
+    "cashEffect": 0
   },
   {
     "id": "extra_77_0",

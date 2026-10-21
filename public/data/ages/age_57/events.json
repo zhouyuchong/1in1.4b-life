@@ -4,13 +4,15 @@
     "effect": {
       "sanity": 2,
       "health": -2
-    }
+    },
+    "cashEffect": 0
   },
   {
     "text": "定期体检，和老友相约喝茶散步，家庭关系渐趋和睦稳固。",
     "effect": {
       "sanity": 3
-    }
+    },
+    "cashEffect": 0
   },
   {
     "text": "住房贷款已经还清，少了一笔固定月供，你终于可以重新安排积蓄。",
@@ -21,19 +23,8 @@
     },
     "effect": {
       "sanity": 5
-    }
-  },
-  {
-    "text": "你继续为考试做准备，在复习之外也认真安排生活开销。",
-    "condition": {
-      "lifeState": {
-        "career": "preparing"
-      }
     },
-    "effect": {
-      "knowledge": 2,
-      "wealth": -1
-    }
+    "cashEffect": 0
   },
   {
     "id": "extra_57_0",

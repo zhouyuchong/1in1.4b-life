@@ -22,7 +22,8 @@
           "lifeState": {
             "career": "private"
           }
-        }
+        },
+        "cashEffect": -12000
       },
       {
         "text": "中年灵活再就业：做自媒体/开网约车/做小生意，打造副业收入",
@@ -37,7 +38,8 @@
         "stateEffect": {
           "career": "self_employed",
           "careerTrack": "general"
-        }
+        },
+        "cashEffect": 9000
       },
       {
         "text": "如果在体制内/事业单位：资历到期平稳晋升中层副科，享受稳定的安全垫",
@@ -59,7 +61,8 @@
           "lifeState": {
             "career": "public"
           }
-        }
+        },
+        "cashEffect": 12000
       }
     ],
     "condition": {

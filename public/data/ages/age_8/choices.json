@@ -1,1 +1,36 @@
-[]
+[
+  {
+    "id": "everyday_choice_8",
+    "title": "校园活动报名",
+    "description": "学校准备开展课后活动，你想把时间花在哪里？",
+    "options": [
+      {
+        "text": "参加田径队，试试自己的速度",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 3,
+          "knowledge": 2
+        },
+        "resultText": "你选择参加田径队，试试自己的速度。这个小小的决定，成为8岁值得记住的一段经历。"
+      },
+      {
+        "text": "加入合唱团，练习一起唱歌",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 3,
+          "knowledge": 2
+        },
+        "resultText": "你选择加入合唱团，练习一起唱歌。这个小小的决定，成为8岁值得记住的一段经历。"
+      },
+      {
+        "text": "做图书小助手，整理喜欢的书",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 4,
+          "knowledge": 1
+        },
+        "resultText": "你选择做图书小助手，整理喜欢的书。这个小小的决定，成为8岁值得记住的一段经历。"
+      }
+    ]
+  }
+]

@@ -1,5 +1,6 @@
 import { createFinances, applyMoney, eventCashChange, minimumCash, annualBudget } from './finances.js';
-import { makeActionChoice } from './lifeActions.js';
+import { relationshipEvents, romanceChoice } from './relationships.js';
+import { makeActionChoice, careerOptions } from './lifeActions.js';
 import { rollBirthCity } from '../data/cities.js';
 import { createLifeState, advanceLifeState, matchesLifeState } from './lifeState.js';
 
@@ -16,8 +17,8 @@ export async function loadAgeData(age) {
 
   try {
     const [eventsRes, choicesRes] = await Promise.all([
-      fetch(`/data/ages/age_${age}/events.json?v=life-v3`, { cache: 'no-store' }).catch(() => null),
-      fetch(`/data/ages/age_${age}/choices.json?v=life-v3`, { cache: 'no-store' }).catch(() => null)
+      fetch(`/data/ages/age_${age}/events.json?v=life-v4`, { cache: 'no-store' }).catch(() => null),
+      fetch(`/data/ages/age_${age}/choices.json?v=life-v4`, { cache: 'no-store' }).catch(() => null)
     ]);
 
     const events = (eventsRes && eventsRes.ok) ? await eventsRes.json() : [];
@@ -148,7 +149,8 @@ export function canSelectOption(option, character) {
 }
 
 function selectAnnualEvents(events, character) {
-  const pool = events.filter(event => checkCondition(event.condition, character));
+  const recentTexts = new Set(character.history.filter(row => row.age >= character.age - 5).flatMap(row => (row.events || [row]).map(event => event.text)));
+  const pool = events.filter(event => checkCondition(event.condition, character) && (event.required || !recentTexts.has(event.text)));
   const selected = pool.filter(event => event.required);
   const candidates = pool.filter(event => !event.required);
   const count = 2 + Math.floor(Math.random() * 2);
@@ -187,7 +189,7 @@ function applyEntry(character, rawEntry) {
     next[key] = Math.max(0, Math.min(100, character[key] + (effect[key] || 0)));
   }
   if (entry.tag && !next.tags.includes(entry.tag)) next.tags = [...next.tags, entry.tag];
-  if (entry.followUp) next.scheduledEvents = [...next.scheduledEvents, { ...entry.followUp, dueAge: character.age + 1 }];
+  if (entry.followUp) next.scheduledEvents = [...next.scheduledEvents.filter(event => !entry.followUp.id || event.id !== entry.followUp.id), { ...entry.followUp, dueAge: character.age + 1 }];
   if (next.health <= 0) Object.assign(next, { isGameOver: true, deathReason: '因身体多项指标衰竭抱憾离世' });
   const text = entry.resultText || entry.text;
   return { next, record: { text, effect, cashChange, cashAfter: finances.cash, ledger: entry.ledger, tag: entry.tag, isMajor: Boolean(entry.required) } };
@@ -204,26 +206,18 @@ function recordYear(character, records, choice = null) {
   return { ...character, history: [item, ...character.history], pendingChoice: null };
 }
 
-function finishYear(character, events, choice = null) {
-  const records = [];
+function finishYear(character, events, choice = null, priorRecords = []) {
+  const records = [...priorRecords];
   const commit = entry => {
     const { next, record } = applyEntry(character, entry);
     character = next; records.push(record);
   };
   if (choice) commit({ ...choice, text: `【抉择：${choice.text}】 ${choice.resultText || ''}`, resultText: undefined });
   // 选择后的事实用于筛选每条事件；不会把此前抽到的育儿或还款文案直接拼进结果。
-  if (!character.isGameOver) for (const event of selectAnnualEvents(events, character)) {
+  if (!character.isGameOver) for (const event of selectAnnualEvents([...events, ...relationshipEvents(character)], character)) {
     if (!checkCondition(event.condition, character)) continue;
     commit(event);
     if (character.isGameOver) break;
-  }
-  if (!character.isGameOver) {
-    const due = character.scheduledEvents.filter(event => event.dueAge <= character.age);
-    character = { ...character, scheduledEvents: character.scheduledEvents.filter(event => event.dueAge > character.age) };
-    for (const event of due) {
-      if (checkCondition(event.condition, character)) commit(event);
-      if (character.isGameOver) break;
-    }
   }
   if (!character.isGameOver) {
     const budget = annualBudget(character);
@@ -240,8 +234,25 @@ export async function stepNextYear(character) {
     deathReason: character.health <= 0 ? '因身体严重透支与疾病溘然长逝' : '寿终正寝，走完了平凡而厚重的一生' };
   character = { ...character, age, lifeState: advanceLifeState(character.lifeState, age) };
   const { events, choices } = await loadAgeData(age);
-  const choice = choices.find(c => checkCondition(c.condition, character) && c.options.some(option => canSelectOption(option, character)));
-  return choice ? { ...character, pendingChoice: { choice, annualEvents: events, mode: 'annual' } } : finishYear(character, events);
+  // 先公布上一年的备考结果，再决定本年是否继续，转行后旧备考结果不会覆盖新职业。
+  const priorRecords = [];
+  const due = character.scheduledEvents.filter(event => event.dueAge <= age);
+  character = { ...character, scheduledEvents: character.scheduledEvents.filter(event => event.dueAge > age) };
+  for (const entry of due) {
+    if (!checkCondition(entry.condition, character)) continue;
+    const { next, record } = applyEntry(character, entry);
+    character = next; priorRecords.push(record);
+    if (character.isGameOver) return recordYear(character, priorRecords);
+  }
+  const preparing = character.lifeState.career === 'preparing';
+  // 到38岁必须离开全职备考；即使本年只看事件，也不会继续扣备考年份。
+  if (preparing && age >= 38) character = { ...character, lifeState: { ...character.lifeState, career: 'unemployed' } };
+  const careerChoice = preparing ? { id: `career_review_${age}`, title: age >= 38 ? '38岁：为职业换一条路' : '今年还要继续全职备考吗？', description: age >= 38 ? '游戏内全职备考阶段到此结束。选择求职、过渡工作或小生意，重新安排生活。' : '过去的投入不必成为继续的理由。你可以继续一年，也可以现在开始求职。', options: careerOptions(age) } : null;
+  const relationshipChoice = [20, 23, 26, 28, 31, 36].includes(age) && character.lifeState.marriage === 'single' ? romanceChoice(character) : null;
+  const choice = careerChoice || [...choices, ...(relationshipChoice ? [relationshipChoice] : [])].find(c => checkCondition(c.condition, character) && c.options.some(option => canSelectOption(option, character)));
+  if (!choice) return finishYear(character, events, null, priorRecords);
+  if (priorRecords.length) character = recordYear(character, priorRecords);
+  return { ...character, pendingChoice: { choice, annualEvents: events, mode: 'annual' } };
 }
 
 export function startLifeAction(character, id) {

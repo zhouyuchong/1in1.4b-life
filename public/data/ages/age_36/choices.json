@@ -1,1 +1,36 @@
-[]
+[
+  {
+    "id": "everyday_choice_36",
+    "title": "旧物与回忆",
+    "description": "整理房间时，你翻出了过去保存的物件。",
+    "options": [
+      {
+        "text": "整理成一本纪念册",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 3,
+          "knowledge": 2
+        },
+        "resultText": "你选择整理成一本纪念册。这个小小的决定，成为36岁值得记住的一段经历。"
+      },
+      {
+        "text": "把闲置用品送给需要的人",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 3,
+          "knowledge": 2
+        },
+        "resultText": "你选择把闲置用品送给需要的人。这个小小的决定，成为36岁值得记住的一段经历。"
+      },
+      {
+        "text": "邀请老友一起聊聊过去",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 4,
+          "knowledge": 1
+        },
+        "resultText": "你选择邀请老友一起聊聊过去。这个小小的决定，成为36岁值得记住的一段经历。"
+      }
+    ]
+  }
+]

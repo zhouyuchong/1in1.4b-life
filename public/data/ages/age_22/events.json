@@ -8,7 +8,8 @@
       "lifeState": {
         "education": "bachelor"
       }
-    }
+    },
+    "cashEffect": 0
   },
   {
     "text": "你已经走上工作岗位，这一年继续积累经验，逐渐找到了自己的节奏。",
@@ -23,7 +24,8 @@
     },
     "effect": {
       "wealth": 2
-    }
+    },
+    "cashEffect": 6000
   },
   {
     "text": "完成定向培养后，你按约回到家乡岗位，正式开始工作。",
@@ -35,7 +37,8 @@
     },
     "effect": {
       "sanity": 4
-    }
+    },
+    "cashEffect": 0
   },
   {
     "id": "extra_22_0",
