@@ -4,6 +4,11 @@
     "effect": {
       "sanity": 3,
       "health": -3
+    },
+    "condition": {
+      "lifeState": {
+        "hasGrandchildren": true
+      }
     }
   },
   {
@@ -11,5 +16,35 @@
     "effect": {
       "sanity": 4
     }
+  },
+  {
+    "text": "73岁这一年，你与老友散步聊天，照料花草，享受属于自己的日常。",
+    "condition": {
+      "lifeState": {
+        "hasGrandchildren": false
+      }
+    },
+    "effect": {
+      "sanity": 3,
+      "health": -3
+    }
+  },
+  {
+    "id": "extra_73_0",
+    "text": "你和朋友约了一次散步，聊起近来的生活，也约好了下次再见。",
+    "cashEffect": 0,
+    "effect": {}
+  },
+  {
+    "id": "extra_73_1",
+    "text": "你尝试了一项新的兴趣，发现慢下来之后仍然可以有新的开始。",
+    "cashEffect": 0,
+    "effect": {}
+  },
+  {
+    "id": "extra_73_2",
+    "text": "你整理旧照片和通信记录，把一段值得记住的经历认真写了下来。",
+    "cashEffect": 0,
+    "effect": {}
   }
 ]

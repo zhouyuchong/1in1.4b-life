@@ -11,5 +11,41 @@
     "effect": {
       "sanity": 3
     }
+  },
+  {
+    "text": "你继续为考试做准备，在复习之外也认真安排生活开销。",
+    "condition": {
+      "lifeState": {
+        "career": "preparing"
+      }
+    },
+    "effect": {
+      "knowledge": 2,
+      "wealth": -1
+    }
+  },
+  {
+    "id": "extra_59_0",
+    "text": "你参加了一次社区技能分享，听到了与自己经历不同的人生路径。",
+    "cashEffect": 0,
+    "effect": {}
+  },
+  {
+    "id": "extra_59_1",
+    "text": "一次与旧友的长谈，让你重新思考工作、收入与生活中真正想要的东西。",
+    "cashEffect": 0,
+    "effect": {}
+  },
+  {
+    "id": "extra_59_2",
+    "text": "你整理了一年的生活计划，把一个总被搁置的个人目标重新写了下来。",
+    "cashEffect": 0,
+    "effect": {}
+  },
+  {
+    "id": "extra_59_3",
+    "text": "你为家里做了一次收纳和修整，普通的日子也因此变得更舒适。",
+    "cashEffect": 0,
+    "effect": {}
   }
 ]

@@ -3,6 +3,66 @@
     "text": "六月七日，警车开道，全城静音，横幅高挂。你走进了决定人生航向的高考考场！",
     "effect": {
       "sanity": -6
+    },
+    "condition": {
+      "lifeState": {
+        "education": "high_school",
+        "career": "none"
+      }
     }
+  },
+  {
+    "text": "18岁这一年，你在实训车间磨练手艺，慢慢掌握一门能安身立命的技术。",
+    "condition": {
+      "lifeState": {
+        "schooling": "vocational"
+      }
+    },
+    "effect": {
+      "knowledge": 3
+    }
+  },
+  {
+    "text": "18岁这一年，你在工作中积累经验，领到工资后认真盘算生活开销。",
+    "condition": {
+      "lifeState": {
+        "career": "worker"
+      }
+    },
+    "effect": {
+      "wealth": 3,
+      "health": -1
+    }
+  },
+  {
+    "id": "extra_18_0",
+    "text": "你参加了一次社区技能分享，听到了与自己经历不同的人生路径。",
+    "cashEffect": 0,
+    "effect": {}
+  },
+  {
+    "id": "extra_18_1",
+    "text": "一次与旧友的长谈，让你重新思考工作、收入与生活中真正想要的东西。",
+    "cashEffect": 0,
+    "effect": {}
+  },
+  {
+    "id": "extra_18_2",
+    "text": "你整理了一年的生活计划，把一个总被搁置的个人目标重新写了下来。",
+    "cashEffect": 0,
+    "effect": {}
+  },
+  {
+    "id": "extra_18_3",
+    "text": "你为家里做了一次收纳和修整，普通的日子也因此变得更舒适。",
+    "cashEffect": 0,
+    "effect": {}
+  },
+  {
+    "id": "milestone_18",
+    "text": "成年这一年，你开始独立了解身份证件、银行卡和个人信息保护，第一次认真考虑自己的责任。",
+    "required": true,
+    "cashEffect": 0,
+    "effect": {}
   }
 ]

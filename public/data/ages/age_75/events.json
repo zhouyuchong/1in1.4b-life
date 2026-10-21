@@ -4,6 +4,11 @@
     "effect": {
       "health": -8,
       "sanity": 2
+    },
+    "condition": {
+      "lifeState": {
+        "marriage": "married"
+      }
     }
   },
   {
@@ -11,5 +16,35 @@
     "effect": {
       "health": 2
     }
+  },
+  {
+    "text": "腿脚有些不利索了，你拄着拐杖在社区公园散步，和熟悉的邻居聊聊天。",
+    "condition": {
+      "lifeState": {
+        "marriage": "single"
+      }
+    },
+    "effect": {
+      "health": -8,
+      "sanity": 2
+    }
+  },
+  {
+    "id": "extra_75_0",
+    "text": "你和朋友约了一次散步，聊起近来的生活，也约好了下次再见。",
+    "cashEffect": 0,
+    "effect": {}
+  },
+  {
+    "id": "extra_75_1",
+    "text": "你尝试了一项新的兴趣，发现慢下来之后仍然可以有新的开始。",
+    "cashEffect": 0,
+    "effect": {}
+  },
+  {
+    "id": "extra_75_2",
+    "text": "你整理旧照片和通信记录，把一段值得记住的经历认真写了下来。",
+    "cashEffect": 0,
+    "effect": {}
   }
 ]

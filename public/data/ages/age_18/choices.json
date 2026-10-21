@@ -16,7 +16,10 @@
           "knowledge": 6
         },
         "tag": "实用主义工科生",
-        "resultText": "你报考了理工类院校的王牌硬核专业。大学四年虽然代码和高数满天飞，但毕业时手握硬技能底气十足。"
+        "resultText": "你收到了理工类院校的录取通知书，即将开始四年的专业学习。",
+        "stateEffect": {
+          "schooling": "university"
+        }
       },
       {
         "text": "宁要名校凤尾：为了985/211名校光环，接受调剂到生化环材、哲学等冷门天坑专业",
@@ -29,7 +32,10 @@
           "wealth": -2
         },
         "tag": "天坑名校生",
-        "resultText": "你如愿拿到了知名大学的大红通知书，朋友圈点赞破百，但入学后才发现保研和跨考转行的竞争异常惨烈。"
+        "resultText": "你如愿拿到了知名大学的大红通知书，朋友圈点赞破百，但入学后才发现保研和跨考转行的竞争异常惨烈。",
+        "stateEffect": {
+          "schooling": "university"
+        }
       },
       {
         "text": "求稳为先：报考公费师范生或医学定向生，图一个家乡编制与终身铁饭碗",
@@ -40,7 +46,11 @@
           "knowledge": 4
         },
         "tag": "铁饭碗预备军",
-        "resultText": "父母在全村大摆升学宴，你提前锁定了体制内稳定工作，虽然没有大富大贵的想象空间，但一生安稳少波折。"
+        "resultText": "父母在全村大摆升学宴，你提前锁定了体制内稳定工作，虽然没有大富大贵的想象空间，但一生安稳少波折。",
+        "stateEffect": {
+          "schooling": "university",
+          "careerTrack": "directed_public"
+        }
       },
       {
         "text": "成绩不理想，报考全日制大专院校，专注实训技能与专升本",
@@ -51,8 +61,17 @@
           "knowledge": 2
         },
         "tag": "专科逆袭派",
-        "resultText": "你在大专院校里钻研实操技能，课余时间泡在图书馆自习室，默默准备两年后的专升本统一考试。"
+        "resultText": "你在大专院校里钻研实操技能，课余时间泡在图书馆自习室，默默准备两年后的专升本统一考试。",
+        "stateEffect": {
+          "schooling": "college"
+        }
       }
-    ]
+    ],
+    "condition": {
+      "lifeState": {
+        "education": "high_school",
+        "career": "none"
+      }
+    }
   }
 ]

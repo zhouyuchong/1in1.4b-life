@@ -50,20 +50,20 @@ export default function WelcomeScreen({ onStart }) {
           <div className="p-3.5 rounded-xl bg-stone-50 border border-stone-200/70">
             <div className="flex items-center gap-2 text-stone-800 font-medium text-xs sm:text-sm mb-1">
               <BookOpen className="w-4 h-4 text-emerald-600" />
-              <span>逐年独立事件系统</span>
+              <span>每年多段人生经历</span>
             </div>
             <p className="text-xs text-stone-500 leading-normal">
-              0到80岁独立年份目录，支持随时扩展与修改社会切片文案。
+              每年经历多件事情，16岁起还能主动进修、求职和调整生活。
             </p>
           </div>
 
           <div className="p-3.5 rounded-xl bg-stone-50 border border-stone-200/70">
             <div className="flex items-center gap-2 text-stone-800 font-medium text-xs sm:text-sm mb-1">
               <HeartPulse className="w-4 h-4 text-rose-600" />
-              <span>人口百分位报告</span>
+              <span>看得见的人生账本</span>
             </div>
             <p className="text-xs text-stone-500 leading-normal">
-              终局生成全国财富、学历、寿命排位雷达，一键生成分享档案。
+              余额、住房与贷款以金额呈现，年度收支逐项记录，结局可保存分享。
             </p>
           </div>
         </div>

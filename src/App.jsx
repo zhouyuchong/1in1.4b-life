@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import WelcomeScreen from './components/WelcomeScreen';
+import LifeActions from './components/LifeActions';
+import ActionDialog from './components/ActionDialog';
 import Header from './components/Header';
 import ChoiceCard from './components/ChoiceCard';
 import TimelineLog from './components/TimelineLog';
 import SettlementModal from './components/SettlementModal';
-import { createNewLife, stepNextYear, resolveChoice } from './services/lifeEngine';
+import { createNewLife, stepNextYear, resolveChoice, startLifeAction } from './services/lifeEngine';
 import { ArrowRight, Play, Pause, RotateCcw } from 'lucide-react';
 
 export default function App() {
@@ -13,9 +15,14 @@ export default function App() {
   const [isAutoPlaying, setIsAutoPlaying] = useState(false);
   const [isStepping, setIsStepping] = useState(false);
   const autoPlayRef = useRef(null);
+  const lifeGeneration = useRef(0);
+  const stepLock = useRef(false);
 
   // 开始新人生
   const handleStartLife = () => {
+    lifeGeneration.current++;
+    stepLock.current = false;
+    setIsStepping(false);
     const newLife = createNewLife();
     setCharacter(newLife);
     setScreen('playing');
@@ -24,17 +31,22 @@ export default function App() {
 
   // 推进下一年
   const handleNextYear = async () => {
-    if (!character || character.isGameOver || character.pendingChoice || isStepping) {
+    if (!character || character.isGameOver || character.pendingChoice || stepLock.current) {
       return;
     }
+    stepLock.current = true;
+    const generation = lifeGeneration.current;
     setIsStepping(true);
     try {
       const nextCharacter = await stepNextYear(character);
-      setCharacter(nextCharacter);
+      if (generation === lifeGeneration.current) setCharacter(nextCharacter);
       // 保持用户的自动播放意图：当出现抉择时，定时器会因 pendingChoice 自动挂起等待玩家选择；
       // 玩家做出选择后将无缝恢复自动推进。无需强行关闭 isAutoPlaying。
     } finally {
-      setIsStepping(false);
+      if (generation === lifeGeneration.current) {
+        stepLock.current = false;
+        setIsStepping(false);
+      }
     }
   };
 
@@ -45,6 +57,12 @@ export default function App() {
     setCharacter(nextCharacter);
   };
 
+  const handleAction = (id) => {
+    if (stepLock.current) return;
+    setIsAutoPlaying(false);
+    setCharacter(current => startLifeAction(current, id));
+  };
+
   // 切换自动播放
   const handleToggleAutoPlay = () => {
     setIsAutoPlaying((prev) => !prev);
@@ -53,6 +71,7 @@ export default function App() {
   // 监听空格键推进
   useEffect(() => {
     const handleKeyDown = (e) => {
+      if (e.target.closest?.('button, input, textarea, select, [contenteditable]')) return;
       if (screen === 'playing' && e.code === 'Space' && !character?.pendingChoice && !character?.isGameOver) {
         e.preventDefault();
         handleNextYear();
@@ -91,7 +110,7 @@ export default function App() {
       {/* Main content container */}
       <main className="max-w-3xl w-full mx-auto px-4 py-4 flex-1">
         {/* If pending choice exists, show prominent choice dilemma */}
-        {character?.pendingChoice && (
+        {character?.pendingChoice && character.pendingChoice.mode !== 'action' && (
           <ChoiceCard
             pendingChoice={character.pendingChoice}
             character={character}
@@ -99,10 +118,13 @@ export default function App() {
           />
         )}
 
+        {character?.pendingChoice?.mode === 'action' && <ActionDialog character={character} onSelectOption={handleSelectOption} />}
+        <LifeActions character={character} disabled={isStepping} onAction={handleAction} />
+
         {/* Life timeline history */}
         <div className="mt-4">
           <div className="text-xs font-serif text-stone-500 mb-3 px-1 flex items-center justify-between">
-            <span>人生编年史（从诞生至当下）</span>
+            <span>人生编年史 · 最近一年在上</span>
             <span className="text-[11px] text-stone-400">支持按空格键快速步进</span>
           </div>
           <TimelineLog history={character?.history} />

@@ -1,8 +1,8 @@
 [
   {
     "id": "choice_age29_baby",
-    "title": "生育大抉择：生一胎、备孕还是丁克？",
-    "description": "面对昂贵的月嫂费用、奶粉尿不湿开销以及女性职场发展困境，你们夫妇必须决定是否迎来下一代。",
+    "title": "生育抉择：养育孩子、丁克还是暂缓？",
+    "description": "是否迎接新生命，由你们共同决定。选择生育后才会开始计算照护支出；暂缓和丁克都将继续保持无子女生活。",
     "sourceCase": "真实背景：全国出生人口变化与育儿成本压力",
     "options": [
       {
@@ -14,10 +14,15 @@
           "health": -4
         },
         "tag": "晋升父母",
-        "resultText": "伴随着产房外的啼哭，你从孩子变成了保护孩子的山。虽然半夜起夜喂奶换尿布极其崩溃，但看着他的笑容一切都值了。"
+        "resultText": "伴随着产房外的啼哭，你从孩子变成了保护孩子的山。虽然半夜起夜喂奶换尿布极其崩溃，但看着他的笑容一切都值了。",
+        "stateEffect": {
+          "parenthood": "parent",
+          "childBirthAge": 29
+        },
+        "cashEffect": -15000
       },
       {
-        "text": "选择丁克或延后生育：先专注自身事业发展与生活品质",
+        "text": "选择丁克：专注两个人的生活，不生育孩子",
         "requirements": {},
         "effect": {
           "wealth": 6,
@@ -25,8 +30,34 @@
           "health": 2
         },
         "tag": "丁克先锋",
-        "resultText": "你们把精力和财力留给了两个人环游世界和自我提升，虽然承受了老一辈的非议，但享有极高生活自由度。"
+        "resultText": "你们把精力和财力留给了两个人环游世界和自我提升，虽然承受了老一辈的非议，但享有极高生活自由度。",
+        "stateEffect": {
+          "parenthood": "childfree"
+        },
+        "cashEffect": 0
+      },
+      {
+        "text": "暂缓生育，等准备充分后再考虑",
+        "cashEffect": 0,
+        "effect": {
+          "wealth": 3,
+          "sanity": 2
+        },
+        "stateEffect": {
+          "parenthood": "deferred"
+        },
+        "tag": "暂缓生育",
+        "resultText": "你们暂时没有孩子，约定将来再讨论。"
       }
-    ]
+    ],
+    "condition": {
+      "lifeState": {
+        "marriage": "married",
+        "parenthood": [
+          "none",
+          "deferred"
+        ]
+      }
+    }
   }
 ]

@@ -1,3 +1,4 @@
+import { formatMoney } from '../services/finances';
 import React, { useRef, useState } from 'react';
 import { toPng } from 'html-to-image';
 import { Award, Share2, RotateCcw, Heart, Coins, Brain, Smile, Download, Check } from 'lucide-react';
@@ -87,6 +88,11 @@ export default function SettlementModal({ character, onRestart }) {
             </div>
           </div>
 
+          <div className="mb-5 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm">
+            <p className="text-xs text-amber-900">人生财务账本 · 模拟金额</p>
+            <p className="mt-1 text-2xl font-bold tabular-nums">净资产 {formatMoney(character.finances.cash + character.finances.propertyValue - character.finances.mortgageDebt)}</p>
+            <p className="mt-2 text-xs text-stone-700">可用余额 {formatMoney(character.finances.cash)} · 剩余房贷 {formatMoney(character.finances.mortgageDebt)}</p>
+          </div>
           {/* Percentile Stats Grid */}
           <div className="grid grid-cols-3 gap-2.5 mb-6 text-center">
             <div className="p-3 rounded-xl bg-amber-50/70 border border-amber-200">
@@ -94,7 +100,7 @@ export default function SettlementModal({ character, onRestart }) {
               <div className="text-xl sm:text-2xl font-bold font-mono text-amber-900">
                 前 {100 - summary.wealthPercentile}%
               </div>
-              <div className="text-[10px] text-amber-700/80 mt-0.5">全国居民分布</div>
+              <div className="text-[10px] text-amber-700/80 mt-0.5">游戏估算分布</div>
             </div>
 
             <div className="p-3 rounded-xl bg-blue-50/70 border border-blue-200">

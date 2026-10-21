@@ -4,12 +4,74 @@
     "effect": {
       "knowledge": 5,
       "sanity": -2
+    },
+    "condition": {
+      "lifeState": {
+        "schooling": "university"
+      }
     }
   },
   {
     "text": "校园里开始有一段清纯甜蜜的校园恋爱，一起在自习室占座、在操场月光下散步聊天。",
     "effect": {
       "sanity": 8
+    },
+    "condition": {
+      "lifeState": {
+        "schooling": "university"
+      }
     }
+  },
+  {
+    "text": "你在大专院校参加专业实训，在课程与实习中积累职业技能。",
+    "condition": {
+      "lifeState": {
+        "schooling": "college"
+      }
+    },
+    "effect": {
+      "knowledge": 3
+    }
+  },
+  {
+    "text": "你在工作中熟悉业务，靠自己的劳动支付日常开销。",
+    "condition": {
+      "lifeState": {
+        "career": [
+          "worker",
+          "private",
+          "public",
+          "self_employed"
+        ]
+      }
+    },
+    "effect": {
+      "wealth": 2,
+      "knowledge": 1
+    }
+  },
+  {
+    "id": "extra_20_0",
+    "text": "你参加了一次社区技能分享，听到了与自己经历不同的人生路径。",
+    "cashEffect": 0,
+    "effect": {}
+  },
+  {
+    "id": "extra_20_1",
+    "text": "一次与旧友的长谈，让你重新思考工作、收入与生活中真正想要的东西。",
+    "cashEffect": 0,
+    "effect": {}
+  },
+  {
+    "id": "extra_20_2",
+    "text": "你整理了一年的生活计划，把一个总被搁置的个人目标重新写了下来。",
+    "cashEffect": 0,
+    "effect": {}
+  },
+  {
+    "id": "extra_20_3",
+    "text": "你为家里做了一次收纳和修整，普通的日子也因此变得更舒适。",
+    "cashEffect": 0,
+    "effect": {}
   }
 ]

@@ -2,7 +2,7 @@
   {
     "id": "choice_age27_house",
     "title": "终极人生拷问：掏空六个钱包上车房贷？",
-    "description": "相亲对象提出“不买房不结婚”，父母愿意拿出毕生积蓄养老钱帮你凑齐首付，但你将背负每月大几千、长达三十年的房贷月供。",
+    "description": "亲友催促你考虑买房。买房需要支付首付并承担后续还款；继续租房则保留资金，每年支付房租。",
     "sourceCase": "真实背景：高房价周期下的青年置业与六个钱包社会讨论",
     "options": [
       {
@@ -16,7 +16,19 @@
           "health": -3
         },
         "tag": "三十年房奴",
-        "resultText": "你签下了厚厚的购房合同，成为了光荣的业主。但从此你不敢轻易换工作，不敢生大病，每个月工资一发就扣给银行。"
+        "resultText": "你签下了厚厚的购房合同，成为了光荣的业主。但从此你不敢轻易换工作，不敢生大病，每个月工资一发就扣给银行。",
+        "stateEffect": {
+          "housing": "mortgaged",
+          "mortgageEndAge": 57
+        },
+        "minCash": 180000,
+        "cashEffect": -180000,
+        "financeEffect": {
+          "propertyValue": 900000,
+          "mortgageDebt": 720000,
+          "mortgageAnnualPayment": 24000,
+          "mortgageStartAge": 27
+        }
       },
       {
         "text": "坚持租房不买房：保住父母养老钱和自身现金流，对抗资产泡沫",
@@ -26,8 +38,21 @@
           "sanity": 6
         },
         "tag": "不买房信徒",
-        "resultText": "你顶住了亲友的嘲讽与压力，手头握有充裕流动资金，但不得不经常忍受搬家和丈母娘的冷言冷语。"
+        "resultText": "你决定继续租房，保留手头积蓄，按自己的节奏安排居住。",
+        "stateEffect": {
+          "housing": "renting",
+          "mortgageEndAge": null
+        },
+        "cashEffect": 0
       }
-    ]
+    ],
+    "condition": {
+      "lifeState": {
+        "housing": [
+          "family",
+          "renting"
+        ]
+      }
+    }
   }
 ]

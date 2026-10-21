@@ -16,7 +16,12 @@
           "health": -6
         },
         "tag": "北上广深漂流者",
-        "resultText": "你拿到了年薪十多万的offer，在城郊合租了一个单间，正式加入了每天挤一小时地铁早高峰的通勤大军。"
+        "resultText": "你拿到了年薪十多万的offer，在城郊合租了一个单间，正式加入了每天挤一小时地铁早高峰的通勤大军。",
+        "stateEffect": {
+          "career": "private",
+          "careerTrack": "general",
+          "housing": "renting"
+        }
       },
       {
         "text": "全职备战考研二战/三战：不甘心本科学历，誓要冲进名校研究生",
@@ -29,7 +34,12 @@
           "knowledge": 10
         },
         "tag": "脱产考研战神",
-        "resultText": "你在大学城附近租了一间廉价自习室，每天复习12小时，承受着同龄人已在领工资的巨大心理压力。"
+        "resultText": "你在大学城附近租了一间廉价自习室，每天复习12小时，承受着同龄人已在领工资的巨大心理压力。",
+        "stateEffect": {
+          "career": "preparing",
+          "careerTrack": "general",
+          "housing": "renting"
+        }
       },
       {
         "text": "回老家二三线城市考公考编：直奔选调生、事业单位与国企稳妥上岸",
@@ -40,7 +50,11 @@
           "health": 3
         },
         "tag": "考编上岸族",
-        "resultText": "你回到了家乡城市，虽然月薪三四千，但住家里吃热饭，下班没有夺命连环call，生活节奏怡然自得。"
+        "resultText": "你回到了家乡城市，虽然月薪三四千，但住家里吃热饭，下班没有夺命连环call，生活节奏怡然自得。",
+        "stateEffect": {
+          "career": "public",
+          "careerTrack": "public"
+        }
       },
       {
         "text": "灵活就业：做自媒体博主、做兼职或外卖骑手过渡，等待转机",
@@ -51,8 +65,19 @@
           "health": -4
         },
         "tag": "灵活就业新青年",
-        "resultText": "你穿上骑手马甲或在出租屋架起补光灯剪辑视频，风里来雨里去，体验到了生活的酸甜苦辣。"
+        "resultText": "你穿上骑手马甲或在出租屋架起补光灯剪辑视频，风里来雨里去，体验到了生活的酸甜苦辣。",
+        "stateEffect": {
+          "career": "self_employed",
+          "careerTrack": "general",
+          "housing": "renting"
+        }
       }
-    ]
+    ],
+    "condition": {
+      "lifeState": {
+        "education": "bachelor",
+        "careerTrack": "general"
+      }
+    }
   }
 ]

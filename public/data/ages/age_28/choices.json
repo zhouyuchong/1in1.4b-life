@@ -1,1 +1,32 @@
-[]
+[
+  {
+    "id": "choice_age28_marriage",
+    "title": "成家还是保持独立？",
+    "description": "是否进入婚姻，由你结合感情与生活安排做出决定。买房与否不会替你决定婚姻。",
+    "options": [
+      {
+        "text": "与伴侣登记结婚，共同经营小家庭",
+        "effect": {
+          "wealth": -8,
+          "sanity": 3
+        },
+        "stateEffect": {
+          "marriage": "married"
+        },
+        "tag": "携手成家",
+        "resultText": "你们决定携手，开始共同承担生活中的责任。"
+      },
+      {
+        "text": "暂不结婚，按自己的节奏生活",
+        "effect": {
+          "sanity": 4
+        },
+        "stateEffect": {
+          "marriage": "single"
+        },
+        "tag": "独立生活",
+        "resultText": "你把时间留给自己，继续经营工作、朋友与个人生活。"
+      }
+    ]
+  }
+]

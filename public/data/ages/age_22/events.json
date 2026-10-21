@@ -3,6 +3,69 @@
     "text": "毕业季来临！穿着学士服抛起帽子，毕业聚餐上大家抱头痛哭，随后各奔东西踏入现实风浪。",
     "effect": {
       "sanity": 2
+    },
+    "condition": {
+      "lifeState": {
+        "education": "bachelor"
+      }
     }
+  },
+  {
+    "text": "你已经走上工作岗位，这一年继续积累经验，逐渐找到了自己的节奏。",
+    "condition": {
+      "lifeState": {
+        "education": [
+          "junior_high",
+          "vocational",
+          "college"
+        ]
+      }
+    },
+    "effect": {
+      "wealth": 2
+    }
+  },
+  {
+    "text": "完成定向培养后，你按约回到家乡岗位，正式开始工作。",
+    "condition": {
+      "lifeState": {
+        "career": "public",
+        "careerTrack": "directed_public"
+      }
+    },
+    "effect": {
+      "sanity": 4
+    }
+  },
+  {
+    "id": "extra_22_0",
+    "text": "你参加了一次社区技能分享，听到了与自己经历不同的人生路径。",
+    "cashEffect": 0,
+    "effect": {}
+  },
+  {
+    "id": "extra_22_1",
+    "text": "一次与旧友的长谈，让你重新思考工作、收入与生活中真正想要的东西。",
+    "cashEffect": 0,
+    "effect": {}
+  },
+  {
+    "id": "extra_22_2",
+    "text": "你整理了一年的生活计划，把一个总被搁置的个人目标重新写了下来。",
+    "cashEffect": 0,
+    "effect": {}
+  },
+  {
+    "id": "extra_22_3",
+    "text": "你为家里做了一次收纳和修整，普通的日子也因此变得更舒适。",
+    "cashEffect": 0,
+    "effect": {}
+  },
+  {
+    "id": "milestone_22",
+    "text": "你为未来三年写下一份计划：想靠什么生活、想住在哪里，以及愿意为什么投入时间。",
+    "required": true,
+    "cashEffect": 0,
+    "effect": {}
   }
 ]

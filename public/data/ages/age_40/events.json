@@ -1,8 +1,13 @@
 [
   {
-    "text": "四十不惑。孩子升入初中，叛逆期撞上了你的中年疲惫期，家里经常爆发关门巨响。",
+    "text": "孩子渐渐长大，有了自己的主意。你学着在疲惫的工作之余，耐心听孩子说话。",
     "effect": {
       "sanity": -4
+    },
+    "condition": {
+      "lifeState": {
+        "parenthood": "parent"
+      }
     }
   },
   {
@@ -12,5 +17,48 @@
       "health": -4,
       "sanity": -5
     }
+  },
+  {
+    "text": "你继续为考试做准备，在复习之外也认真安排生活开销。",
+    "condition": {
+      "lifeState": {
+        "career": "preparing"
+      }
+    },
+    "effect": {
+      "knowledge": 2,
+      "wealth": -1
+    }
+  },
+  {
+    "id": "extra_40_0",
+    "text": "你参加了一次社区技能分享，听到了与自己经历不同的人生路径。",
+    "cashEffect": 0,
+    "effect": {}
+  },
+  {
+    "id": "extra_40_1",
+    "text": "一次与旧友的长谈，让你重新思考工作、收入与生活中真正想要的东西。",
+    "cashEffect": 0,
+    "effect": {}
+  },
+  {
+    "id": "extra_40_2",
+    "text": "你整理了一年的生活计划，把一个总被搁置的个人目标重新写了下来。",
+    "cashEffect": 0,
+    "effect": {}
+  },
+  {
+    "id": "extra_40_3",
+    "text": "你为家里做了一次收纳和修整，普通的日子也因此变得更舒适。",
+    "cashEffect": 0,
+    "effect": {}
+  },
+  {
+    "id": "milestone_40",
+    "text": "四十岁，你开始重新安排生活的轻重缓急，把身体、陪伴和稳定的收支放回日程。",
+    "required": true,
+    "cashEffect": 0,
+    "effect": {}
   }
 ]

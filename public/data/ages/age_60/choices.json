@@ -1,8 +1,8 @@
 [
   {
     "id": "choice_age60_retirement",
-    "title": "退休与晚年轨迹：帮带孙辈还是候鸟旅居？",
-    "description": "退休后每月有固定养老金到账，子女希望你们前往大城市帮忙照料刚出生的孙辈做家务。",
+    "title": "晚年生活：照顾家人还是经营自己的兴趣？",
+    "description": "生活进入新的阶段，你开始安排自己的时间，选择更适合自己的晚年节奏。",
     "sourceCase": "真实背景：中国式隔代抚养与银发一族晚年选择",
     "options": [
       {
@@ -14,7 +14,16 @@
           "wealth": -4
         },
         "tag": "中国式隔代奉献",
-        "resultText": "你在大城市的陌生小区里推着婴儿车，虽然腰酸背痛没有朋友，但看着孙辈一天天长大满心欣慰。"
+        "resultText": "你在大城市的陌生小区里推着婴儿车，虽然腰酸背痛没有朋友，但看着孙辈一天天长大满心欣慰。",
+        "stateEffect": {
+          "hasGrandchildren": true
+        },
+        "condition": {
+          "lifeState": {
+            "parenthood": "parent"
+          },
+          "minChildAge": 22
+        }
       },
       {
         "text": "留在老家过独立晚年：养花种菜、跳广场舞、下棋钓鱼，享受属于自己的晚年",

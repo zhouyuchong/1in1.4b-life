@@ -66,15 +66,35 @@ docker run -d --name 1in1.4b-app -p 1414:80 --restart=always 1in1.4b
 
 ## 🔄 代码更新后重新部署
 
-当远程仓库有新功能或数据更新时，登录服务器执行以下命令即可平滑重新部署：
+修改代码后，需要 **更新服务器代码 → 重新构建镜像 → 重新创建容器**。当前部署会将前端代码打包进 Docker 镜像，仅执行 `docker restart` 不会应用新代码。
+
+如果在本地修改代码，先提交并推送到服务器拉取的远程分支，再登录服务器执行以下命令。如果直接在服务器的项目目录修改代码，跳过 `git pull` 即可。
 
 ```bash
+# 进入服务器上的项目目录
 cd 1in1.4b-life
+
+# 获取最新代码（如果直接在服务器修改代码，跳过这一步）
 git pull
-docker build -t 1in1.4b .
-docker rm -f 1in1.4b-app
+
+# 重新构建镜像；成功后才替换容器
+docker build -t 1in1.4b . &&
+docker rm -f 1in1.4b-app &&
 docker run -d --name 1in1.4b-app -p 80:80 --restart=always 1in1.4b
 ```
+
+> 如果 `git pull` 失败，先解决代码更新问题，再继续构建和替换容器。
+
+**端口保持和原部署一致**：原来使用 `8080` 或 `1414`，就把 `-p 80:80` 分别改为 `-p 8080:80` 或 `-p 1414:80`。
+
+完成后检查容器状态和日志，再刷新页面：
+
+```bash
+docker ps --filter name=1in1.4b-app
+docker logs --tail 50 1in1.4b-app
+```
+
+如果页面仍显示旧内容，尝试强制刷新浏览器。替换容器期间应用会短暂中断，这种更新方式不属于零停机部署。
 
 ---
 

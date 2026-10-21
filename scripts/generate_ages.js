@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { connectLifeContent } from './life_content.js';
 
 const agesDir = path.resolve('public/data/ages');
 
@@ -803,19 +804,19 @@ function getDefaultEventsForAge(age) {
   }
 }
 
-// 遍历生成 0 到 80 年的所有独立目录和规范 JSON
+// 遍历生成 0 到 85 年的所有独立目录和规范 JSON
 let generatedCount = 0;
-for (let age = 0; age <= 80; age++) {
+for (let age = 0; age <= 85; age++) {
   const dirName = `age_${age}`;
   const targetDir = path.join(agesDir, dirName);
   if (!fs.existsSync(targetDir)) {
     fs.mkdirSync(targetDir, { recursive: true });
   }
 
-  const ageData = richAgesData[age] || {
+  const ageData = connectLifeContent(age, richAgesData[age] || {
     events: getDefaultEventsForAge(age),
     choices: []
-  };
+  });
 
   fs.writeFileSync(
     path.join(targetDir, 'events.json'),
@@ -832,4 +833,4 @@ for (let age = 0; age <= 80; age++) {
   generatedCount++;
 }
 
-console.log(`Successfully created ${generatedCount} year directories under public/data/ages/ from age_0 to age_80!`);
+console.log(`Successfully created ${generatedCount} year directories under public/data/ages/ from age_0 to age_85!`);

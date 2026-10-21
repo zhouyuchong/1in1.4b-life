@@ -3,12 +3,63 @@
     "text": "高二新高考选科分班！是选纯理工【物化生】硬核冲刺工科，还是选【史政地】文科大组？",
     "effect": {
       "knowledge": 4
+    },
+    "condition": {
+      "lifeState": {
+        "schooling": "high_school"
+      }
     }
   },
   {
     "text": "自习课上低头刷题，抬头看着窗外金黄的夕阳，在草稿纸边缘写下对未来的模糊畅想。",
     "effect": {
       "sanity": 3
+    },
+    "condition": {
+      "lifeState": {
+        "schooling": "high_school"
+      }
     }
+  },
+  {
+    "text": "17岁这一年，你在实训车间磨练手艺，慢慢掌握一门能安身立命的技术。",
+    "condition": {
+      "lifeState": {
+        "schooling": "vocational"
+      }
+    },
+    "effect": {
+      "knowledge": 3
+    }
+  },
+  {
+    "text": "17岁这一年，你在工作中积累经验，领到工资后认真盘算生活开销。",
+    "condition": {
+      "lifeState": {
+        "career": "worker"
+      }
+    },
+    "effect": {
+      "wealth": 3,
+      "health": -1
+    }
+  },
+  {
+    "id": "extra_17_0",
+    "text": "你在图书馆翻到一本喜欢的书，开始对一种新的职业产生好奇。",
+    "cashEffect": 0,
+    "effect": {}
+  },
+  {
+    "id": "extra_17_1",
+    "text": "一场社区运动活动让你结识了新朋友，也发现了自己擅长的事情。",
+    "cashEffect": 0,
+    "effect": {}
+  },
+  {
+    "id": "extra_17_2",
+    "text": "你试着安排一周的学习与休息，发现给自己留出时间也很重要。",
+    "cashEffect": 0,
+    "effect": {}
   }
 ]

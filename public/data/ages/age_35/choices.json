@@ -2,11 +2,11 @@
   {
     "id": "choice_age35_crisis",
     "title": "35岁职场分水岭与自救",
-    "description": "猎聘招聘软件上不少岗位明确写着“年龄35周岁以下”，公司架构调整，你所在的业务线面临裁撤。",
+    "description": "三十五岁，你开始重新审视职业方向：继续原来的岗位，还是换一种谋生方式？",
     "sourceCase": "真实背景：中国职场35岁年龄门槛与中年群体求职自救",
     "options": [
       {
-        "text": "降薪求稳转型管理/业务骨干：放低身段争取留存，保住社保和月供",
+        "text": "留在原公司调整岗位：降低预期，争取稳定收入",
         "requirements": {},
         "effect": {
           "wealth": -4,
@@ -14,7 +14,15 @@
           "health": -4
         },
         "tag": "职场老黄牛",
-        "resultText": "你接受了调岗降薪，忍气吞声成了办公室里最随和耐造的骨干，用妥协换取了家庭每月的口粮钱。"
+        "resultText": "你接受了调岗降薪，忍气吞声成了办公室里最随和耐造的骨干，用妥协换取了家庭每月的口粮钱。",
+        "stateEffect": {
+          "career": "private"
+        },
+        "condition": {
+          "lifeState": {
+            "career": "private"
+          }
+        }
       },
       {
         "text": "中年灵活再就业：做自媒体/开网约车/做小生意，打造副业收入",
@@ -25,7 +33,11 @@
           "health": -6
         },
         "tag": "自救中年人",
-        "resultText": "你白天四处拜访客户，晚上开着电车在城市里接单穿梭，虽然起早贪黑，但不再看任何HR的白眼。"
+        "resultText": "你白天四处拜访客户，晚上开着电车在城市里接单穿梭，虽然起早贪黑，但不再看任何HR的白眼。",
+        "stateEffect": {
+          "career": "self_employed",
+          "careerTrack": "general"
+        }
       },
       {
         "text": "如果在体制内/事业单位：资历到期平稳晋升中层副科，享受稳定的安全垫",
@@ -38,8 +50,27 @@
           "health": 3
         },
         "tag": "体制稳固",
-        "resultText": "体制内的优势在35岁之后展露无遗，你端着保温杯批改公文，没有中年失业恐慌，生活波澜不惊。"
+        "resultText": "体制内的优势在35岁之后展露无遗，你端着保温杯批改公文，没有中年失业恐慌，生活波澜不惊。",
+        "stateEffect": {
+          "career": "public",
+          "careerTrack": "public"
+        },
+        "condition": {
+          "lifeState": {
+            "career": "public"
+          }
+        }
       }
-    ]
+    ],
+    "condition": {
+      "lifeState": {
+        "career": [
+          "worker",
+          "private",
+          "public",
+          "self_employed"
+        ]
+      }
+    }
   }
 ]

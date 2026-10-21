@@ -1,4 +1,7 @@
+import { createFinances, applyMoney, eventCashChange, minimumCash, annualBudget } from './finances.js';
+import { makeActionChoice } from './lifeActions.js';
 import { rollBirthCity } from '../data/cities.js';
+import { createLifeState, advanceLifeState, matchesLifeState } from './lifeState.js';
 
 // 内存缓存加载过的年份文件，避免重复网络请求
 const ageDataCache = new Map();
@@ -13,8 +16,8 @@ export async function loadAgeData(age) {
 
   try {
     const [eventsRes, choicesRes] = await Promise.all([
-      fetch(`/data/ages/age_${age}/events.json`).catch(() => null),
-      fetch(`/data/ages/age_${age}/choices.json`).catch(() => null)
+      fetch(`/data/ages/age_${age}/events.json?v=life-v3`, { cache: 'no-store' }).catch(() => null),
+      fetch(`/data/ages/age_${age}/choices.json?v=life-v3`, { cache: 'no-store' }).catch(() => null)
     ]);
 
     const events = (eventsRes && eventsRes.ok) ? await eventsRes.json() : [];
@@ -83,6 +86,7 @@ export function createNewLife() {
 
   return {
     age: 0,
+    lifeState: createLifeState(),
     gender,
     city,
     isRural,
@@ -90,6 +94,9 @@ export function createNewLife() {
     familyClass,
     parentsJob,
     wealth: initialWealth,
+    finances: createFinances(familyClass),
+    lastActionAge: null,
+    scheduledEvents: [],
     health: initialHealth,
     knowledge: initialKnowledge,
     sanity: initialSanity,
@@ -110,8 +117,15 @@ export function createNewLife() {
 /**
  * 校验事件或抉择的前置条件
  */
-function checkCondition(cond, character) {
+export function checkCondition(cond, character) {
   if (!cond) return true;
+  if (!matchesLifeState(cond.lifeState, character.lifeState)) return false;
+
+  if (cond.minAge !== undefined && character.age < cond.minAge) return false;
+  if (cond.maxAge !== undefined && character.age > cond.maxAge) return false;
+  const childAge = character.lifeState.childBirthAge === null ? -1 : character.age - character.lifeState.childBirthAge;
+  if (cond.minChildAge !== undefined && childAge < cond.minChildAge) return false;
+  if (cond.maxChildAge !== undefined && childAge > cond.maxChildAge) return false;
 
   if (cond.gender && cond.gender !== character.gender) return false;
   if (cond.isRural !== undefined && cond.isRural !== character.isRural) return false;
@@ -124,141 +138,126 @@ function checkCondition(cond, character) {
   return true;
 }
 
-/**
- * 推进一年
- */
-export async function stepNextYear(character) {
-  if (character.isGameOver || character.pendingChoice) {
-    return character;
+// 界面与引擎共用资格校验，防止绕过禁用按钮或提交无效选项。
+export function canSelectOption(option, character) {
+  return checkCondition(option.condition, character) &&
+    (minimumCash(option, character.age) === 0 || character.finances.cash >= minimumCash(option, character.age)) &&
+    Object.entries(option.requirements || {}).every(([key, value]) =>
+      key === 'wealth' || (Number.isFinite(character[key]) && character[key] >= value)
+    );
+}
+
+function selectAnnualEvents(events, character) {
+  const pool = events.filter(event => checkCondition(event.condition, character));
+  const selected = pool.filter(event => event.required);
+  const candidates = pool.filter(event => !event.required);
+  const count = 2 + Math.floor(Math.random() * 2);
+  // 每年优先保留一条当前年龄/路线的事件，通用生活片段只用于补充。
+  const contextual = candidates.filter(event => !event.id?.startsWith('extra_'));
+  if (contextual.length && selected.length < count) {
+    const event = contextual[Math.floor(Math.random() * contextual.length)];
+    selected.push(event);
+    candidates.splice(candidates.indexOf(event), 1);
   }
-
-  const nextAge = character.age + 1;
-
-  // 暮年或健康耗尽判断
-  if (character.health <= 0 || nextAge > 85) {
-    return {
-      ...character,
-      age: Math.min(nextAge, 85),
-      isGameOver: true,
-      deathReason: character.health <= 0 ? '因身体严重透支与疾病溘然长逝' : '寿终正寝，走完了平凡而厚重的一生'
-    };
+  while (selected.length < count && candidates.length) {
+    const [event] = candidates.splice(Math.floor(Math.random() * candidates.length), 1);
+    if (!selected.some(item => item.text === event.text)) selected.push(event);
   }
+  return selected.length ? selected : [{ text: `${character.age}岁这一年，你在平淡的日常里继续前行。`, effect: {} }];
+}
 
-  // 加载当年的数据
-  const { events, choices } = await loadAgeData(nextAge);
-
-  // 筛选可用抉择
-  const availableChoices = choices.filter(c => checkCondition(c.condition, character));
-
-  // 筛选可用日常事件
-  const availableEvents = events.filter(e => checkCondition(e.condition, character));
-  let chosenEvent = null;
-  if (availableEvents.length > 0) {
-    const idx = Math.floor(Math.random() * availableEvents.length);
-    chosenEvent = availableEvents[idx];
-  } else {
-    chosenEvent = {
-      text: `${nextAge}岁这一年，生活在柴米油盐与岁月的流淌中平淡度过。`,
-      effect: {}
-    };
-  }
-
-  // 如果当年有重大抉择，中断推演，等待玩家决策
-  if (availableChoices.length > 0) {
-    const activeChoice = availableChoices[0];
-    return {
-      ...character,
-      age: nextAge,
-      pendingChoice: {
-        choice: activeChoice,
-        annualEvent: chosenEvent
-      }
-    };
-  }
-
-  // 无抉择，直接结算当年
-  const effect = chosenEvent.effect || {};
-  const updatedWealth = Math.max(0, Math.min(100, character.wealth + (effect.wealth || 0)));
-  const updatedHealth = Math.max(0, Math.min(100, character.health + (effect.health || 0)));
-  const updatedKnowledge = Math.max(0, Math.min(100, character.knowledge + (effect.knowledge || 0)));
-  const updatedSanity = Math.max(0, Math.min(100, character.sanity + (effect.sanity || 0)));
-
-  const newHistoryItem = {
-    age: nextAge,
-    text: chosenEvent.text,
-    effect
-  };
-
-  const isDied = updatedHealth <= 0;
-
-  return {
-    ...character,
-    age: nextAge,
-    wealth: updatedWealth,
-    health: updatedHealth,
-    knowledge: updatedKnowledge,
-    sanity: updatedSanity,
-    history: [newHistoryItem, ...character.history],
-    isGameOver: isDied,
-    deathReason: isDied ? '因身体多项指标衰竭抱憾离世' : null,
-    pendingChoice: null
+function drawOutcome(entry, age) {
+  if (!entry.outcomes) return entry;
+  let roll = Math.random() * entry.outcomes.reduce((sum, outcome) => sum + outcome.weight, 0);
+  const outcome = entry.outcomes.find(outcome => (roll -= outcome.weight) < 0) || entry.outcomes.at(-1);
+  const effect = { ...entry.effect };
+  for (const [key, value] of Object.entries(outcome.effect || {})) effect[key] = (effect[key] || 0) + value;
+  return { ...entry, ...outcome, effect,
+    stateEffect: { ...entry.stateEffect, ...outcome.stateEffect },
+    cashEffect: eventCashChange(entry, age) + eventCashChange(outcome, age)
   };
 }
 
-/**
- * 玩家做出选择
- */
-export function resolveChoice(character, option) {
-  if (!character.pendingChoice) return character;
-
-  const { annualEvent } = character.pendingChoice;
-  const effect = option.effect || {};
-  const eventEffect = annualEvent?.effect || {};
-
-  const totalDeltaWealth = (effect.wealth || 0) + (eventEffect.wealth || 0);
-  const totalDeltaHealth = (effect.health || 0) + (eventEffect.health || 0);
-  const totalDeltaKnowledge = (effect.knowledge || 0) + (eventEffect.knowledge || 0);
-  const totalDeltaSanity = (effect.sanity || 0) + (eventEffect.sanity || 0);
-
-  const updatedWealth = Math.max(0, Math.min(100, character.wealth + totalDeltaWealth));
-  const updatedHealth = Math.max(0, Math.min(100, character.health + totalDeltaHealth));
-  const updatedKnowledge = Math.max(0, Math.min(100, character.knowledge + totalDeltaKnowledge));
-  const updatedSanity = Math.max(0, Math.min(100, character.sanity + totalDeltaSanity));
-
-  const updatedTags = [...character.tags];
-  if (option.tag && !updatedTags.includes(option.tag)) {
-    updatedTags.push(option.tag);
+function applyEntry(character, rawEntry) {
+  const entry = drawOutcome(rawEntry, character.age);
+  const { finances, cashChange } = applyMoney(character, entry);
+  const effect = entry.effect || {};
+  const next = { ...character, finances, lifeState: { ...character.lifeState, ...entry.stateEffect } };
+  for (const key of ['wealth', 'health', 'knowledge', 'sanity']) {
+    next[key] = Math.max(0, Math.min(100, character[key] + (effect[key] || 0)));
   }
+  if (entry.tag && !next.tags.includes(entry.tag)) next.tags = [...next.tags, entry.tag];
+  if (entry.followUp) next.scheduledEvents = [...next.scheduledEvents, { ...entry.followUp, dueAge: character.age + 1 }];
+  if (next.health <= 0) Object.assign(next, { isGameOver: true, deathReason: '因身体多项指标衰竭抱憾离世' });
+  const text = entry.resultText || entry.text;
+  return { next, record: { text, effect, cashChange, cashAfter: finances.cash, ledger: entry.ledger, tag: entry.tag, isMajor: Boolean(entry.required) } };
+}
 
-  const logText = `【抉择：${option.text}】 ${option.resultText || ''} ${annualEvent ? `（${annualEvent.text}）` : ''}`;
+function recordYear(character, records, choice = null) {
+  const effect = {};
+  for (const record of records) for (const [key, value] of Object.entries(record.effect)) effect[key] = (effect[key] || 0) + value;
+  const item = {
+    age: character.age, text: records.map(record => record.text).join(' '), events: records,
+    effect, cashChange: records.reduce((sum, record) => sum + record.cashChange, 0),
+    cashAfter: character.finances.cash, isChoice: Boolean(choice), tag: choice?.tag
+  };
+  return { ...character, history: [item, ...character.history], pendingChoice: null };
+}
 
-  const newHistoryItem = {
-    age: character.age,
-    text: logText,
-    tag: option.tag,
-    isChoice: true,
-    effect: {
-      wealth: totalDeltaWealth,
-      health: totalDeltaHealth,
-      knowledge: totalDeltaKnowledge,
-      sanity: totalDeltaSanity
+function finishYear(character, events, choice = null) {
+  const records = [];
+  const commit = entry => {
+    const { next, record } = applyEntry(character, entry);
+    character = next; records.push(record);
+  };
+  if (choice) commit({ ...choice, text: `【抉择：${choice.text}】 ${choice.resultText || ''}`, resultText: undefined });
+  // 选择后的事实用于筛选每条事件；不会把此前抽到的育儿或还款文案直接拼进结果。
+  if (!character.isGameOver) for (const event of selectAnnualEvents(events, character)) {
+    if (!checkCondition(event.condition, character)) continue;
+    commit(event);
+    if (character.isGameOver) break;
+  }
+  if (!character.isGameOver) {
+    const due = character.scheduledEvents.filter(event => event.dueAge <= character.age);
+    character = { ...character, scheduledEvents: character.scheduledEvents.filter(event => event.dueAge > character.age) };
+    for (const event of due) {
+      if (checkCondition(event.condition, character)) commit(event);
+      if (character.isGameOver) break;
     }
-  };
+  }
+  if (!character.isGameOver) {
+    const budget = annualBudget(character);
+    commit({ text: '这一年的收入与生活账单', cashEffect: budget.cashChange, ledger: budget.items,
+      financeEffect: { mortgageDebt: Math.max(0, character.finances.mortgageDebt - budget.mortgagePayment) } });
+  }
+  return recordYear(character, records, choice);
+}
 
-  const isDied = updatedHealth <= 0;
+export async function stepNextYear(character) {
+  if (character.isGameOver || character.pendingChoice) return character;
+  const age = character.age + 1;
+  if (character.health <= 0 || age > 85) return { ...character, age: Math.min(age, 85), isGameOver: true,
+    deathReason: character.health <= 0 ? '因身体严重透支与疾病溘然长逝' : '寿终正寝，走完了平凡而厚重的一生' };
+  character = { ...character, age, lifeState: advanceLifeState(character.lifeState, age) };
+  const { events, choices } = await loadAgeData(age);
+  const choice = choices.find(c => checkCondition(c.condition, character) && c.options.some(option => canSelectOption(option, character)));
+  return choice ? { ...character, pendingChoice: { choice, annualEvents: events, mode: 'annual' } } : finishYear(character, events);
+}
 
-  return {
-    ...character,
-    wealth: updatedWealth,
-    health: updatedHealth,
-    knowledge: updatedKnowledge,
-    sanity: updatedSanity,
-    tags: updatedTags,
-    history: [newHistoryItem, ...character.history],
-    pendingChoice: null,
-    isGameOver: isDied,
-    deathReason: isDied ? '因生活重大变故身心衰竭离世' : null
-  };
+export function startLifeAction(character, id) {
+  const choice = makeActionChoice(character, id);
+  return choice ? { ...character, pendingChoice: { choice, mode: 'action' } } : character;
+}
+
+export function resolveChoice(character, option) {
+  if (!character.pendingChoice || character.isGameOver) return character;
+  if (!character.pendingChoice.choice.options.includes(option) || !canSelectOption(option, character)) return character;
+  if (character.pendingChoice.mode === 'action') {
+    if (option.cancel) return { ...character, pendingChoice: null };
+    const { next, record } = applyEntry(character, option);
+    return recordYear({ ...next, lastActionAge: character.age }, [record], option);
+  }
+  return finishYear(character, character.pendingChoice.annualEvents || [character.pendingChoice.annualEvent].filter(Boolean), option);
 }
 
 /**
@@ -270,17 +269,11 @@ export function evaluateLifeSummary(character) {
   // 财富超越百分比（基于中国居民可支配收入五等分位估算）
   let wealthPercentile = Math.min(99, Math.max(5, Math.floor(wealth * 1.05)));
 
-  // 学历/认知超越百分比（全国大专及以上学历占总人口约 15%~18%）
-  let eduPercentile = 40;
-  if (tags.includes('天坑名校生') || tags.includes('重点高中做题家') || knowledge > 75) {
-    eduPercentile = 92;
-  } else if (tags.includes('实用主义工科生') || tags.includes('铁饭碗预备军') || knowledge > 60) {
-    eduPercentile = 78;
-  } else if (tags.includes('专科逆袭派') || knowledge > 45) {
-    eduPercentile = 55;
-  } else if (tags.includes('职校技术生') || tags.includes('少年务工')) {
-    eduPercentile = 25;
-  }
+  // 根据已经完成的学历估算；在读、认知分数和历史标签不等于取得学历。
+  const eduPercentile = {
+    none: 10, primary: 15, junior_high: 25, vocational: 35,
+    high_school: 40, college: 78, bachelor: 92
+  }[character.lifeState.education] ?? 10;
 
   // 寿命超越百分比（以全国平均预期寿命 78.6 岁为基准）
   let longevityPercentile = Math.min(98, Math.max(5, Math.round((age / 78.6) * 60)));
@@ -289,9 +282,9 @@ export function evaluateLifeSummary(character) {
 
   // 生成终生成就称号
   let title = '平凡坚韧的赶路人';
-  if (tags.includes('三十年房奴') && wealth > 50) {
+  if (['mortgaged', 'owned'].includes(character.lifeState.housing) && tags.includes('三十年房奴') && wealth > 50) {
     title = '掏空六个钱包的房奴业主';
-  } else if (tags.includes('考编上岸族') || tags.includes('体制稳固')) {
+  } else if (character.lifeState.career === 'public' || (character.lifeState.career === 'retired' && ['public', 'directed_public'].includes(character.lifeState.careerTrack))) {
     title = '风雨不惊的体制定海神针';
   } else if (tags.includes('北上广深漂流者') && wealth > 60) {
     title = '闯荡大都会的奋斗先锋';

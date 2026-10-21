@@ -37,8 +37,8 @@ RUN echo 'server { \
     } \
     \
     location /data/ { \
-        expires 1h; \
-        add_header Cache-Control "public, must-revalidate"; \
+        expires -1; \
+        add_header Cache-Control "no-cache, must-revalidate"; \
     } \
 }' > /etc/nginx/conf.d/default.conf
 

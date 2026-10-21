@@ -1,9 +1,19 @@
 [
   {
-    "text": "入职两周年体检，体检报告上第一次出现了轻度脂肪肝、颈椎曲度变直和尿酸偏高警报。",
+    "text": "工作后的例行体检里，第一次出现了脂肪肝、颈椎和尿酸指标的警报。",
     "effect": {
       "health": -6,
       "sanity": -2
+    },
+    "condition": {
+      "lifeState": {
+        "career": [
+          "worker",
+          "private",
+          "public",
+          "self_employed"
+        ]
+      }
     }
   },
   {
@@ -11,5 +21,41 @@
     "effect": {
       "sanity": -3
     }
+  },
+  {
+    "text": "你继续为考试做准备，在复习之外也认真安排生活开销。",
+    "condition": {
+      "lifeState": {
+        "career": "preparing"
+      }
+    },
+    "effect": {
+      "knowledge": 2,
+      "wealth": -1
+    }
+  },
+  {
+    "id": "extra_24_0",
+    "text": "你参加了一次社区技能分享，听到了与自己经历不同的人生路径。",
+    "cashEffect": 0,
+    "effect": {}
+  },
+  {
+    "id": "extra_24_1",
+    "text": "一次与旧友的长谈，让你重新思考工作、收入与生活中真正想要的东西。",
+    "cashEffect": 0,
+    "effect": {}
+  },
+  {
+    "id": "extra_24_2",
+    "text": "你整理了一年的生活计划，把一个总被搁置的个人目标重新写了下来。",
+    "cashEffect": 0,
+    "effect": {}
+  },
+  {
+    "id": "extra_24_3",
+    "text": "你为家里做了一次收纳和修整，普通的日子也因此变得更舒适。",
+    "cashEffect": 0,
+    "effect": {}
   }
 ]

@@ -1,10 +1,11 @@
 import React from 'react';
-import { Coins, Heart, Brain, Smile, RotateCcw, Play, Pause, MapPin } from 'lucide-react';
+import { formatMoney, annualBudget } from '../services/finances';
+import { Heart, Brain, Smile, RotateCcw, Play, Pause, MapPin } from 'lucide-react';
 
 export default function Header({ character, isAutoPlaying, onToggleAutoPlay, onRestart }) {
   if (!character) return null;
 
-  const { age, city, householdType, familyClass, wealth, health, knowledge, sanity, tags } = character;
+  const { age, city, householdType, familyClass, health, knowledge, sanity } = character;
 
   // 年龄阶段描述
   let lifeStage = '幼儿启蒙';
@@ -18,12 +19,18 @@ export default function Header({ character, isAutoPlaying, onToggleAutoPlay, onR
   else if (age > 60) lifeStage = '银发晚年';
 
   const attributes = [
-    { label: '财富', value: wealth, icon: Coins, color: 'text-amber-600', barBg: 'bg-amber-500' },
     { label: '健康', value: health, icon: Heart, color: 'text-rose-600', barBg: 'bg-rose-500' },
     { label: '认知', value: knowledge, icon: Brain, color: 'text-blue-600', barBg: 'bg-blue-500' },
     { label: '心力', value: sanity, icon: Smile, color: 'text-emerald-600', barBg: 'bg-emerald-500' },
   ];
 
+  const stageLabels = { high_school: '高中在读', vocational: '职校在读', college: '大专在读', university: '本科在读' };
+  const careerLabels = { none: '尚未就业', worker: '一线工作', private: '企业工作', public: '公共岗位', self_employed: '自主谋生', preparing: '备考中', retired: '退休生活' };
+  if (age >= 15) lifeStage = stageLabels[character.lifeState.schooling] || careerLabels[character.lifeState.career];
+  const budget = annualBudget(character);
+  const s = character.lifeState;
+  const housingLabel = { family: '与家人同住', renting: '租房生活', mortgaged: '住房还款中', owned: '住房已还清' }[s.housing];
+  const familyLabel = s.parenthood === 'parent' ? '已育' : { childfree: '丁克', deferred: '暂缓生育', none: '无子女' }[s.parenthood];
   return (
     <header className="bg-white/90 backdrop-blur border-b border-stone-200 sticky top-0 z-20 shadow-xs">
       <div className="max-w-3xl mx-auto px-4 py-3">
@@ -80,8 +87,23 @@ export default function Header({ character, isAutoPlaying, onToggleAutoPlay, onR
           </div>
         </div>
 
-        {/* 4 Core Attributes Progress */}
-        <div className="grid grid-cols-4 gap-2">
+        <div className="mb-3 rounded-xl border border-amber-200 bg-amber-50 p-3 sm:p-4">
+          <div className="flex flex-wrap items-end justify-between gap-3">
+            <div>
+              <p className="text-xs text-amber-900">{character.finances.cash < 0 ? '资金缺口' : '可用余额'} <span className="text-amber-800">· 模拟金额</span></p>
+              <p className="mt-1 text-2xl sm:text-3xl font-bold tabular-nums text-amber-950">{formatMoney(character.finances.cash)}</p>
+            </div>
+            <div className="text-xs leading-6 text-stone-700 text-right">
+              <p>住房估值 {formatMoney(character.finances.propertyValue)}</p>
+              <p>剩余房贷 {formatMoney(character.finances.mortgageDebt)}</p>
+            </div>
+          </div>
+          <div className="mt-3 pt-2 border-t border-amber-200 flex flex-wrap gap-x-4 gap-y-1 text-xs text-amber-950">
+            <span>{careerLabels[s.career]}</span><span>{housingLabel}</span><span>{s.marriage === 'married' ? '已婚' : '单身'} · {familyLabel}</span>
+            <span>按当前状态估算年收入 {formatMoney(Math.max(0, budget.items[0].amount))}</span>
+          </div>
+        </div>
+        <div className="grid grid-cols-3 gap-2">
           {attributes.map((attr) => {
             const Icon = attr.icon;
             return (
@@ -89,7 +111,7 @@ export default function Header({ character, isAutoPlaying, onToggleAutoPlay, onR
                 <div className="flex items-center justify-between text-xs mb-1">
                   <span className="flex items-center gap-1 text-stone-600">
                     <Icon className={`w-3.5 h-3.5 ${attr.color}`} />
-                    <span className="hidden sm:inline">{attr.label}</span>
+                    <span className="inline">{attr.label}</span>
                   </span>
                   <span className="font-semibold text-stone-800">{attr.value}</span>
                 </div>

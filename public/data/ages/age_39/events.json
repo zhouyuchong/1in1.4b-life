@@ -5,12 +5,76 @@
       "wealth": 3,
       "health": -2,
       "sanity": -1
+    },
+    "condition": {
+      "lifeState": {
+        "career": [
+          "worker",
+          "private",
+          "public",
+          "self_employed"
+        ]
+      }
     }
   },
   {
-    "text": "按时缴存五险一金和按揭贷款，日子在平淡而坚韧的柴米油盐中一天天流淌。",
+    "text": "按时偿还住房按揭，日子在柴米油盐中一天天流淌。",
     "effect": {
       "wealth": 1
+    },
+    "condition": {
+      "lifeState": {
+        "housing": "mortgaged"
+      }
+    },
+    "cashEffect": 0
+  },
+  {
+    "text": "你继续安排租房预算，在居住成本和生活便利之间寻找平衡。",
+    "condition": {
+      "lifeState": {
+        "housing": "renting"
+      }
+    },
+    "effect": {
+      "sanity": 1
+    },
+    "cashEffect": 0
+  },
+  {
+    "text": "你继续为考试做准备，在复习之外也认真安排生活开销。",
+    "condition": {
+      "lifeState": {
+        "career": "preparing"
+      }
+    },
+    "effect": {
+      "knowledge": 2,
+      "wealth": -1
     }
+  },
+  {
+    "id": "extra_39_0",
+    "text": "你参加了一次社区技能分享，听到了与自己经历不同的人生路径。",
+    "cashEffect": 0,
+    "effect": {}
+  },
+  {
+    "id": "extra_39_1",
+    "text": "一次与旧友的长谈，让你重新思考工作、收入与生活中真正想要的东西。",
+    "cashEffect": 0,
+    "effect": {}
+  },
+  {
+    "id": "extra_39_2",
+    "text": "你整理了一年的生活计划，把一个总被搁置的个人目标重新写了下来。",
+    "cashEffect": 0,
+    "effect": {}
+  },
+  {
+    "id": "extra_39_3",
+    "text": "你为家里做了一次收纳和修整，普通的日子也因此变得更舒适。",
+    "cashEffect": 0,
+    "effect": {}
   }
 ]
