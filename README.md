@@ -35,10 +35,7 @@
    - 内容创作者与运营者无需重新编译代码，直接修改或上传 JSON 文件即可实时生效。
 3. **真实社会热点与知名案例改编抉择**：
    - 涵盖：幼小衔接抢跑、学区房划片、中考普职分流、张雪峰式志愿填报、考研考公大军、大厂裁员与行业洗牌、掏空六个钱包上车房贷、35岁危机、大病互助筹款等。
-4. **2核 4G VPS 极致友好**：
-   - 纯前端客户端单页应用（SPA），总打包体积 gzip 后小于 80KB。
-   - 零后端数据库负担，单台轻量 VPS 配 Nginx 即可从容承载千万级 PV 访问。
-5. **社交裂变海报生成**：
+4. **社交裂变海报生成**：
    - 终局根据真实统计指标生成量化排位雷达图，支持一键保存朋友圈/小红书长图。
 
 ---
@@ -128,54 +125,6 @@ npm run dev
 
 # 3. 编译生产打包
 npm run build
-```
-
----
-
-## 🌐 2核 4G VPS 部署指南
-
-因为本项目是全静态架构，生产环境推荐直接用 Nginx 托管。
-
-### 1. 编译并上传静态文件
-在本地或服务器执行：
-```bash
-npm run build
-```
-将打包生成的 `dist` 目录上传至服务器 `/var/www/1in1.4b-life`。
-
-### 2. Nginx 配置示例 (`/etc/nginx/conf.d/1in1.4b.conf`)
-```nginx
-server {
-    listen 80;
-    server_name your-domain.com; # 你的域名或服务器 IP
-
-    root /var/www/1in1.4b-life/dist;
-    index index.html;
-
-    # 启用 Gzip 极速压缩
-    gzip on;
-    gzip_types text/plain text/css application/json application/javascript text/xml application/xml;
-
-    location / {
-        try_files $uri $uri/ /index.html;
-    }
-
-    # 静态资源缓存配置
-    location /assets/ {
-        expires 1y;
-        add_header Cache-Control "public, no-transform";
-    }
-
-    # 年份 JSON 动态可读配置
-    location /data/ {
-        expires 1h;
-        add_header Cache-Control "public, must-revalidate";
-    }
-}
-```
-保存后重载 Nginx：
-```bash
-nginx -t && nginx -s reload
 ```
 
 ---
