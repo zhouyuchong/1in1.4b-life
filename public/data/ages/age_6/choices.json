@@ -1,0 +1,34 @@
+[
+  {
+    "id": "choice_age6_school_district",
+    "title": "小学划片：老破小学区房 vs 普通就近入学",
+    "description": "面对教育资源的巨大差异，是否要借钱买挂户口的“老破小学区房”，还是直接就近在普通对口小学就读？",
+    "sourceCase": "真实背景：学区房溢价与教育均等化改革",
+    "options": [
+      {
+        "text": "倾全家之力买名校学区房/找关系择校：不惜背负高额房贷",
+        "requirements": {
+          "wealth": 50
+        },
+        "effect": {
+          "wealth": -25,
+          "sanity": -8,
+          "knowledge": 10
+        },
+        "tag": "学区房金童",
+        "resultText": "全家挤在四五十平米的老破小里省吃俭用，你如愿踏入了全区升学率最高的热门重点小学。"
+      },
+      {
+        "text": "就近直升对口普通小学：放平心态，相信只要孩子努力哪里都能成才",
+        "requirements": {},
+        "effect": {
+          "wealth": 2,
+          "sanity": 5,
+          "knowledge": 3
+        },
+        "tag": "普通小学",
+        "resultText": "你走路上学只需要五分钟，学校虽然设施普通，但没有夸张的攀比之风，大家玩得很开心。"
+      }
+    ]
+  }
+]

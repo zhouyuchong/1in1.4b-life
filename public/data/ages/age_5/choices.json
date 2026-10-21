@@ -1,0 +1,32 @@
+[
+  {
+    "id": "choice_age5_youxiaoxianjie",
+    "title": "幼小衔接与鸡娃抉择",
+    "description": "小学一年级零起点教学政策推行，但许多家长担心不提前学进校会跟不上进度被老师约谈。",
+    "sourceCase": "真实背景：超前教育焦虑与素质启蒙博弈",
+    "options": [
+      {
+        "text": "提前报幼小衔接班：硬背拼音与100以内加减法，做题打卡",
+        "requirements": {},
+        "effect": {
+          "sanity": -6,
+          "knowledge": 8,
+          "wealth": -4
+        },
+        "tag": "幼升小抢跑",
+        "resultText": "你每天要坐在书桌前背半小时拼音字母，常常眼泪汪汪，但识字量已经达到一千多字。"
+      },
+      {
+        "text": "坚持快乐童年：多带去户外运动，培养好奇心与生活自理能力",
+        "requirements": {},
+        "effect": {
+          "sanity": 8,
+          "health": 5,
+          "knowledge": 2
+        },
+        "tag": "快乐童年",
+        "resultText": "你在泥土和阳光下茁壮成长，身体结实性格开朗，虽然认字不多，但动手能力极强。"
+      }
+    ]
+  }
+]
