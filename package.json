@@ -2,6 +2,7 @@
   "name": "1in1.4b-life",
   "private": true,
   "version": "1.0.0",
+  "license": "CC-BY-NC-SA-4.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
