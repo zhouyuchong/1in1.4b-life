@@ -39,7 +39,7 @@
       },
       {
         "text": "随迁子女就读务工人员子弟校：承认现实，先把学上了再说",
-        "condition": { "isRural": true },
+        "condition": { "isRural": true, "familyClass": ["低保特困", "工薪温饱"] },
         "requirements": {},
         "effect": { "knowledge": 1, "sanity": 3, "health": 2 },
         "tag": "随迁子弟",

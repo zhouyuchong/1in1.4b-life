@@ -5,7 +5,8 @@
     "description": "为了生计，父母打算去沿海经济发达城市打工。但大城市房租高、公办学校难进，带不带你成了一个揪心的难题。",
     "sourceCase": "真实背景：中国数千万留守儿童与流动儿童家庭现实",
     "condition": {
-      "isRural": true
+      "isRural": true,
+      "familyClass": ["低保特困", "工薪温饱"]
     },
     "optionPool": [
       {
@@ -105,6 +106,218 @@
         "tag": "半留守",
         "resultText": "妈妈留下来陪着你，家里暖和，但爸爸只有过年才能回来。你学会了在妈妈睡着时悄悄等待春节的倒计时。",
         "cashEffect": 2000
+      }
+    ]
+  },
+  {
+    "id": "choice_age2_early_care",
+    "title": "两岁成长规划：家庭事业与看护重心",
+    "description": "两岁正是语言与习惯培养的关键时期。面对繁忙的工作（体制内履职/企业骨干/经商办厂），家里在商量如何更好地照顾你的日常生活。",
+    "sourceCase": "真实背景：当代城市与乡镇中产、优渥家庭的育儿分工与早期看护博弈",
+    "condition": {
+      "familyClass": ["小康中产", "高净值富裕"]
+    },
+    "optionPool": [
+      {
+        "text": "请专业住家育儿嫂照料：花钱买省心与专业喂养，父母专注打拼事业",
+        "requirements": {
+          "wealth": 50
+        },
+        "effect": {
+          "health": 4,
+          "knowledge": 3,
+          "wealth": -5
+        },
+        "tag": "精细看护",
+        "resultText": "家里请来经验丰富的住家阿姨，起居饮食科学规律，父母白天能安心投入工作与生意。",
+        "cashEffect": -18000
+      },
+      {
+        "text": "双方老人接来同住协助带娃：三代同堂共享天伦，省下大笔开支",
+        "requirements": {},
+        "effect": {
+          "sanity": 4,
+          "health": 2
+        },
+        "tag": "三代同堂",
+        "resultText": "长辈把全部心血扑在你身上，每天变着花样做辅食，家里热热闹闹充满烟火气。",
+        "cashEffect": -2000
+      },
+      {
+        "text": "父母一方主动放缓职业节奏：减少应酬出差，亲自陪伴两岁语言敏感期",
+        "requirements": {},
+        "effect": {
+          "knowledge": 5,
+          "sanity": 6
+        },
+        "tag": "陪伴成长",
+        "resultText": "父母一方推掉了部分加班与外派机会，每天下班准时回家陪你读绘本、做游戏，你的表达能力进步神速。",
+        "cashEffect": -6000
+      },
+      {
+        "text": "送入高端全日/半日托幼中心：提前感受集体生活，启蒙认知与社交",
+        "requirements": {
+          "wealth": 55
+        },
+        "effect": {
+          "knowledge": 6,
+          "health": 1,
+          "wealth": -4
+        },
+        "tag": "早期托幼",
+        "resultText": "两岁的你在双语托育园里学会了和小伙伴分享玩具、自己吃饭穿鞋，自理能力和社交习惯格外突出。",
+        "cashEffect": -15000
+      },
+      {
+        "text": "随性相伴：走到哪带到哪，在真实的生活场景中开阔眼界",
+        "requirements": {},
+        "effect": {
+          "sanity": 5,
+          "knowledge": 4
+        },
+        "tag": "开阔眼界",
+        "resultText": "父母无论是去单位、工作室还是巡视店面档口，都经常把你带在身边。你在各色人群的互动中一点都不认生，大方开朗。",
+        "cashEffect": -1000
+      }
+    ],
+    "options": [
+      {
+        "text": "请专业住家育儿嫂照料：花钱买省心与专业喂养，父母专注打拼事业",
+        "requirements": {
+          "wealth": 50
+        },
+        "effect": {
+          "health": 4,
+          "knowledge": 3,
+          "wealth": -5
+        },
+        "tag": "精细看护",
+        "resultText": "家里请来经验丰富的住家阿姨，起居饮食科学规律，父母白天能安心投入工作与生意。",
+        "cashEffect": -18000
+      },
+      {
+        "text": "双方老人接来同住协助带娃：三代同堂共享天伦，省下大笔开支",
+        "requirements": {},
+        "effect": {
+          "sanity": 4,
+          "health": 2
+        },
+        "tag": "三代同堂",
+        "resultText": "长辈把全部心血扑在你身上，每天变着花样做辅食，家里热热闹闹充满烟火气。",
+        "cashEffect": -2000
+      },
+      {
+        "text": "父母一方主动放缓职业节奏：减少应酬出差，亲自陪伴两岁语言敏感期",
+        "requirements": {},
+        "effect": {
+          "knowledge": 5,
+          "sanity": 6
+        },
+        "tag": "陪伴成长",
+        "resultText": "父母一方推掉了部分加班与外派机会，每天下班准时回家陪你读绘本、做游戏，你的表达能力进步神速。",
+        "cashEffect": -6000
+      }
+    ]
+  },
+  {
+    "id": "choice_age2_urban_worker_care",
+    "title": "普通双职工家庭的带娃接力",
+    "description": "产假结束后生活开销压力增大，父母必须全职在岗维持生计。面对公办托位不足的现实，白天如何安顿两岁的你成了家庭议题。",
+    "sourceCase": "真实背景：城市普通双职工家庭托育难题与带娃分工",
+    "condition": {
+      "isRural": false,
+      "familyClass": ["低保特困", "工薪温饱"]
+    },
+    "optionPool": [
+      {
+        "text": "父母商量倒班轮换接力：一人上白班一人上夜班，家里24小时有人守护",
+        "requirements": {},
+        "effect": {
+          "sanity": 3,
+          "health": 2
+        },
+        "tag": "倒班看护",
+        "resultText": "父母像接力赛一样交接班，虽然两人常常只能打个照面，但你从未离开过父母温柔的视线。",
+        "cashEffect": 0
+      },
+      {
+        "text": "送入附近弄堂/小区的平价小托班：阿姨看管数个孩子，价格亲民",
+        "requirements": {},
+        "effect": {
+          "knowledge": 2,
+          "sanity": 2
+        },
+        "tag": "弄堂托班",
+        "resultText": "小托班里虽然设施简单，但阿姨热心负责，管三餐辅食，解了父母上班的后顾之忧。",
+        "cashEffect": -3000
+      },
+      {
+        "text": "托老家的长辈进城搭把手：挤在狭窄的出租屋里共渡难关",
+        "requirements": {},
+        "effect": {
+          "sanity": 4,
+          "health": 1
+        },
+        "tag": "老人进城照看",
+        "resultText": "乡下的老人克服城里生活的不习惯，主动赶来帮忙买菜做饭带娃，全家抱团取暖度过最吃紧的几年。",
+        "cashEffect": -1000
+      },
+      {
+        "text": "母亲暂时转做零工或在家兼职做代加工：贴身守护宝宝成长",
+        "requirements": {},
+        "effect": {
+          "health": 3,
+          "sanity": 4
+        },
+        "tag": "零工兼顾",
+        "resultText": "母亲辞去了原先需要打卡的工作，靠在附近接手工活和做小时工维持微薄收入，把你照料得无微不至。",
+        "cashEffect": -4000
+      },
+      {
+        "text": "带在工作身边：在小商铺、摊位或值班室的小角落里长大",
+        "requirements": {},
+        "effect": {
+          "sanity": 4,
+          "knowledge": 2
+        },
+        "tag": "烟火童年",
+        "resultText": "你坐在父母工作摊位旁的小推车里吃着米粉看街景，在市井的吆喝声中早早懂事，不哭不闹。",
+        "cashEffect": 0
+      }
+    ],
+    "options": [
+      {
+        "text": "父母商量倒班轮换接力：一人上白班一人上夜班，家里24小时有人守护",
+        "requirements": {},
+        "effect": {
+          "sanity": 3,
+          "health": 2
+        },
+        "tag": "倒班看护",
+        "resultText": "父母像接力赛一样交接班，虽然两人常常只能打个照面，但你从未离开过父母温柔的视线。",
+        "cashEffect": 0
+      },
+      {
+        "text": "送入附近弄堂/小区的平价小托班：阿姨看管数个孩子，价格亲民",
+        "requirements": {},
+        "effect": {
+          "knowledge": 2,
+          "sanity": 2
+        },
+        "tag": "弄堂托班",
+        "resultText": "小托班里虽然设施简单，但阿姨热心负责，管三餐辅食，解了父母上班的后顾之忧。",
+        "cashEffect": -3000
+      },
+      {
+        "text": "托老家的长辈进城搭把手：挤在狭窄的出租屋里共渡难关",
+        "requirements": {},
+        "effect": {
+          "sanity": 4,
+          "health": 1
+        },
+        "tag": "老人进城照看",
+        "resultText": "乡下的老人克服城里生活的不习惯，主动赶来帮忙买菜做饭带娃，全家抱团取暖度过最吃紧的几年。",
+        "cashEffect": -1000
       }
     ]
   }

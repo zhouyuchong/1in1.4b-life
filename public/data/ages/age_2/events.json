@@ -16,10 +16,22 @@
   },
   {
     "condition": {
-      "isRural": true
+      "isRural": true,
+      "familyClass": ["低保特困", "工薪温饱"]
     },
     "text": "村头的小卖部成了村里留守儿童聚集的地方，父母开始商量要不要外出进城务工。",
     "effect": {},
+    "cashEffect": 0
+  },
+  {
+    "condition": {
+      "isRural": true,
+      "familyClass": ["小康中产", "高净值富裕"]
+    },
+    "text": "父母在当地立足稳固，家里的院落整洁宽敞，时常有同镇亲友带着同龄孩子前来串门相聚。",
+    "effect": {
+      "sanity": 2
+    },
     "cashEffect": 0
   },
   {

@@ -470,3 +470,25 @@ test('父母告别分别发生且只发生一次，朋友姓名贯穿结交、�
   character = startLifeAction(character, 'social');
   assert.ok(!character.pendingChoice.choice.options.some(option => /约朋友林晓/.test(option.text)));
 });
+
+test('小康与富裕家庭在两岁时不触发留守务工抉择，按阶层匹配看护规划', async () => {
+  // 农村小康家庭
+  let ruralAffluent = { ...life(), age: 1, isRural: true, familyClass: '小康中产' };
+  ruralAffluent = await stepNextYear(ruralAffluent);
+  assert.equal(ruralAffluent.age, 2);
+  assert.equal(ruralAffluent.pendingChoice.choice.id, 'choice_age2_early_care');
+  assert.doesNotMatch(ruralAffluent.pendingChoice.choice.title, /外出务工/);
+
+  // 农村特困家庭
+  let ruralPoor = { ...life(), age: 1, isRural: true, familyClass: '低保特困' };
+  ruralPoor = await stepNextYear(ruralPoor);
+  assert.equal(ruralPoor.age, 2);
+  assert.equal(ruralPoor.pendingChoice.choice.id, 'choice_age2_migrant');
+  assert.match(ruralPoor.pendingChoice.choice.title, /外出务工/);
+
+  // 城市普通工薪家庭
+  let urbanWorker = { ...life(), age: 1, isRural: false, familyClass: '工薪温饱' };
+  urbanWorker = await stepNextYear(urbanWorker);
+  assert.equal(urbanWorker.age, 2);
+  assert.equal(urbanWorker.pendingChoice.choice.id, 'choice_age2_urban_worker_care');
+});
