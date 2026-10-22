@@ -1,3 +1,5 @@
+import { prepareEducationChoice } from './educationRules.js';
+import { educationContext } from './educationContext.js';
 import { graduateOption } from './boldRisk.js';
 import { debtChoice, debtSettlement, unsecuredDebt, debtLimit, DEBT_RULES } from './debt.js';
 import { createFinances, applyMoney, eventCashChange, minimumCash, annualBudget } from './finances.js';
@@ -69,6 +71,8 @@ export function createNewLife() {
     parentsJob = '私营企业主 / 核心骨干 / 投资人';
   }
 
+  const education = educationContext({ city, familyClass });
+
   // 基础智力与健康
   const initialKnowledge = Math.floor(35 + Math.random() * 25);
   const initialHealth = Math.floor(75 + Math.random() * 20);
@@ -107,7 +111,7 @@ export function createNewLife() {
     history: [
       {
         age: 0,
-        text: `天命降生：你出生在【${city.province}·${city.name}】（${householdType}），性别【${gender}】。家庭背景为【${familyClass}】，父母职业：${parentsJob}。高考竞争预估：${city.gaokaoDifficulty}。`,
+        text: `天命降生：你出生在【${city.province}·${city.name}】（${householdType}），性别【${gender}】。家庭背景为【${familyClass}】，父母职业：${parentsJob}。地区高考竞争：${education.regionalCompetition}；家庭教育支持：${education.familySupport}；个人升学压力预估：${education.pressure}（游戏设定）。${education.description}。`,
         tag: '降生'
       }
     ],
@@ -132,7 +136,7 @@ export function checkCondition(cond, character) {
 
   if (cond.gender && cond.gender !== character.gender) return false;
   if (cond.isRural !== undefined && cond.isRural !== character.isRural) return false;
-  if (cond.familyClass && cond.familyClass !== character.familyClass) return false;
+  if (cond.familyClass && !(Array.isArray(cond.familyClass) ? cond.familyClass.includes(character.familyClass) : cond.familyClass === character.familyClass)) return false;
   if (cond.minWealth !== undefined && character.wealth < cond.minWealth) return false;
   if (cond.maxWealth !== undefined && character.wealth > cond.maxWealth) return false;
   if (cond.minKnowledge !== undefined && character.knowledge < cond.minKnowledge) return false;
@@ -308,7 +312,7 @@ export async function stepNextYear(character) {
     events.push({ required: true, text: previousSchooling === 'graduate' ? '你完成三年研究生学业，硕士毕业。新的学历将提高后续企业与公共岗位的基础收入。' : '你完成了学业，正式取得毕业学历，开始寻找自己的职业方向。', cashEffect: 0, effect: { sanity: 4 } });
   }
   const choices = loaded.choices.map(choice => ({ ...choice, options: choice.options.map(option =>
-    option.tag === '脱产考研战神' ? { ...graduateOption(character, true), tag: option.tag } : option) }));
+    option.tag === '脱产考研战神' ? { ...graduateOption(character, true), tag: option.tag } : option) })).map(choice => prepareEducationChoice(choice, character));
   // 先公布上一年的备考结果，再决定本年是否继续，转行后旧备考结果不会覆盖新职业。
   const priorRecords = [];
   const due = character.scheduledEvents.filter(event => event.dueAge <= age);

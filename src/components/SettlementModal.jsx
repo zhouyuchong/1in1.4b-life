@@ -1,3 +1,4 @@
+import { educationContext } from '../services/educationContext';
 import { formatMoney } from '../services/finances';
 import React, { useRef, useState } from 'react';
 import { toPng } from 'html-to-image';
@@ -10,6 +11,7 @@ export default function SettlementModal({ character, onRestart }) {
   const [downloadSuccess, setDownloadSuccess] = useState(false);
 
   const summary = evaluateLifeSummary(character);
+  const education = educationContext(character);
   const { city, householdType, familyClass, tags, deathReason } = character;
 
   const handleDownloadImage = async () => {
@@ -83,8 +85,8 @@ export default function SettlementModal({ character, onRestart }) {
               <span className="font-medium text-stone-800">{familyClass}</span>
             </div>
             <div>
-              <span className="text-stone-400">高考难度：</span>
-              <span className="font-medium text-stone-800">{city.gaokaoDifficulty}</span>
+              <span className="text-stone-400">升学压力：</span>
+              <span className="font-medium text-stone-800">{education.pressure}</span>
             </div>
           </div>
 

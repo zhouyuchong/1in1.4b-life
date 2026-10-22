@@ -1,3 +1,4 @@
+import { examChance, examDetail } from './educationRules.js';
 import { careerIncome, formatMoney } from './finances.js';
 
 const chance = (base, character, attempts) => Math.round(Math.max(0.15, Math.min(0.85,
@@ -9,12 +10,12 @@ export function graduateOption(character, fullTime = false) {
   const { age, lifeState: s } = character;
   const attempt = attemptsFor(character, 'graduate') + 1;
   const token = `graduate_${attempt}`;
-  const success = chance(fullTime ? 0.38 : 0.25, character, attempt - 1);
+  const success = examChance(fullTime ? 0.38 : 0.25, character, 'graduate', attempt - 1, 0.85);
   return {
     condition: { minAge: 21, maxAge: 35, lifeState: { education: 'bachelor', schooling: 'none', examPreparation: null } },
     riskKind: 'graduate', text: `考研再战 · 第${attempt}次：${fullTime ? '全职备考一年' : '在职备考一年'}`,
     minCash: fullTime ? 42000 : 6000, cashEffect: fullTime ? -12000 : -6000,
-    detail: `${age + 1}岁公布结果，录取后读研3年、期间无工资；毕业后取得硕士学历，企业与公共岗位基础年收入提高。${fullTime ? '备考期间无工资，余额门槛含3万元生活预留。' : '备考期间保留工作收入。'}转向其他职业会结束此次备考。`,
+    detail: `${examDetail(character, 'graduate')}${age + 1}岁公布结果，录取后读研3年、期间无工资；毕业后取得硕士学历，企业与公共岗位基础年收入提高。${fullTime ? '备考期间无工资，余额门槛含3万元生活预留。' : '备考期间保留工作收入。'}转向其他职业会结束此次备考。`,
     effect: { knowledge: fullTime ? 8 : 4, sanity: fullTime ? -6 : -4 },
     stateEffect: { riskAttempts: attemptState(character, 'graduate'), examPreparation: token,
       ...(fullTime ? { career: 'graduate_preparing', annualSalary: null } : {}) },
@@ -33,10 +34,10 @@ export function riskOptions(character) {
   if (age <= 21 && s.education === 'high_school' && !s.examPreparation &&
     (s.schooling === 'none' || (age - (s.schoolingDelay || 0) === 18 && !s.schoolEndAge && ['university', 'college'].includes(s.schooling)))) {
     const attempt = attemptsFor(character, 'gaokao') + 1;
-    const success = Math.min(0.7, chance(0.4, character, attempt - 1));
+    const success = examChance(0.4, character, 'gaokao', attempt - 1, 0.7);
     const token = `gaokao_${attempt}`;
     options.push({ riskKind: 'gaokao', text: `高考复读 · 第${attempt}次：再给自己一年`, minCash: 45000, cashEffect: -15000,
-      detail: `${age + 1}岁放榜。放弃当前入学或工作安排，备考无工资，另需预留3万元生活费。本科读4年，大专读3年；进入更好的本科后，毕业时企业与公共岗位基础年薪增加12000元。失败后可继续复读或求职。`,
+      detail: `${examDetail(character, 'gaokao')}${age + 1}岁放榜。放弃当前入学或工作安排，备考无工资，另需预留3万元生活费。本科读4年，大专读3年；进入更好的本科后，毕业时企业与公共岗位基础年薪增加12000元。失败后可继续复读或求职。`,
       effect: { knowledge: 7, sanity: -5 },
       stateEffect: { riskAttempts: attemptState(character, 'gaokao'), examPreparation: token, schooling: 'gaokao_repeat', schoolEndAge: null, career: 'none', careerTrack: 'general', annualSalary: null },
       resultText: `你决定第${attempt}次复读，花15000元投入新一轮准备，暂时放下原来的安排。`,
