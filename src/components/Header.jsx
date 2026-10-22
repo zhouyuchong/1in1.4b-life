@@ -1,3 +1,4 @@
+import { DEBT_RULES } from '../services/debtRules';
 import React from 'react';
 import { formatMoney, annualBudget } from '../services/finances';
 import { Heart, Brain, Smile, RotateCcw, Play, Pause, MapPin } from 'lucide-react';
@@ -24,9 +25,10 @@ export default function Header({ character, isAutoPlaying, onToggleAutoPlay, onR
     { label: '心力', value: sanity, icon: Smile, color: 'text-emerald-600', barBg: 'bg-emerald-500' },
   ];
 
-  const stageLabels = { high_school: '高中在读', vocational: '职校在读', college: '大专在读', university: '本科在读' };
-  const careerLabels = { none: '尚未就业', worker: '一线工作', private: '企业工作', public: '公共岗位', self_employed: '自主谋生', preparing: '备考中', retired: '退休生活' };
+  const stageLabels = { high_school: '高中在读', vocational: '职校在读', college: '大专在读', university: '本科在读', graduate: '研究生在读', gaokao_repeat: '高考复读' };
+  const careerLabels = { none: '尚未就业', worker: '一线工作', private: '企业工作', public: '公共岗位', self_employed: '自主谋生', preparing: '考编备考中', graduate_preparing: '全职考研', unemployed: '待业求职', retired: '退休生活' };
   if (age >= 15) lifeStage = stageLabels[character.lifeState.schooling] || careerLabels[character.lifeState.career];
+  if (character.finances.recovering) lifeStage = character.finances.forcedRecovery ? '强制打工还债' : '兼职中 · 原计划暂停';
   const budget = annualBudget(character);
   const s = character.lifeState;
   const housingLabel = { family: '与家人同住', renting: '租房生活', mortgaged: '住房还款中', owned: '住房已还清' }[s.housing];
@@ -35,12 +37,12 @@ export default function Header({ character, isAutoPlaying, onToggleAutoPlay, onR
     <header className="bg-white/90 backdrop-blur border-b border-stone-200 sticky top-0 z-20 shadow-xs">
       <div className="max-w-3xl mx-auto px-4 py-3">
         {/* Top bar: title & operations */}
-        <div className="flex items-center justify-between gap-2 mb-3">
+        <div className="flex items-center justify-between flex-wrap gap-2 mb-3">
           <div className="flex items-center gap-2">
-            <span className="font-serif font-bold text-lg text-stone-900 tracking-tight">
+            <span className="font-serif font-bold text-lg text-stone-900 tracking-tight whitespace-nowrap">
               十四亿分之一
             </span>
-            <span className="text-xs px-2 py-0.5 rounded bg-stone-100 text-stone-600 border border-stone-200">
+            <span className="text-xs px-2 py-0.5 rounded bg-stone-100 text-stone-600 border border-stone-200 whitespace-nowrap">
               {lifeStage}
             </span>
           </div>
@@ -96,10 +98,13 @@ export default function Header({ character, isAutoPlaying, onToggleAutoPlay, onR
             <div className="text-xs leading-6 text-stone-700 text-right">
               <p>住房估值 {formatMoney(character.finances.propertyValue)}</p>
               <p>剩余房贷 {formatMoney(character.finances.mortgageDebt)}</p>
+              <p>网贷 {formatMoney(character.finances.onlineDebt || 0)} · 家人借款 {formatMoney(character.finances.familyDebt || 0)}</p>
             </div>
           </div>
+          {character.finances.onlineDebt > 0 && <p className="mt-2 text-xs leading-5 text-red-800" role="status">网贷年息{DEBT_RULES.annualRate * 100}% · {character.finances.onlineDueAge}岁到期 · 结余自动还款{character.age >= character.finances.onlineDueAge ? ' · 已逾期，健康与心力持续受损' : ''}</p>}
+          {character.finances.recovering && <p className="mt-2 text-xs leading-5 text-red-800" role="status">原有工作、学业与待办已暂停{character.finances.forcedRecovery ? '，清偿欠款后恢复' : '一年，期间只结算打工收入'}</p>}
           <div className="mt-3 pt-2 border-t border-amber-200 flex flex-wrap gap-x-4 gap-y-1 text-xs text-amber-950">
-            <span>{careerLabels[s.career]}</span><span>{housingLabel}</span><span>{s.marriage === 'married' ? '已婚' : '单身'} · {familyLabel}</span>
+            <span>{stageLabels[s.schooling] || careerLabels[s.career]}</span><span>学历：{({ none: '未完成学业', primary: '小学', junior_high: '初中', high_school: '高中', vocational: '职校', college: '大专', bachelor: '本科', master: '硕士' })[s.education]}</span><span>{housingLabel}</span><span>{s.marriage === 'married' ? '已婚' : '单身'} · {familyLabel}</span>
             <span>按当前状态估算年收入 {formatMoney(Math.max(0, budget.items[0].amount))}</span>
           </div>
         </div>

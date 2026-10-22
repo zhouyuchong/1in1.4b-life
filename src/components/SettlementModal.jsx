@@ -90,8 +90,9 @@ export default function SettlementModal({ character, onRestart }) {
 
           <div className="mb-5 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm">
             <p className="text-xs text-amber-900">人生财务账本 · 模拟金额</p>
-            <p className="mt-1 text-2xl font-bold tabular-nums">净资产 {formatMoney(character.finances.cash + character.finances.propertyValue - character.finances.mortgageDebt)}</p>
+            <p className="mt-1 text-2xl font-bold tabular-nums">净资产 {formatMoney(character.finances.cash + character.finances.propertyValue - character.finances.mortgageDebt - (character.finances.onlineDebt || 0) - (character.finances.familyDebt || 0))}</p>
             <p className="mt-2 text-xs text-stone-700">可用余额 {formatMoney(character.finances.cash)} · 剩余房贷 {formatMoney(character.finances.mortgageDebt)}</p>
+            <p className="mt-1 text-xs text-stone-700">网贷欠款 {formatMoney(character.finances.onlineDebt || 0)} · 家人借款 {formatMoney(character.finances.familyDebt || 0)}</p>
           </div>
           {/* Percentile Stats Grid */}
           <div className="grid grid-cols-3 gap-2.5 mb-6 text-center">

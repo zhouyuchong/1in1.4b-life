@@ -1,3 +1,4 @@
+import { DEBT_RULES } from './debtRules.js';
 // 游戏金额模型，单位为元；与真实收入预测无关。
 export const formatMoney = value => `${value < 0 ? '−' : ''}¥${Math.round(Math.abs(value || 0)).toLocaleString('zh-CN')}`;
 export const formatMoneyChange = value => `${value >= 0 ? '+' : '−'}${formatMoney(Math.abs(value))}`;
@@ -9,23 +10,32 @@ export function minimumCash(option, age) {
   return Math.max(option.minCash || 0, (option.requirements?.wealth || 0) * wealthUnit(age));
 }
 export function createFinances(familyClass) {
-  return { cash: { '低保特困': 15000, '工薪温饱': 60000, '小康中产': 200000, '高净值富裕': 800000 }[familyClass], propertyValue: 0, mortgageDebt: 0, mortgageAnnualPayment: 0, mortgageStartAge: null };
+  return { cash: { '低保特困': 15000, '工薪温饱': 60000, '小康中产': 200000, '高净值富裕': 800000 }[familyClass], propertyValue: 0, mortgageDebt: 0, mortgageAnnualPayment: 0, mortgageStartAge: null, onlineDebt: 0, onlineDueAge: null, familyDebt: 0, familyBorrowed: 0, creditBlocked: false, recovering: false, forcedRecovery: false };
 }
 export function applyMoney(character, event) {
   const cashChange = eventCashChange(event, character.age);
   const finances = { ...character.finances, ...event.financeEffect, cash: character.finances.cash + cashChange };
   return { finances, cashChange };
 }
+// 跳槽薪资只属于当前企业岗位；硕士学历提高之后求职的基础收入。
+export function careerIncome(character) {
+  const s = character.lifeState;
+  if (s.career === 'private' && Number.isFinite(s.annualSalary)) return s.annualSalary;
+  const base = { worker: 66000, private: 108000, public: 84000, self_employed: 72000, retired: 36000 }[s.career] || 0;
+  const graduateBonus = s.education === 'master' ? 24000 : 0;
+  const universityBonus = s.universityTier === 'selective' && ['bachelor', 'master'].includes(s.education) ? 12000 : 0;
+  return base + (['private', 'public'].includes(s.career) ? graduateBonus + universityBonus : 0);
+}
 export function annualBudget(character) {
   const { lifeState: s, age, finances: f } = character;
-  const income = age < 18 ? 0 : ({ worker: 66000, private: 108000, public: 84000, self_employed: 72000, retired: 36000 }[s.career] || 0);
-  const living = age < 18 ? 0 : 30000;
+  const income = f.recovering ? (age < 16 ? 42000 : DEBT_RULES.workIncome) : age < 18 ? 0 : careerIncome(character);
+  const living = age < 18 ? 0 : f.recovering ? 18000 : 30000;
   const rent = age >= 18 && s.housing === 'renting' ? 18000 : 0;
   const mortgagePayment = s.housing === 'mortgaged' ? (age > (f.mortgageStartAge ?? -1) ? Math.min(f.mortgageDebt, f.mortgageAnnualPayment) : 0) : s.housing === 'owned' ? f.mortgageDebt : 0;
   const childAge = s.childBirthAge === null ? null : age - s.childBirthAge;
   const childCost = s.parenthood === 'parent' && childAge !== null && childAge >= 0 && childAge < 18 ? (childAge < 3 ? 18000 : 12000) : 0;
   const items = [
-    { label: age < 18 ? '家庭收支由父母安排' : s.career === 'retired' ? '养老金收入' : '工作收入', amount: income },
+    { label: f.recovering ? (age < 16 ? '家人紧急增收' : '暂停原计划的打工收入') : age < 18 ? '家庭收支由父母安排' : s.career === 'retired' ? '养老金收入' : '工作收入', amount: income },
     { label: '日常生活支出', amount: -living },
     ...(rent ? [{ label: '全年房租', amount: -rent }] : []),
     ...(mortgagePayment ? [{ label: '全年住房还款（简化等额本金）', amount: -mortgagePayment }] : []),

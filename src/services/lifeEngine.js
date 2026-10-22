@@ -1,3 +1,5 @@
+import { graduateOption } from './boldRisk.js';
+import { debtChoice, debtSettlement, unsecuredDebt, DEBT_RULES } from './debt.js';
 import { createFinances, applyMoney, eventCashChange, minimumCash, annualBudget } from './finances.js';
 import { relationshipEvents, romanceChoice } from './relationships.js';
 import { makeActionChoice, careerOptions } from './lifeActions.js';
@@ -182,9 +184,15 @@ function drawOutcome(entry, age) {
 
 function applyEntry(character, rawEntry) {
   const entry = drawOutcome(rawEntry, character.age);
+  // 换职业会结束原备考，旧考试结果不能覆盖新工作；薪资随岗位一起更换。
+  const stateEffect = { ...entry.stateEffect };
+  if (Object.hasOwn(stateEffect, 'career') || Object.hasOwn(stateEffect, 'schooling')) {
+    if (!Object.hasOwn(stateEffect, 'examPreparation')) stateEffect.examPreparation = null;
+    if (Object.hasOwn(stateEffect, 'career') && !Object.hasOwn(stateEffect, 'annualSalary')) stateEffect.annualSalary = null;
+  }
   const { finances, cashChange } = applyMoney(character, entry);
   const effect = entry.effect || {};
-  const next = { ...character, finances, lifeState: { ...character.lifeState, ...entry.stateEffect } };
+  const next = { ...character, finances, lifeState: { ...character.lifeState, ...stateEffect } };
   for (const key of ['wealth', 'health', 'knowledge', 'sanity']) {
     next[key] = Math.max(0, Math.min(100, character[key] + (effect[key] || 0)));
   }
@@ -206,6 +214,19 @@ function recordYear(character, records, choice = null) {
   return { ...character, history: [item, ...character.history], pendingChoice: null };
 }
 
+function enforceDebt(character) {
+  if (character.isGameOver) return character;
+  const choice = debtChoice(character);
+  return choice ? { ...character, pendingChoice: { choice, mode: 'debt' } } : character;
+}
+
+function settleDebt(character, records) {
+  if (character.isGameOver || !(character.finances.onlineDebt > 0 || character.finances.familyDebt > 0)) return character;
+  const { next, record } = applyEntry(character, debtSettlement(character));
+  records.push(record);
+  return next;
+}
+
 function finishYear(character, events, choice = null, priorRecords = []) {
   const records = [...priorRecords];
   const commit = entry => {
@@ -224,16 +245,70 @@ function finishYear(character, events, choice = null, priorRecords = []) {
     commit({ text: '这一年的收入与生活账单', cashEffect: budget.cashChange, ledger: budget.items,
       financeEffect: { mortgageDebt: Math.max(0, character.finances.mortgageDebt - budget.mortgagePayment) } });
   }
-  return recordYear(character, records, choice);
+  character = settleDebt(character, records);
+  return enforceDebt(recordYear(character, records, choice));
+}
+
+// 暂停期间，考试、录取后的毕业日期和学业年龄一起顺延。
+function postponeScheduledEvent(event) {
+  return {
+    ...event, dueAge: event.dueAge + 1,
+    outcomes: event.outcomes?.map(outcome => {
+      if (!outcome.stateEffect?.schoolEndAge) return outcome;
+      const stateEffect = { ...outcome.stateEffect, schoolEndAge: outcome.stateEffect.schoolEndAge + 1 };
+      if (stateEffect.schoolingDelay !== undefined) stateEffect.schoolingDelay++;
+      return { ...outcome, stateEffect };
+    })
+  };
 }
 
 export async function stepNextYear(character) {
   if (character.isGameOver || character.pendingChoice) return character;
+  const crisis = enforceDebt(character);
+  if (crisis.pendingChoice) return crisis;
   const age = character.age + 1;
   if (character.health <= 0 || age > 85) return { ...character, age: Math.min(age, 85), isGameOver: true,
     deathReason: character.health <= 0 ? '因身体严重透支与疾病溘然长逝' : '寿终正寝，走完了平凡而厚重的一生' };
+  if (character.finances.recovering) {
+    // 暂停整个年度：不触发毕业、考试结果、普通抉择或原岗位收入。
+    character = { ...character, age,
+      lifeState: { ...character.lifeState, schoolingDelay: (character.lifeState.schoolingDelay || 0) + (character.lifeState.schooling !== 'none' ? 1 : 0),
+        schoolEndAge: character.lifeState.schoolEndAge ? character.lifeState.schoolEndAge + 1 : null },
+      scheduledEvents: character.scheduledEvents.map(postponeScheduledEvent) };
+    const budget = annualBudget(character);
+    const { next, record } = applyEntry(character, { text: '你暂停原计划，用这一年打工增收、压缩生活开支。', cashEffect: budget.cashChange, ledger: budget.items,
+      financeEffect: { mortgageDebt: Math.max(0, character.finances.mortgageDebt - budget.mortgagePayment) }, effect: { health: -3, sanity: -2 } });
+    const records = [record];
+    character = next;
+    for (const event of relationshipEvents(character).filter(event => event.id.startsWith('farewell_'))) {
+      const result = applyEntry(character, event);
+      character = result.next; records.push(result.record);
+      if (character.isGameOver) break;
+    }
+    // 房贷和退休仍按真实年龄推进，不随暂停的学业延期。
+    if (age >= 60) character = { ...character, lifeState: { ...character.lifeState, career: 'retired' } };
+    if (character.lifeState.housing === 'mortgaged' && character.finances.mortgageDebt === 0) {
+      character = { ...character, lifeState: { ...character.lifeState, housing: 'owned', mortgageEndAge: null } };
+    }
+    character = settleDebt(character, records);
+    const severe = character.finances.onlineDebt > 0 && age >= character.finances.onlineDueAge + DEBT_RULES.severeOverdueYears;
+    const forced = character.finances.forcedRecovery || severe || unsecuredDebt(character.finances) >= DEBT_RULES.limit;
+    const cleared = character.finances.cash >= 0 && !(character.finances.onlineDebt > 0 || character.finances.familyDebt > 0);
+    character = { ...character, finances: { ...character.finances, forcedRecovery: forced && !cleared, recovering: forced && !cleared } };
+    return enforceDebt(recordYear(character, records));
+  }
+  // 只顺延基础学业的年龄剧情；成年进修不能重放婚育等早年节点。
+  const schoolContentAge = age - (character.lifeState.schoolingDelay || 0);
+  const contentAge = ['preschool', 'primary', 'junior_high', 'high_school', 'vocational', 'college', 'university'].includes(character.lifeState.schooling) && schoolContentAge <= 22 ? schoolContentAge : age;
+  const previousSchooling = character.lifeState.schooling;
   character = { ...character, age, lifeState: advanceLifeState(character.lifeState, age) };
-  const { events, choices } = await loadAgeData(age);
+  const loaded = await loadAgeData(contentAge);
+  const events = [...loaded.events];
+  if (['graduate', 'university', 'college'].includes(previousSchooling) && character.lifeState.schooling === 'none') {
+    events.push({ required: true, text: previousSchooling === 'graduate' ? '你完成三年研究生学业，硕士毕业。新的学历将提高后续企业与公共岗位的基础收入。' : '你完成了学业，正式取得毕业学历，开始寻找自己的职业方向。', cashEffect: 0, effect: { sanity: 4 } });
+  }
+  const choices = loaded.choices.map(choice => ({ ...choice, options: choice.options.map(option =>
+    option.tag === '脱产考研战神' ? { ...graduateOption(character, true), tag: option.tag } : option) }));
   // 先公布上一年的备考结果，再决定本年是否继续，转行后旧备考结果不会覆盖新职业。
   const priorRecords = [];
   const due = character.scheduledEvents.filter(event => event.dueAge <= age);
@@ -244,12 +319,16 @@ export async function stepNextYear(character) {
     character = next; priorRecords.push(record);
     if (character.isGameOver) return recordYear(character, priorRecords);
   }
+  const schooling = character.lifeState.schooling;
+  if (['gaokao_repeat', 'graduate'].includes(schooling) || character.lifeState.examPreparation) {
+    events.push({ required: true, text: schooling === 'graduate' ? '你在研究生阶段完成课程与课题，学历将在完成三年学业后更新。' : '你按计划继续复习，为下一次考试积累准备。', cashEffect: 0, effect: { knowledge: 2 } });
+  }
   const preparing = character.lifeState.career === 'preparing';
   // 到38岁必须离开全职备考；即使本年只看事件，也不会继续扣备考年份。
   if (preparing && age >= 38) character = { ...character, lifeState: { ...character.lifeState, career: 'unemployed' } };
   const careerChoice = preparing ? { id: `career_review_${age}`, title: age >= 38 ? '38岁：为职业换一条路' : '今年还要继续全职备考吗？', description: age >= 38 ? '游戏内全职备考阶段到此结束。选择求职、过渡工作或小生意，重新安排生活。' : '过去的投入不必成为继续的理由。你可以继续一年，也可以现在开始求职。', options: careerOptions(age) } : null;
   const relationshipChoice = [20, 23, 26, 28, 31, 36].includes(age) && character.lifeState.marriage === 'single' ? romanceChoice(character) : null;
-  const choice = careerChoice || [...choices, ...(relationshipChoice ? [relationshipChoice] : [])].find(c => checkCondition(c.condition, character) && c.options.some(option => canSelectOption(option, character)));
+  const choice = careerChoice || [...choices, ...(relationshipChoice ? [relationshipChoice] : [])].find(c => !(character.lifeState.schooling === 'graduate' && c.id === 'choice_age22_graduation') && checkCondition(c.condition, character) && c.options.some(option => canSelectOption(option, character)));
   if (!choice) return finishYear(character, events, null, priorRecords);
   if (priorRecords.length) character = recordYear(character, priorRecords);
   return { ...character, pendingChoice: { choice, annualEvents: events, mode: 'annual' } };
@@ -263,10 +342,14 @@ export function startLifeAction(character, id) {
 export function resolveChoice(character, option) {
   if (!character.pendingChoice || character.isGameOver) return character;
   if (!character.pendingChoice.choice.options.includes(option) || !canSelectOption(option, character)) return character;
+  if (character.pendingChoice.mode === 'debt') {
+    const { next, record } = applyEntry(character, option);
+    return enforceDebt(recordYear(next, [record], option));
+  }
   if (character.pendingChoice.mode === 'action') {
     if (option.cancel) return { ...character, pendingChoice: null };
     const { next, record } = applyEntry(character, option);
-    return recordYear({ ...next, lastActionAge: character.age }, [record], option);
+    return enforceDebt(recordYear({ ...next, lastActionAge: character.age }, [record], option));
   }
   return finishYear(character, character.pendingChoice.annualEvents || [character.pendingChoice.annualEvent].filter(Boolean), option);
 }
@@ -283,7 +366,7 @@ export function evaluateLifeSummary(character) {
   // 根据已经完成的学历估算；在读、认知分数和历史标签不等于取得学历。
   const eduPercentile = {
     none: 10, primary: 15, junior_high: 25, vocational: 35,
-    high_school: 40, college: 78, bachelor: 92
+    high_school: 40, college: 78, bachelor: 92, master: 97
   }[character.lifeState.education] ?? 10;
 
   // 寿命超越百分比（以全国平均预期寿命 78.6 岁为基准）

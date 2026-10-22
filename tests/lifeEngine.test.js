@@ -151,7 +151,8 @@ test('200 条随机人生均可结束，且不出现无子女家庭或无贷款�
   });
   for (let n = 0; n < 200; n++) {
     let character = createNewLife();
-    for (let step = 0; step < 90 && !character.isGameOver; step++) {
+    // 同一年可能先有年度抉择，再有多轮资金危机抉择，步数不再等于年龄。
+    for (let step = 0; step < 300 && !character.isGameOver; step++) {
       character = await stepNextYear(character);
       if (character.pendingChoice) {
         const options = character.pendingChoice.choice.options.filter(o => canSelectOption(o, character));
@@ -310,7 +311,8 @@ test('100条包含主动求变的人生可完成，逐笔资金与期末余额�
   t.mock.method(Math, 'random', () => { seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0; return seed / 2 ** 32; });
   for (let n = 0; n < 100; n++) {
     let character = createNewLife();
-    for (let step = 0; step < 90 && !character.isGameOver; step++) {
+    // 同一年可能先有年度抉择，再有多轮资金危机抉择，步数不再等于年龄。
+    for (let step = 0; step < 300 && !character.isGameOver; step++) {
       character = await stepNextYear(character);
       if (character.pendingChoice) {
         const options = character.pendingChoice.choice.options.filter(option => canSelectOption(option, character));

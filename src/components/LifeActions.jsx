@@ -12,7 +12,7 @@ export default function LifeActions({ character, disabled, onAction }) {
         <p className="text-xs text-stone-600">{character.lastActionAge === character.age ? '今年已行动，下一年可再做新决定' : '每年可行动一次，决定由你发起'}</p>
       </div>
       {actions.length ? <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
-        {actions.map(action => <button key={action.id} disabled={disabled} onClick={() => onAction(action.id)} className="min-h-14 rounded-xl border border-stone-200 bg-stone-50 px-3 py-3 text-left hover:border-red-600 hover:bg-red-50 focus-visible:outline-2 focus-visible:outline-red-700 disabled:opacity-50 transition">
+        {actions.map(action => <button key={action.id} disabled={disabled} onClick={() => onAction(action.id)} className={`min-h-14 rounded-xl border px-3 py-3 text-left hover:border-red-600 hover:bg-red-50 focus-visible:outline-2 focus-visible:outline-red-700 disabled:opacity-50 transition ${action.id === 'risk' ? 'border-amber-400 bg-amber-50' : 'border-stone-200 bg-stone-50'}`}>
           <span className="block text-sm font-medium text-stone-900">{action.label}</span>
           <span className="block mt-1 text-xs text-stone-600">{action.description}</span>
         </button>)}

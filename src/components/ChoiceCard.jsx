@@ -3,6 +3,11 @@ import { eventCashChange, minimumCash, formatMoney, formatMoneyChange } from '..
 import { canSelectOption, checkCondition } from '../services/lifeEngine';
 import { Flame, Lock } from 'lucide-react';
 
+const outcomePreview = outcomes => {
+  const total = outcomes.reduce((sum, outcome) => sum + outcome.weight, 0);
+  return outcomes.map(outcome => `${Number((outcome.weight / total * 100).toPrecision(6))}%：${outcome.resultText}`).join('；');
+};
+
 export default function ChoiceCard({ pendingChoice, character, onSelectOption }) {
   if (!pendingChoice) return null;
 
@@ -15,7 +20,7 @@ export default function ChoiceCard({ pendingChoice, character, onSelectOption })
       <div className="flex items-center justify-between gap-2 mb-3">
         <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-red-100 text-red-800 text-xs font-semibold tracking-wide">
           <Flame className="w-3.5 h-3.5 text-red-600" />
-          <span>{pendingChoice.mode === 'action' ? '主动求变' : '人生重大抉择'} · {character.age} 岁</span>
+          <span>{choice.id === 'action_risk' ? '大胆一搏' : pendingChoice.mode === 'action' ? '主动求变' : '人生重大抉择'} · {character.age} 岁</span>
         </span>
 
         {sourceCase && (
@@ -54,7 +59,7 @@ export default function ChoiceCard({ pendingChoice, character, onSelectOption })
               key={idx}
               disabled={!canSelect}
               onClick={() => canSelect && onSelectOption(opt)}
-              className={`w-full text-left p-4 rounded-xl border transition-all text-sm relative group cursor-pointer ${
+              className={`w-full text-left focus-visible:outline-2 focus-visible:outline-red-700 p-4 rounded-xl border transition-all text-sm relative group cursor-pointer ${
                 canSelect
                   ? 'border-stone-300 hover:border-red-600 hover:bg-red-50/50 bg-white hover:shadow-md'
                   : 'border-stone-200 bg-stone-100 text-stone-400 cursor-not-allowed opacity-75'
@@ -79,7 +84,9 @@ export default function ChoiceCard({ pendingChoice, character, onSelectOption })
                 )}
               </div>
 
-              {opt.outcomes && <p className="mt-2 text-xs text-stone-600">{opt.outcomes.map(outcome => `${Math.round(outcome.weight * 100)}%：${outcome.resultText}`).join('；')}</p>}
+              {opt.description && <p className="mt-2 text-xs leading-5 text-stone-600">{opt.description}</p>}
+              {opt.detail && <p className="mt-2 text-xs leading-5 text-stone-700">{opt.detail}</p>}
+              {(opt.outcomes || opt.followUp?.outcomes) && <p className="mt-2 text-xs leading-5 text-stone-600">{opt.followUp?.outcomes ? '次年结果：' : ''}{outcomePreview(opt.outcomes || opt.followUp.outcomes)}</p>}
               {/* Effects Preview if available */}
               {!opt.cancel && (
                 <div className="flex flex-wrap items-center gap-2 mt-2 text-xs text-stone-500 font-mono">

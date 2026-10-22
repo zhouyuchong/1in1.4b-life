@@ -2,6 +2,11 @@
 export function createLifeState() {
   return {
     education: 'none',
+    riskAttempts: {},
+    examPreparation: null,
+    schoolEndAge: null,
+    universityTier: null,
+    annualSalary: null,
     schooling: 'preschool',
     career: 'none',
     careerTrack: 'general',
@@ -23,22 +28,26 @@ export function createLifeState() {
 
 export function advanceLifeState(state, age) {
   const next = { ...state };
-  if (age === 6) next.schooling = 'primary';
-  if (age === 12) Object.assign(next, { education: 'primary', schooling: 'junior_high' });
-  if (age === 15) Object.assign(next, { education: 'junior_high', schooling: 'none' });
-  if (age === 18 && next.schooling === 'high_school') {
+  const schoolAge = age - (state.schoolingDelay || 0);
+  if (schoolAge === 6) next.schooling = 'primary';
+  if (schoolAge === 12) Object.assign(next, { education: 'primary', schooling: 'junior_high' });
+  if (schoolAge === 15) Object.assign(next, { education: 'junior_high', schooling: 'none' });
+  if (schoolAge === 18 && next.schooling === 'high_school') {
     Object.assign(next, { education: 'high_school', schooling: 'none' });
-  } else if (age === 18 && next.schooling === 'vocational') {
+  } else if (schoolAge === 18 && next.schooling === 'vocational') {
     Object.assign(next, { education: 'vocational', schooling: 'none', career: 'worker' });
-  } else if (age === 21 && next.schooling === 'college') {
+  } else if (schoolAge === 21 && next.schooling === 'college' && !state.schoolEndAge) {
     Object.assign(next, { education: 'college', schooling: 'none', career: 'private' });
-  } else if (age === 22 && next.schooling === 'university') {
+  } else if (schoolAge === 22 && next.schooling === 'university' && !state.schoolEndAge) {
     Object.assign(next, {
       education: 'bachelor', schooling: 'none',
       career: next.careerTrack === 'directed_public' ? 'public' : 'private'
     });
   }
-  if (age === 60) next.career = 'retired';
+  if (state.schoolEndAge != null && age >= state.schoolEndAge && ['university', 'college', 'graduate'].includes(state.schooling)) {
+    Object.assign(next, { education: { university: 'bachelor', college: 'college', graduate: 'master' }[state.schooling], schooling: 'none', career: 'private', careerTrack: 'general', annualSalary: null, schoolEndAge: null });
+  }
+  if (age >= 60) Object.assign(next, { career: 'retired', annualSalary: null });
   if (next.housing === 'mortgaged' && next.mortgageEndAge !== null && age >= next.mortgageEndAge) {
     Object.assign(next, { housing: 'owned', mortgageEndAge: null });
   }

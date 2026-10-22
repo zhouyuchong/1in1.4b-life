@@ -1,11 +1,13 @@
+import { riskChoice } from './boldRisk.js';
 import { romanceChoice, socialChoice } from './relationships.js';
 
 const cancel = { text: '先不改变，继续考虑', cancel: true };
 const followUp = (text, condition) => ({ text, condition, effect: { knowledge: 2 } });
 export function getLifeActions(character) {
-  if (!character || character.age < 16 || character.isGameOver || character.pendingChoice || character.lastActionAge === character.age) return [];
+  if (!character || character.age < 16 || character.isGameOver || character.finances.recovering || character.pendingChoice || character.lastActionAge === character.age) return [];
   const s = character.lifeState;
   return [
+    ...(character.age >= 18 ? [{ id: 'risk', label: '大胆一搏', description: '复读、考研、跳槽与彩票' }] : []),
     { id: 'study', label: '进修学习', description: '报名课程，提升技能' },
     ...(character.age >= 18 && character.age < 60 && (s.schooling === 'none' || s.career === 'preparing') ? [{ id: 'career', label: '换条职业路', description: '求职、考编或创业' }] : []),
     ...(character.age >= 18 ? [{ id: 'housing', label: '调整居住', description: '租房、买房或卖房' }] : []),
@@ -22,6 +24,7 @@ export function makeActionChoice(character, id) {
   if (!getLifeActions(character).some(action => action.id === id)) return null;
   const { age, lifeState: s, finances: f } = character;
   const choices = {
+    risk: id === 'risk' ? riskChoice(character) : null,
     study: { title: '主动求变：给自己一次进修机会', description: '拿出时间与学费系统学习，积累下一次转向的能力。技能培训不会直接改变学历。', options: [
       { text: '报名技能课程，完成阶段项目', minCash: 6000, cashEffect: -6000, effect: { knowledge: 8, sanity: -2 }, tag: '持续进修', resultText: '你报了课程，开始把空闲时间投入练习。', followUp: followUp('进修后的项目练习有了成果，你整理出一份自己的作品集。') }
     ] },
