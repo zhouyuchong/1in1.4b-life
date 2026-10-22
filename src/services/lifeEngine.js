@@ -1,5 +1,5 @@
 import { graduateOption } from './boldRisk.js';
-import { debtChoice, debtSettlement, unsecuredDebt, DEBT_RULES } from './debt.js';
+import { debtChoice, debtSettlement, unsecuredDebt, debtLimit, DEBT_RULES } from './debt.js';
 import { createFinances, applyMoney, eventCashChange, minimumCash, annualBudget } from './finances.js';
 import { relationshipEvents, romanceChoice } from './relationships.js';
 import { makeActionChoice, careerOptions } from './lifeActions.js';
@@ -292,7 +292,7 @@ export async function stepNextYear(character) {
     }
     character = settleDebt(character, records);
     const severe = character.finances.onlineDebt > 0 && age >= character.finances.onlineDueAge + DEBT_RULES.severeOverdueYears;
-    const forced = character.finances.forcedRecovery || severe || unsecuredDebt(character.finances) >= DEBT_RULES.limit;
+    const forced = character.finances.forcedRecovery || severe || unsecuredDebt(character.finances) >= debtLimit(character);
     const cleared = character.finances.cash >= 0 && !(character.finances.onlineDebt > 0 || character.finances.familyDebt > 0);
     character = { ...character, finances: { ...character.finances, forcedRecovery: forced && !cleared, recovering: forced && !cleared } };
     return enforceDebt(recordYear(character, records));

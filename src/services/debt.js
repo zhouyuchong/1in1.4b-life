@@ -1,7 +1,7 @@
 import { formatMoney } from './finances.js';
 
-import { DEBT_RULES, FAMILY_LIMITS } from './debtRules.js';
-export { DEBT_RULES, FAMILY_LIMITS } from './debtRules.js';
+import { DEBT_RULES, FAMILY_LIMITS, debtLimit } from './debtRules.js';
+export { DEBT_RULES, FAMILY_LIMITS, debtLimit } from './debtRules.js';
 export const unsecuredDebt = f => Math.max(0, (f.onlineDebt || 0) + (f.familyDebt || 0) - f.cash);
 export function familyCapacity(character) {
   if (!character.lifeState.fatherAlive && !character.lifeState.motherAlive) return 0;
@@ -10,14 +10,14 @@ export function familyCapacity(character) {
 export function debtChoice(character) {
   const f = character.finances;
   const severe = (f.onlineDebt || 0) > 0 && character.age >= f.onlineDueAge + DEBT_RULES.severeOverdueYears;
-  const forced = unsecuredDebt(f) >= DEBT_RULES.limit || severe;
+  const forced = unsecuredDebt(f) >= debtLimit(character) || severe;
   if (f.recovering || (!forced && f.cash >= 0)) return null;
   const gap = Math.max(0, -f.cash);
   const family = Math.min(gap, familyCapacity(character));
   const online = Math.min(gap, DEBT_RULES.onlineLimit);
   return {
     id: 'debt_crisis', title: forced ? '债务危机：被迫停下原来的生活' : '余额告急：先填上资金缺口',
-    description: `当前余额 ${formatMoney(f.cash)}，网贷欠款 ${formatMoney(f.onlineDebt || 0)}，家人借款 ${formatMoney(f.familyDebt || 0)}。无抵押净负债达到 ${formatMoney(DEBT_RULES.limit)} 或网贷逾期满一年，将强制打工还债。${forced ? '你已触发强制还债，借新债无法解除危机。' : `家庭背景「${character.familyClass}」剩余可借 ${formatMoney(familyCapacity(character))}（累计额度，用尽不恢复；父母均离世后不可再借）。`}`,
+    description: `当前余额 ${formatMoney(f.cash)}，网贷欠款 ${formatMoney(f.onlineDebt || 0)}，家人借款 ${formatMoney(f.familyDebt || 0)}。按家庭背景「${character.familyClass}」，无抵押净负债达到 ${formatMoney(debtLimit(character))} 或网贷逾期满一年，将强制打工还债。${forced ? '你已触发强制还债，借新债无法解除危机。' : `家庭背景「${character.familyClass}」剩余可借 ${formatMoney(familyCapacity(character))}（累计额度，用尽不恢复；父母均离世后不可再借）。`}`,
     options: [
       ...(!forced && online > 0 && character.age >= 18 && !f.creditBlocked && !(f.onlineDebt > 0) ? [{
         text: `网贷周转 ${formatMoney(online)}：年息${DEBT_RULES.annualRate * 100}%，${character.age + DEBT_RULES.termYears}岁到期`, cashEffect: online,

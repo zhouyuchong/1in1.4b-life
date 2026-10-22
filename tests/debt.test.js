@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { createNewLife, stepNextYear, resolveChoice, startLifeAction } from '../src/services/lifeEngine.js';
-import { debtChoice, debtSettlement, familyCapacity, DEBT_RULES } from '../src/services/debt.js';
+import { debtChoice, debtSettlement, familyCapacity, debtLimit, DEBT_RULES } from '../src/services/debt.js';
 import { advanceLifeState } from '../src/services/lifeState.js';
 import { getLifeActions } from '../src/services/lifeActions.js';
 
@@ -75,11 +75,11 @@ test('长期逾期即使余额非负也强制打工并关闭借款资格', async
 });
 
 test('净负债达到上限强制还债，房贷单独计算，不能靠借新债绕过', async () => {
-  let c = life(-DEBT_RULES.limit);
+  let c = life(-debtLimit({ familyClass: '工薪温饱' }));
   c = await stepNextYear(c);
   assert.equal(c.pendingChoice.choice.options.length, 1);
   c = select(c, '被迫进厂');
-  assert.equal(c.finances.cash, -DEBT_RULES.limit);
+  assert.equal(c.finances.cash, -debtLimit({ familyClass: '工薪温饱' }));
   assert.equal(c.finances.recovering, true);
   c = await stepNextYear(c);
   assert.equal(c.finances.cash, -22000);
@@ -136,4 +136,43 @@ test('家庭资金危机不会给未成年人放贷或安排工厂劳动', async
   c = await stepNextYear(c);
   assert.equal(c.history[0].events[0].ledger[0].label, '家人紧急增收');
   assert.equal(c.history[0].cashChange, 42000);
+});
+
+
+test('各家庭背景在各自负债上限触发强制还债，提示与判定一致', () => {
+  for (const [familyClass, limit] of Object.entries({ '低保特困': 30000, '工薪温饱': 100000, '小康中产': 300000, '高净值富裕': 1000000 })) {
+    const below = { ...life(1 - limit), familyClass };
+    assert.equal(debtLimit(below), limit);
+    assert.ok(debtChoice(below).options.some(o => o.text.includes('向家人借')));
+    const atLimit = { ...life(-limit), familyClass };
+    assert.equal(debtChoice(atLimit).options.length, 1);
+    assert.match(debtChoice(atLimit).options[0].text, /被迫进厂/);
+    assert.ok(debtChoice(atLimit).description.includes(limit.toLocaleString('zh-CN')));
+  }
+});
+
+test('中产和富裕家庭可以借满家庭额度，借入后不会因旧10万元上限强制进厂', async () => {
+  for (const [familyClass, amount] of [['小康中产', 150000], ['高净值富裕', 600000]]) {
+    let c = await stepNextYear({ ...life(-amount), familyClass });
+    c = select(c, '向家人借');
+    assert.equal(c.finances.cash, 0);
+    assert.equal(c.finances.familyDebt, amount);
+    assert.equal(c.pendingChoice, null);
+    assert.equal(c.finances.forcedRecovery, false);
+    assert.ok(getLifeActions(c).length);
+  }
+});
+
+test('富裕家庭自愿兼职后不会因超过旧上限转为强制还债，严重逾期仍受约束', async () => {
+  let c = await stepNextYear({ ...life(-200000), familyClass: '高净值富裕' });
+  c = select(c, '暂停原计划');
+  c = await stepNextYear(c);
+  assert.equal(c.finances.cash, -122000);
+  assert.equal(c.finances.forcedRecovery, false);
+  assert.equal(c.finances.recovering, false);
+  assert.ok(c.pendingChoice.choice.options.some(o => o.text.includes('向家人借')));
+  c = { ...life(0), familyClass: '高净值富裕', age: 32 };
+  c.finances = { ...c.finances, onlineDebt: 12000, onlineDueAge: 31 };
+  assert.equal(debtChoice(c).options.length, 1);
+  assert.match(debtChoice(c).options[0].text, /被迫进厂/);
 });
