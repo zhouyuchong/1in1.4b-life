@@ -1,35 +1,93 @@
 [
   {
     "id": "everyday_choice_12",
-    "title": "新学校里的选择",
-    "description": "社团招新时，你被几种不同的活动吸引。",
-    "options": [
+    "title": "初中社团招新",
+    "description": "进入初中后社团招新，你被几种不同的活动吸引，只能选择一个方向。",
+    "optionPool": [
       {
         "text": "加入科学社，试着动手实验",
         "cashEffect": 0,
         "effect": {
           "sanity": 3,
-          "knowledge": 2
+          "knowledge": 4
         },
-        "resultText": "你选择加入科学社，试着动手实验。这个小小的决定，成为12岁值得记住的一段经历。"
+        "resultText": "科学社的老师让你用土豆和铜线做出了一个简单电池，那一刻的震惊让你第一次觉得物理不是纸上的公式。"
       },
       {
         "text": "参加戏剧社，练习表达自己",
         "cashEffect": 0,
         "effect": {
-          "sanity": 3,
-          "knowledge": 2
+          "sanity": 5,
+          "knowledge": 1
         },
-        "resultText": "你选择参加戏剧社，练习表达自己。这个小小的决定，成为12岁值得记住的一段经历。"
+        "resultText": "你在期末演出里扮演了一个反派角色，台词在嘴边转了一个月，正式演出时台词全部讲完，台下鼓掌。"
       },
       {
         "text": "进入体育社，认识一起运动的人",
         "cashEffect": 0,
         "effect": {
           "sanity": 4,
+          "health": 4,
+          "knowledge": 0
+        },
+        "resultText": "你加入了篮球队，每天傍晚在操场练习传球，汗流浃背，但队友慢慢变成了初中最好的朋友。"
+      },
+      {
+        "text": "加入学生会文宣部：负责出黑板报和宣传稿",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 3,
+          "knowledge": 3
+        },
+        "resultText": "你每个月都要出一期黑板报，选素材、设计版面、写粉笔字，渐渐发现自己其实挺有组织头脑。"
+      },
+      {
+        "text": "报名参加辩论社：学会有逻辑地表达和反驳",
+        "cashEffect": 0,
+        "effect": {
+          "knowledge": 5,
+          "sanity": 2
+        },
+        "resultText": "辩论训练让你学会在压力下清晰说话，期末辩论赛你被评为最佳辩手，语文老师说你以后可以学法律。"
+      },
+      {
+        "text": "不参加社团，把时间留给自习和补课",
+        "cashEffect": 0,
+        "effect": {
+          "knowledge": 6,
+          "sanity": -2
+        },
+        "resultText": "你把所有课余时间都用在了自习室，成绩在班里稳定在前十，但有时候会羡慕走廊里社团同学的笑声。"
+      }
+    ],
+    "options": [
+      {
+        "text": "加入科学社，试着动手实验",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 3,
+          "knowledge": 4
+        },
+        "resultText": "科学社的老师让你用土豆和铜线做出了一个简单电池，那一刻的震惊让你第一次觉得物理不是纸上的公式。"
+      },
+      {
+        "text": "参加戏剧社，练习表达自己",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 5,
           "knowledge": 1
         },
-        "resultText": "你选择进入体育社，认识一起运动的人。这个小小的决定，成为12岁值得记住的一段经历。"
+        "resultText": "你在期末演出里扮演了一个反派角色，台词在嘴边转了一个月，正式演出时台词全部讲完，台下鼓掌。"
+      },
+      {
+        "text": "进入体育社，认识一起运动的人",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 4,
+          "health": 4,
+          "knowledge": 0
+        },
+        "resultText": "你加入了篮球队，每天傍晚在操场练习传球，汗流浃背，但队友慢慢变成了初中最好的朋友。"
       }
     ]
   }

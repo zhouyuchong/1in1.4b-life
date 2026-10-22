@@ -1,35 +1,64 @@
 [
   {
     "id": "everyday_choice_81",
-    "title": "与朋友的分歧",
-    "description": "一次聊天中，你和朋友的观点不太一样。",
+    "title": "耄耋之年的静穆时光",
+    "description": "八十一岁，步入耄耋之寿。耳畔红尘渐远，内心澄明如镜。",
+    "optionPool": [
+      {
+        "text": "靠在藤编摇椅上微闭双眼，细听半导体收音机里的时令物候",
+        "cashEffect": 0,
+        "effect": { "sanity": 4, "knowledge": 1 },
+        "resultText": "收音机里娓娓道来节气交替，摇椅吱呀轻响，岁月在平缓的语调中缓缓流淌。"
+      },
+      {
+        "text": "给窗台绿兰细心喷洒温水，用柔软绒布轻拂每一片碧叶",
+        "cashEffect": 0,
+        "effect": { "sanity": 5, "health": 1 },
+        "resultText": "翠绿的叶脉在水滴浸润下生机盎然，生命对生命的温存呵护，让老人心生欢喜。"
+      },
+      {
+        "text": "静坐沉思，在心底一一默念那些曾经给过自己温暖的人并送上祝福",
+        "cashEffect": 0,
+        "effect": { "sanity": 6 },
+        "resultText": "那些故人虽已远去，但人间的善意在记忆长河中闪闪发光，心头唯有感恩与祥和。"
+      },
+      {
+        "text": "把双手摊在阳光下，凝视苍老指节上镌刻的风霜印记",
+        "cashEffect": 0,
+        "effect": { "sanity": 5, "health": 2 },
+        "resultText": "这是一双辛勤耕耘过一生的手，无论世事如何变迁，每一道皱纹都是坚韧活过的勋章。"
+      },
+      {
+        "text": "安安静静抿饮一碗温热磨粉黑芝麻糊，细尝天然谷物甜香",
+        "cashEffect": -10,
+        "effect": { "health": 3, "sanity": 4 },
+        "resultText": "香浓醇厚的米糊缓缓滑入腹中，肠胃暖意融融，平淡至极，却觉人生滋味莫过于此。"
+      },
+      {
+        "text": "从红铁盒里找出当年的第一张工作证，指尖轻触泛黄的黑白照片",
+        "cashEffect": 0,
+        "effect": { "sanity": 5, "knowledge": 1 },
+        "resultText": "照片上的年轻人眼神清亮充满希望，与八十一年后的自己相视一笑，人生无悔。"
+      }
+    ],
     "options": [
       {
-        "text": "认真听完对方的理由",
+        "text": "靠在藤编摇椅上微闭双眼，细听半导体收音机里的时令物候",
         "cashEffect": 0,
-        "effect": {
-          "sanity": 3,
-          "knowledge": 2
-        },
-        "resultText": "你选择认真听完对方的理由。这个小小的决定，成为81岁值得记住的一段经历。"
+        "effect": { "sanity": 4, "knowledge": 1 },
+        "resultText": "收音机里娓娓道来节气交替，摇椅吱呀轻响，岁月在平缓的语调中缓缓流淌。"
       },
       {
-        "text": "温和表达自己的看法",
+        "text": "给窗台绿兰细心喷洒温水，用柔软绒布轻拂每一片碧叶",
         "cashEffect": 0,
-        "effect": {
-          "sanity": 3,
-          "knowledge": 2
-        },
-        "resultText": "你选择温和表达自己的看法。这个小小的决定，成为81岁值得记住的一段经历。"
+        "effect": { "sanity": 5, "health": 1 },
+        "resultText": "翠绿的叶脉在水滴浸润下生机盎然，生命对生命的温存呵护，让老人心生欢喜。"
       },
       {
-        "text": "约好求同存异，换个话题",
+        "text": "静坐沉思，在心底一一默念那些曾经给过自己温暖的人并送上祝福",
         "cashEffect": 0,
-        "effect": {
-          "sanity": 4,
-          "knowledge": 1
-        },
-        "resultText": "你选择约好求同存异，换个话题。这个小小的决定，成为81岁值得记住的一段经历。"
+        "effect": { "sanity": 6 },
+        "resultText": "那些故人虽已远去，但人间的善意在记忆长河中闪闪发光，心头唯有感恩与祥和。"
       }
     ]
   }

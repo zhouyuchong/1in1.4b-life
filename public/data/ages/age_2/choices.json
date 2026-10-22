@@ -7,6 +7,68 @@
     "condition": {
       "isRural": true
     },
+    "optionPool": [
+      {
+        "text": "留守老家：由爷爷奶奶在村里抚养，父母按月寄生活费回来",
+        "requirements": {},
+        "effect": {
+          "wealth": 5,
+          "sanity": -10,
+          "health": -2
+        },
+        "tag": "留守儿童",
+        "resultText": "绿皮火车开动时，你在站台哭得声嘶力竭。往后的童年里，父母只是电话免提里那熟悉又陌生的声音。",
+        "cashEffect": 5000
+      },
+      {
+        "text": "随迁进城：无论多苦也带在身边，挤在城中村几平米的出租屋里",
+        "requirements": {},
+        "effect": {
+          "wealth": -8,
+          "sanity": 8,
+          "knowledge": 3
+        },
+        "tag": "流动儿童",
+        "resultText": "你跟着父母来到了大城市，虽然一家人挤在潮湿昏暗的城中村单间，但每天晚上都能闻到妈妈做的热饭香。",
+        "cashEffect": -8000
+      },
+      {
+        "text": "妈妈留下陪你，爸爸一人外出务工：两地分隔，每月通话维系家庭",
+        "requirements": {},
+        "effect": {
+          "wealth": 2,
+          "sanity": 2,
+          "health": 1
+        },
+        "tag": "半留守",
+        "resultText": "妈妈留下来陪着你，家里暖和，但爸爸只有过年才能回来。你学会了在妈妈睡着时悄悄等待春节的倒计时。",
+        "cashEffect": 2000
+      },
+      {
+        "text": "回老家县城经营小生意：放弃外出打工，守在孩子身边维持温饱",
+        "requirements": {},
+        "effect": {
+          "sanity": 6,
+          "wealth": -2,
+          "health": 2
+        },
+        "tag": "县城守家",
+        "resultText": "父母在县城摆了一个早餐摊，生意不温不火，但你每天早上能闻着葱花香长大，县城的童年有自己的温度。",
+        "cashEffect": -2000
+      },
+      {
+        "text": "由外公外婆在母亲娘家县城带你：换一个相对有城镇资源的照护环境",
+        "requirements": {},
+        "effect": {
+          "wealth": 3,
+          "sanity": -5,
+          "knowledge": 2
+        },
+        "tag": "隔代抚养",
+        "resultText": "外婆把你送进了镇上的幼儿园，比村里条件好一些，但父母常年见不着面，你开始分不清想家是什么滋味。",
+        "cashEffect": 3000
+      }
+    ],
     "options": [
       {
         "text": "留守老家：由爷爷奶奶在村里抚养，父母按月寄生活费回来",
@@ -31,6 +93,18 @@
         "tag": "流动儿童",
         "resultText": "你跟着父母来到了大城市，虽然一家人挤在潮湿昏暗的城中村单间，但每天晚上都能闻到妈妈做的热饭香。",
         "cashEffect": -8000
+      },
+      {
+        "text": "妈妈留下陪你，爸爸一人外出务工：两地分隔，每月通话维系家庭",
+        "requirements": {},
+        "effect": {
+          "wealth": 2,
+          "sanity": 2,
+          "health": 1
+        },
+        "tag": "半留守",
+        "resultText": "妈妈留下来陪着你，家里暖和，但爸爸只有过年才能回来。你学会了在妈妈睡着时悄悄等待春节的倒计时。",
+        "cashEffect": 2000
       }
     ]
   }

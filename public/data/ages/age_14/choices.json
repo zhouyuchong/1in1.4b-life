@@ -2,34 +2,90 @@
   {
     "id": "everyday_choice_14",
     "title": "压力来了怎么办",
-    "description": "学习与成长让你有些疲惫，你想怎样调整？",
-    "options": [
+    "description": "初三学习与成长让你有些疲惫，你想怎样调整自己？",
+    "optionPool": [
       {
         "text": "约朋友运动，出一身汗",
         "cashEffect": 0,
         "effect": {
-          "sanity": 3,
-          "knowledge": 2
+          "sanity": 5,
+          "health": 4
         },
-        "resultText": "你选择约朋友运动，出一身汗。这个小小的决定，成为14岁值得记住的一段经历。"
+        "resultText": "你和同桌在操场上踢了一个下午的球，大汗淋漓，累得说不出话，但心里那团闷气消散得无影无踪。"
       },
       {
         "text": "向老师求助，重新安排学习计划",
         "cashEffect": 0,
         "effect": {
           "sanity": 3,
-          "knowledge": 2
+          "knowledge": 4
         },
-        "resultText": "你选择向老师求助，重新安排学习计划。这个小小的决定，成为14岁值得记住的一段经历。"
+        "resultText": "班主任帮你把每天的任务拆细了，从那以后你每完成一项就打个勾，压迫感少了很多，成绩开始稳步上升。"
       },
       {
         "text": "和家人认真聊聊自己的压力",
         "cashEffect": 0,
         "effect": {
-          "sanity": 4,
+          "sanity": 5,
           "knowledge": 1
         },
-        "resultText": "你选择和家人认真聊聊自己的压力。这个小小的决定，成为14岁值得记住的一段经历。"
+        "resultText": "你第一次认真跟父母说了自己有多累，妈妈沉默了一会儿说：那这周末我们出去吃顿好的。就这一句话，你哭了。"
+      },
+      {
+        "text": "一个人骑车绕城半圈，用速度消化情绪",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 4,
+          "health": 3
+        },
+        "resultText": "你骑着自行车在傍晚的街道上穿行，路灯一盏盏亮起来，风钻进耳朵，心里的结松了不少。"
+      },
+      {
+        "text": "整理房间，把混乱的环境清理干净再继续",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 4,
+          "knowledge": 2
+        },
+        "resultText": "你花了两个小时把书桌整理得一丝不苟，试卷分科归档，教辅竖排摆好，坐下来打开书的时候，脑子里清醒多了。"
+      },
+      {
+        "text": "沉进一本课外书里，给自己放一天假",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 5,
+          "knowledge": 2
+        },
+        "resultText": "你一口气读完了一本小说，从早上睡到下午，然后一边吃零食一边看书，这一天什么都没做，心里却踏实了。"
+      }
+    ],
+    "options": [
+      {
+        "text": "约朋友运动，出一身汗",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 5,
+          "health": 4
+        },
+        "resultText": "你和同桌在操场上踢了一个下午的球，大汗淋漓，累得说不出话，但心里那团闷气消散得无影无踪。"
+      },
+      {
+        "text": "向老师求助，重新安排学习计划",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 3,
+          "knowledge": 4
+        },
+        "resultText": "班主任帮你把每天的任务拆细了，从那以后你每完成一项就打个勾，压迫感少了很多，成绩开始稳步上升。"
+      },
+      {
+        "text": "和家人认真聊聊自己的压力",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 5,
+          "knowledge": 1
+        },
+        "resultText": "你第一次认真跟父母说了自己有多累，妈妈沉默了一会儿说：那这周末我们出去吃顿好的。就这一句话，你哭了。"
       }
     ]
   }

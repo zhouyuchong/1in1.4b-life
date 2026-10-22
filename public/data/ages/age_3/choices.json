@@ -4,6 +4,69 @@
     "title": "入园难：摇号、私立还是普通托儿班？",
     "description": "公立幼儿园每月只需几百元但名额紧张需要摇号，优质民办双语每月四五千，普通弄堂托儿所条件简陋。",
     "sourceCase": "真实背景：学前教育资源分布与入园难入园贵现象",
+    "optionPool": [
+      {
+        "text": "全力冲刺公办园摇号：如果落选中签就多方托关系求人",
+        "requirements": {},
+        "effect": {
+          "wealth": 3,
+          "sanity": -3,
+          "knowledge": 2
+        },
+        "tag": "公立娃",
+        "resultText": "经过一番折腾和焦急等待，你成功摇中了公立普惠园，规范的伙食和宽敞的操场让父母安心不少。",
+        "cashEffect": 3000
+      },
+      {
+        "text": "狠心读高端私立双语幼儿园：不能让孩子输在起跑线上",
+        "requirements": {
+          "wealth": 45
+        },
+        "effect": {
+          "wealth": -15,
+          "sanity": 2,
+          "knowledge": 8
+        },
+        "tag": "精英启蒙",
+        "resultText": "外教老师每天教你简单的英文儿歌，你学会了流利的日常打招呼，父母看着高昂的缴费单默默叹气。",
+        "cashEffect": -15000
+      },
+      {
+        "text": "就近送普通民办/村办托儿所：离家近接送方便，能吃饱玩开心就行",
+        "requirements": {},
+        "effect": {
+          "sanity": 5,
+          "knowledge": -2
+        },
+        "tag": "散养童年",
+        "resultText": "托儿所里虽然玩具陈旧，但老师对大家很温和，你每天在院子里玩泥巴无忧无虑。",
+        "cashEffect": 0
+      },
+      {
+        "text": "让奶奶在家带：省下一大笔学费，等孩子大一点再说",
+        "requirements": {},
+        "effect": {
+          "sanity": 4,
+          "health": 2,
+          "knowledge": -3
+        },
+        "tag": "隔代照看",
+        "resultText": "奶奶把你带得白白胖胖，整天讲老故事，带你去菜市场认识各种蔬菜；就是识字说话比同龄孩子慢了些。",
+        "cashEffect": 6000
+      },
+      {
+        "text": "托关系进一所有口碑的街道公益普惠园：价格实惠，管理规范",
+        "requirements": {},
+        "effect": {
+          "sanity": 3,
+          "knowledge": 3,
+          "wealth": -1
+        },
+        "tag": "普惠园",
+        "resultText": "街道园收费亲民，老师认真负责，你每天学做手工操纸，学期末把作品带回来贴满了墙。",
+        "cashEffect": -2000
+      }
+    ],
     "options": [
       {
         "text": "全力冲刺公办园摇号：如果落选中签就多方托关系求人",
@@ -35,7 +98,6 @@
         "text": "就近送普通民办/村办托儿所：离家近接送方便，能吃饱玩开心就行",
         "requirements": {},
         "effect": {
-          "wealth": 0,
           "sanity": 5,
           "knowledge": -2
         },

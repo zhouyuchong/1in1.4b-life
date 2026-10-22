@@ -3,33 +3,89 @@
     "id": "everyday_choice_11",
     "title": "留住小学的回忆",
     "description": "小学时光快结束了，你想留下一份怎样的纪念？",
-    "options": [
+    "optionPool": [
       {
         "text": "给老师和同学写信",
         "cashEffect": 0,
         "effect": {
-          "sanity": 3,
-          "knowledge": 2
+          "sanity": 5,
+          "knowledge": 1
         },
-        "resultText": "你选择给老师和同学写信。这个小小的决定，成为11岁值得记住的一段经历。"
+        "resultText": "你认认真真给每个要好的同学写了一封信，班主任在毕业典礼上说你是最有心意的孩子，把信折好夹进了相册。"
       },
       {
         "text": "画一本校园回忆册",
         "cashEffect": 0,
         "effect": {
-          "sanity": 3,
+          "sanity": 4,
           "knowledge": 2
         },
-        "resultText": "你选择画一本校园回忆册。这个小小的决定，成为11岁值得记住的一段经历。"
+        "resultText": "你把小学六年的每一段重要经历画成了一本手绘册，用水彩上色，毕业时当礼物送给了最好的朋友，对方哭了。"
       },
       {
         "text": "约朋友打一场告别球赛",
         "cashEffect": 0,
         "effect": {
-          "sanity": 4,
+          "sanity": 5,
+          "health": 3
+        },
+        "resultText": "你们在操场上打了最后一场篮球，跌跌撞撞，满头大汗，输赢没人在意，大家都不想走。"
+      },
+      {
+        "text": "组织同学合唱一首班歌，录下来作纪念",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 5,
           "knowledge": 1
         },
-        "resultText": "你选择约朋友打一场告别球赛。这个小小的决定，成为11岁值得记住的一段经历。"
+        "resultText": "你用手机录下了大家一起唱班歌的那段视频，画质模糊但声音真实，多年后再听，还是会忍不住想起那个下午。"
+      },
+      {
+        "text": "把小学的课本和奖状整理进盒子，留给未来的自己",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 3,
+          "knowledge": 3
+        },
+        "resultText": "你把六年的语文课本和三好学生证书叠在一起，压进床底的纸箱。多年后翻出来，字迹已经模糊，心情却很复杂。"
+      },
+      {
+        "text": "在小学最后一个月拼命把成绩冲到顶：让自己以最好的状态结束",
+        "cashEffect": 0,
+        "effect": {
+          "knowledge": 5,
+          "sanity": -1
+        },
+        "resultText": "你在小学最后一次期末考试里考出了有史以来最高分，班主任在成绩单上写了「一路走好」四个字，你把它夹进了书里。"
+      }
+    ],
+    "options": [
+      {
+        "text": "给老师和同学写信",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 5,
+          "knowledge": 1
+        },
+        "resultText": "你认认真真给每个要好的同学写了一封信，班主任在毕业典礼上说你是最有心意的孩子，把信折好夹进了相册。"
+      },
+      {
+        "text": "画一本校园回忆册",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 4,
+          "knowledge": 2
+        },
+        "resultText": "你把小学六年的每一段重要经历画成了一本手绘册，用水彩上色，毕业时当礼物送给了最好的朋友，对方哭了。"
+      },
+      {
+        "text": "约朋友打一场告别球赛",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 5,
+          "health": 3
+        },
+        "resultText": "你们在操场上打了最后一场篮球，跌跌撞撞，满头大汗，输赢没人在意，大家都不想走。"
       }
     ]
   }

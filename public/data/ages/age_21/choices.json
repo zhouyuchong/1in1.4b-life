@@ -1,35 +1,91 @@
 [
   {
     "id": "everyday_choice_21",
-    "title": "一次志愿服务邀请",
-    "description": "社区征集志愿者，你愿意怎样参与？",
-    "options": [
+    "title": "大学尾声的选择",
+    "description": "毕业前最后一段时光，你想怎么度过？",
+    "optionPool": [
       {
-        "text": "帮助整理公共图书",
-        "cashEffect": 0,
-        "effect": {
-          "sanity": 3,
-          "knowledge": 2
-        },
-        "resultText": "你选择帮助整理公共图书。这个小小的决定，成为21岁值得记住的一段经历。"
-      },
-      {
-        "text": "参与附近的环境清理",
-        "cashEffect": 0,
-        "effect": {
-          "sanity": 3,
-          "knowledge": 2
-        },
-        "resultText": "你选择参与附近的环境清理。这个小小的决定，成为21岁值得记住的一段经历。"
-      },
-      {
-        "text": "分享一项自己擅长的小技能",
+        "text": "参加社区志愿服务，帮助整理公共图书",
         "cashEffect": 0,
         "effect": {
           "sanity": 4,
           "knowledge": 1
         },
-        "resultText": "你选择分享一项自己擅长的小技能。这个小小的决定，成为21岁值得记住的一段经历。"
+        "resultText": "你在社区图书馆做了一学期志愿者，按类别整理书架时意外读了很多以前没接触过的书。"
+      },
+      {
+        "text": "参与环保公益活动，周末在江边捡垃圾",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 4,
+          "health": 2
+        },
+        "resultText": "你戴着手套在江边弯腰拾捡，做完后和同伴在桥头吃了一碗热粉，那种踏实感很久没有了。"
+      },
+      {
+        "text": "在学校组织一次分享活动，聊聊自己学到的东西",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 3,
+          "knowledge": 3
+        },
+        "resultText": "你在图书馆报告厅办了一场只有十几人的小型分享，讲完自己整理的笔记，有人在结束后来跟你要PPT。"
+      },
+      {
+        "text": "争取一份实习：把校园里剩下的时间换成简历里的一行经历",
+        "cashEffect": 3000,
+        "effect": {
+          "knowledge": 5,
+          "sanity": -2
+        },
+        "resultText": "你在临毕业前挤进了一家公司实习，每天提早到、最晚走，带教的姐姐说你是她见过最拼命的实习生。"
+      },
+      {
+        "text": "和室友来一次毕业旅行，用脚步丈量中国版图",
+        "cashEffect": -3000,
+        "effect": {
+          "sanity": 6,
+          "health": 2
+        },
+        "resultText": "你们四个人背着背包从成都出发，坐绿皮火车到丽江，钱花得七七八八，但那段路程变成了日后说不完的故事。"
+      },
+      {
+        "text": "闭关准备考研或公考，把所有精力压在下一个起跑线上",
+        "cashEffect": 0,
+        "effect": {
+          "knowledge": 7,
+          "sanity": -4
+        },
+        "resultText": "你在图书馆最角落的卡座坐了整整两个月，偶尔抬头看看窗外，同学们的欢笑声和你隔着一层玻璃。"
+      }
+    ],
+    "options": [
+      {
+        "text": "参加社区志愿服务，帮助整理公共图书",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 4,
+          "knowledge": 1
+        },
+        "resultText": "你在社区图书馆做了一学期志愿者，按类别整理书架时意外读了很多以前没接触过的书。"
+      },
+      {
+        "text": "参与环保公益活动，周末在江边捡垃圾",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 4,
+          "health": 2
+        },
+        "resultText": "你戴着手套在江边弯腰拾捡，做完后和同伴在桥头吃了一碗热粉，那种踏实感很久没有了。"
+      },
+      {
+        "text": "在学校组织一次分享活动，聊聊自己学到的东西",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 3,
+          "knowledge": 3
+        },
+        "resultText": "你在图书馆报告厅办了一场只有十几人的小型分享，讲完自己整理的笔记，有人在结束后来跟你要PPT。"
       }
     ]
   }

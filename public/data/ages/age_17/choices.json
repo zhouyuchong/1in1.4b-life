@@ -4,14 +4,12 @@
     "title": "新高考选科：硬核工科还是兴趣文史？",
     "description": "在专业覆盖率高达95%的“物理+化学”与个人更感兴趣的文史类之间，你必须做出选科取舍。",
     "sourceCase": "真实背景：新高考改革选科博弈与专业限报政策",
-    "options": [
+    "condition": { "lifeState": { "schooling": "high_school" } },
+    "optionPool": [
       {
         "text": "选【物化生/物化地】大工科组合：哪怕再难啃，也要抢占绝大多数理工专业报读资格",
         "requirements": {},
-        "effect": {
-          "knowledge": 8,
-          "sanity": -6
-        },
+        "effect": { "knowledge": 8, "sanity": -6 },
         "tag": "理工做题派",
         "resultText": "你在力学受力分析和有机化学反应方程式里痛苦煎熬，但获得了几乎无限的大学工科填报范围。",
         "cashEffect": 0
@@ -19,19 +17,61 @@
       {
         "text": "选【史政地/史政生】文科组合：为了更高的卷面分数和考公考编优势",
         "requirements": {},
-        "effect": {
-          "knowledge": 5,
-          "sanity": 3
-        },
+        "effect": { "knowledge": 5, "sanity": 3 },
         "tag": "文史博览派",
         "resultText": "你沉浸在近代史与政治哲学的逻辑脉络中，虽然能选的专业范围受限，但文字功底越发深厚。",
         "cashEffect": 0
+      },
+      {
+        "text": "选【物史地】跨科组合：既保住理工报考资格，又发挥文科思维优势",
+        "requirements": {},
+        "effect": { "knowledge": 6, "sanity": 0 },
+        "tag": "跨科均衡派",
+        "resultText": "你既不是最纯粹的理科生也不是文科生，三门科目各有所长，最终大学填报时选择了建筑学这个交叉专业。",
+        "cashEffect": 0
+      },
+      {
+        "text": "选【物化史】组合，剑指经济类和法学专业",
+        "requirements": {},
+        "effect": { "knowledge": 6, "sanity": -2 },
+        "tag": "经法方向",
+        "resultText": "你组了一套少见的选科组合，同学问你为什么，你说想报经济或法律，把两边的门都留着。",
+        "cashEffect": 0
+      },
+      {
+        "text": "凭兴趣选了生物、历史、地理：虽然专业受限，但学起来不痛苦",
+        "requirements": {},
+        "effect": { "knowledge": 4, "sanity": 5 },
+        "tag": "兴趣优先",
+        "resultText": "你选了自己真正感兴趣的科目，成绩比预期稳，虽然报专业时受限，但高中两年过得最踏实。",
+        "cashEffect": 0
       }
     ],
-    "condition": {
-      "lifeState": {
-        "schooling": "high_school"
+    "options": [
+      {
+        "text": "选【物化生/物化地】大工科组合：哪怕再难啃，也要抢占绝大多数理工专业报读资格",
+        "requirements": {},
+        "effect": { "knowledge": 8, "sanity": -6 },
+        "tag": "理工做题派",
+        "resultText": "你在力学受力分析和有机化学反应方程式里痛苦煎熬，但获得了几乎无限的大学工科填报范围。",
+        "cashEffect": 0
+      },
+      {
+        "text": "选【史政地/史政生】文科组合：为了更高的卷面分数和考公考编优势",
+        "requirements": {},
+        "effect": { "knowledge": 5, "sanity": 3 },
+        "tag": "文史博览派",
+        "resultText": "你沉浸在近代史与政治哲学的逻辑脉络中，虽然能选的专业范围受限，但文字功底越发深厚。",
+        "cashEffect": 0
+      },
+      {
+        "text": "选【物史地】跨科组合：既保住理工报考资格，又发挥文科思维优势",
+        "requirements": {},
+        "effect": { "knowledge": 6, "sanity": 0 },
+        "tag": "跨科均衡派",
+        "resultText": "你既不是最纯粹的理科生也不是文科生，三门科目各有所长，最终大学填报时选择了建筑学这个交叉专业。",
+        "cashEffect": 0
       }
-    }
+    ]
   }
 ]

@@ -3,33 +3,89 @@
     "id": "everyday_choice_7",
     "title": "课间的一点勇气",
     "description": "同学邀请你一起玩，而你还不太熟悉游戏规则。",
-    "options": [
+    "optionPool": [
       {
         "text": "主动加入，边玩边学",
         "cashEffect": 0,
         "effect": {
-          "sanity": 3,
+          "sanity": 4,
           "knowledge": 2
         },
-        "resultText": "你选择主动加入，边玩边学。这个小小的决定，成为7岁值得记住的一段经历。"
+        "resultText": "你鼓起勇气走进游戏圈，虽然一开始总弄错规则，但大家很快就把你当成固定的玩伴了。"
       },
       {
         "text": "先看一会儿，再请同学教我",
         "cashEffect": 0,
         "effect": {
           "sanity": 3,
-          "knowledge": 2
+          "knowledge": 3
         },
-        "resultText": "你选择先看一会儿，再请同学教我。这个小小的决定，成为7岁值得记住的一段经历。"
+        "resultText": "你在旁边默默观察了一个课间，终于看懂了规则，鼓起勇气举手说：能教我吗？对方笑着点了头。"
       },
       {
         "text": "邀请他们一起玩自己熟悉的游戏",
         "cashEffect": 0,
         "effect": {
-          "sanity": 4,
+          "sanity": 5,
           "knowledge": 1
         },
-        "resultText": "你选择邀请他们一起玩自己熟悉的游戏。这个小小的决定，成为7岁值得记住的一段经历。"
+        "resultText": "你教同学玩自己从小就会的跳皮筋，你成了今天的规则讲解员，大家都叫你再示范一遍。"
+      },
+      {
+        "text": "一个人坐在树下看云，享受独处时光",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 3,
+          "knowledge": 1
+        },
+        "resultText": "你坐在操场角落的树荫里，看了一下午云朵变形，心里格外平静，只是有点希望有人陪着。"
+      },
+      {
+        "text": "去图书角借了一本故事书，课间就在教室里看",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 2,
+          "knowledge": 4
+        },
+        "resultText": "你沉进了那本薄薄的故事书里，下课铃响了你都没有抬头，语文老师悄悄在日记本里给你点了个赞。"
+      },
+      {
+        "text": "帮老师收作业本，顺便问了一个想很久的问题",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 2,
+          "knowledge": 4
+        },
+        "resultText": "你借着帮忙的机会，把那个在脑子里转了好几天的问题问了出来，老师认真回答了你，你觉得今天很值。"
+      }
+    ],
+    "options": [
+      {
+        "text": "主动加入，边玩边学",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 4,
+          "knowledge": 2
+        },
+        "resultText": "你鼓起勇气走进游戏圈，虽然一开始总弄错规则，但大家很快就把你当成固定的玩伴了。"
+      },
+      {
+        "text": "先看一会儿，再请同学教我",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 3,
+          "knowledge": 3
+        },
+        "resultText": "你在旁边默默观察了一个课间，终于看懂了规则，鼓起勇气举手说：能教我吗？对方笑着点了头。"
+      },
+      {
+        "text": "邀请他们一起玩自己熟悉的游戏",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 5,
+          "knowledge": 1
+        },
+        "resultText": "你教同学玩自己从小就会的跳皮筋，你成了今天的规则讲解员，大家都叫你再示范一遍。"
       }
     ]
   }

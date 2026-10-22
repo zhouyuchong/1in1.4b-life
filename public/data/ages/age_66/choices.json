@@ -1,35 +1,64 @@
 [
   {
     "id": "everyday_choice_66",
-    "title": "完成一个小心愿",
-    "description": "清单上有个拖延了很久的个人目标。",
+    "title": "六十六岁的日常清欢",
+    "description": "六十六岁顺心顺遂，日历一页页翻过，今天你想给生活添上怎样一笔？",
+    "optionPool": [
+      {
+        "text": "添置便携收音机，清晨听早新闻，傍晚听名家京剧选段",
+        "cashEffect": -80,
+        "effect": { "sanity": 4, "knowledge": 1 },
+        "resultText": "老唱腔从喇叭里流淌而出，依着窗台轻叩节拍，琐碎的家务也因这咿呀声腔变得生动起来。"
+      },
+      {
+        "text": "参加社区晨练太极班，由资深老师傅系统纠正云手推掌",
+        "cashEffect": 0,
+        "effect": { "health": 4, "sanity": 3 },
+        "resultText": "一招一式中正安舒，以气运身，腰腿日渐扎实稳健，打完一套神清气和。"
+      },
+      {
+        "text": "钻研传统手工发酵，蒸几屉白白胖胖的香甜红枣馒头",
+        "cashEffect": -40,
+        "effect": { "sanity": 5, "health": 1 },
+        "resultText": "蒸笼掀开白汽升腾，枣香扑鼻，咬一口松软麦香，手作的踏实滋味直抵心底。"
+      },
+      {
+        "text": "每天午后铺毡研墨，悬腕手摹名帖两页大字",
+        "cashEffect": -50,
+        "effect": { "sanity": 5, "knowledge": 2 },
+        "resultText": "墨色在宣纸上渐次洇开，凝神静气间杂念全消，案头字迹越见沉稳苍劲。"
+      },
+      {
+        "text": "在阳台藤椅上翻阅当年的信件明信片，沉浸在温暖回忆中",
+        "cashEffect": 0,
+        "effect": { "sanity": 4, "knowledge": 1 },
+        "resultText": "熟悉的字迹承载着故人的问候，旧时光的温情穿越几十载岁月，依然在心间闪烁微光。"
+      },
+      {
+        "text": "起大早赶赴露天早市，在喧腾烟火气中采买带露珠的蔬果",
+        "cashEffect": -60,
+        "effect": { "health": 2, "sanity": 4 },
+        "resultText": "商贩的吆喝声、菜叶的新鲜水汽、水灵灵的瓜豆，市井的蓬勃生机让你倍感生活的美好。"
+      }
+    ],
     "options": [
       {
-        "text": "把目标拆成几步，从今天开始",
-        "cashEffect": 0,
-        "effect": {
-          "sanity": 3,
-          "knowledge": 2
-        },
-        "resultText": "你选择把目标拆成几步，从今天开始。这个小小的决定，成为66岁值得记住的一段经历。"
+        "text": "添置便携收音机，清晨听早新闻，傍晚听名家京剧选段",
+        "cashEffect": -80,
+        "effect": { "sanity": 4, "knowledge": 1 },
+        "resultText": "老唱腔从喇叭里流淌而出，依着窗台轻叩节拍，琐碎的家务也因这咿呀声腔变得生动起来。"
       },
       {
-        "text": "找个伙伴互相鼓励",
+        "text": "参加社区晨练太极班，由资深老师傅系统纠正云手推掌",
         "cashEffect": 0,
-        "effect": {
-          "sanity": 3,
-          "knowledge": 2
-        },
-        "resultText": "你选择找个伙伴互相鼓励。这个小小的决定，成为66岁值得记住的一段经历。"
+        "effect": { "health": 4, "sanity": 3 },
+        "resultText": "一招一式中正安舒，以气运身，腰腿日渐扎实稳健，打完一套神清气和。"
       },
       {
-        "text": "重新确认它是否仍然是自己想做的事",
-        "cashEffect": 0,
-        "effect": {
-          "sanity": 4,
-          "knowledge": 1
-        },
-        "resultText": "你选择重新确认它是否仍然是自己想做的事。这个小小的决定，成为66岁值得记住的一段经历。"
+        "text": "钻研传统手工发酵，蒸几屉白白胖胖的香甜红枣馒头",
+        "cashEffect": -40,
+        "effect": { "sanity": 5, "health": 1 },
+        "resultText": "蒸笼掀开白汽升腾，枣香扑鼻，咬一口松软麦香，手作的踏实滋味直抵心底。"
       }
     ]
   }

@@ -2,34 +2,91 @@
   {
     "id": "everyday_choice_13",
     "title": "青春期的心事",
-    "description": "你对一个同学产生了好感，也开始在意如何表达和相处。",
-    "options": [
+    "description": "初二了，你对一个同学产生了好感，也开始在意如何表达和相处。",
+    "optionPool": [
       {
         "text": "先从朋友做起，尊重彼此的节奏",
         "cashEffect": 0,
         "effect": {
-          "sanity": 3,
+          "sanity": 4,
           "knowledge": 2
         },
-        "resultText": "你选择先从朋友做起，尊重彼此的节奏。这个小小的决定，成为13岁值得记住的一段经历。"
+        "resultText": "你和对方成了午休时一起看课外书的朋友，没有说破，但那段时间的学习格外有劲，考试也发挥超常。"
       },
       {
         "text": "把心事写在日记里，慢慢理解自己",
         "cashEffect": 0,
         "effect": {
           "sanity": 3,
-          "knowledge": 2
+          "knowledge": 3
         },
-        "resultText": "你选择把心事写在日记里，慢慢理解自己。这个小小的决定，成为13岁值得记住的一段经历。"
+        "resultText": "你把那些翻来覆去的念头写进本子，文字让情绪变得清晰，你渐渐学会了如何与自己的感受和平相处。"
       },
       {
         "text": "找信任的长辈聊聊感情与边界",
         "cashEffect": 0,
         "effect": {
-          "sanity": 4,
+          "sanity": 5,
           "knowledge": 1
         },
-        "resultText": "你选择找信任的长辈聊聊感情与边界。这个小小的决定，成为13岁值得记住的一段经历。"
+        "resultText": "你鼓起勇气和妈妈聊了，没想到她没有说教，只是平静地说了一句：喜欢一个人不是罪，好好尊重对方。"
+      },
+      {
+        "text": "把心思全部埋进学习，用成绩证明自己",
+        "cashEffect": 0,
+        "effect": {
+          "knowledge": 6,
+          "sanity": -2
+        },
+        "resultText": "你决定把喜欢的人当成学习的动力，期末时成绩进步了很多，但那份心思也随着时间慢慢淡了。"
+      },
+      {
+        "text": "把好感压在心底，只是默默给对方留了一本好看的书",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 4,
+          "knowledge": 2
+        },
+        "resultText": "你把自己最喜欢的一本书悄悄放在了对方课桌上，没有留名，对方在课间翻开时你假装看向窗外。"
+      },
+      {
+        "text": "鼓起勇气递了一张纸条，结果被婉拒了",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": -2,
+          "knowledge": 2,
+          "health": 1
+        },
+        "resultText": "你写了一张措辞认真的纸条，对方第二天给了你一个温柔的拒绝。你心里难受了很久，但也从此学会了坦然表达。"
+      }
+    ],
+    "options": [
+      {
+        "text": "先从朋友做起，尊重彼此的节奏",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 4,
+          "knowledge": 2
+        },
+        "resultText": "你和对方成了午休时一起看课外书的朋友，没有说破，但那段时间的学习格外有劲，考试也发挥超常。"
+      },
+      {
+        "text": "把心事写在日记里，慢慢理解自己",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 3,
+          "knowledge": 3
+        },
+        "resultText": "你把那些翻来覆去的念头写进本子，文字让情绪变得清晰，你渐渐学会了如何与自己的感受和平相处。"
+      },
+      {
+        "text": "找信任的长辈聊聊感情与边界",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 5,
+          "knowledge": 1
+        },
+        "resultText": "你鼓起勇气和妈妈聊了，没想到她没有说教，只是平静地说了一句：喜欢一个人不是罪，好好尊重对方。"
       }
     ]
   }

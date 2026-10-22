@@ -1,35 +1,91 @@
 [
   {
     "id": "everyday_choice_16",
-    "title": "自己的小小世界",
-    "description": "课余时间有限，你仍然想保留一个属于自己的爱好。",
-    "options": [
+    "title": "高中课余，给自己留一块喘息地",
+    "description": "高中课业繁重，但你仍然想在缝隙里保留一个属于自己的爱好。",
+    "optionPool": [
       {
         "text": "练习画画，留下每周一张速写",
         "cashEffect": 0,
         "effect": {
-          "sanity": 3,
-          "knowledge": 2
+          "sanity": 4,
+          "knowledge": 1
         },
-        "resultText": "你选择练习画画，留下每周一张速写。这个小小的决定，成为16岁值得记住的一段经历。"
+        "resultText": "你在笔记本空白处偷偷画同学和老师，画风越来越稳，高三毕业那天把整本速写本送给了班主任，她翻完眼眶红了。"
       },
       {
         "text": "学一点乐器或唱歌",
         "cashEffect": 0,
         "effect": {
-          "sanity": 3,
-          "knowledge": 2
+          "sanity": 5,
+          "knowledge": 1
         },
-        "resultText": "你选择学一点乐器或唱歌。这个小小的决定，成为16岁值得记住的一段经历。"
+        "resultText": "你在寝室偷学了几首吉他曲，周末抱着琴坐在天台弹，楼上有人探出头来说：再弹一遍！"
       },
       {
         "text": "坚持跑步，观察沿途的季节变化",
         "cashEffect": 0,
         "effect": {
           "sanity": 4,
+          "health": 4
+        },
+        "resultText": "每天清晨你绕操场跑两圈，从秋天跑到了春天，发现学校后门的梅花不知道什么时候悄悄开了。"
+      },
+      {
+        "text": "沉浸在课外阅读里：每月读完一本文学名著",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 4,
+          "knowledge": 3
+        },
+        "resultText": "你把《月亮与六便士》夹在历史书后面看，语文老师说你最近写的作文有了文学气，让你在班上朗读。"
+      },
+      {
+        "text": "组织同宿舍同学打桌游：把零碎时间变成解压场",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 6,
+          "knowledge": 0
+        },
+        "resultText": "你从家里带来了一套桌游，每周五晚上自习后大家挤在宿舍玩半小时，成了高中生活里最盼望的事情之一。"
+      },
+      {
+        "text": "报名学校广播站，每周播音一次",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 4,
+          "knowledge": 2
+        },
+        "resultText": "你每周用磁性的声音在全校广播里念新闻，有段时间走廊里有人悄悄问：那个播音的是哪个班的？"
+      }
+    ],
+    "options": [
+      {
+        "text": "练习画画，留下每周一张速写",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 4,
           "knowledge": 1
         },
-        "resultText": "你选择坚持跑步，观察沿途的季节变化。这个小小的决定，成为16岁值得记住的一段经历。"
+        "resultText": "你在笔记本空白处偷偷画同学和老师，画风越来越稳，高三毕业那天把整本速写本送给了班主任，她翻完眼眶红了。"
+      },
+      {
+        "text": "学一点乐器或唱歌",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 5,
+          "knowledge": 1
+        },
+        "resultText": "你在寝室偷学了几首吉他曲，周末抱着琴坐在天台弹，楼上有人探出头来说：再弹一遍！"
+      },
+      {
+        "text": "坚持跑步，观察沿途的季节变化",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 4,
+          "health": 4
+        },
+        "resultText": "每天清晨你绕操场跑两圈，从秋天跑到了春天，发现学校后门的梅花不知道什么时候悄悄开了。"
       }
     ]
   }

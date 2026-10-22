@@ -1,35 +1,64 @@
 [
   {
     "id": "everyday_choice_69",
-    "title": "一顿特别的晚饭",
-    "description": "你想让平凡的一天多一点值得记住的事情。",
+    "title": "将临古稀的宁和心境",
+    "description": "六十九岁，离古稀仅一步之遥。繁华看尽之后，你想如何呵护内心的宁静？",
+    "optionPool": [
+      {
+        "text": "配一副度数适宜的优质老花镜，继续读完大字版文史典籍",
+        "cashEffect": -200,
+        "effect": { "sanity": 4, "knowledge": 3 },
+        "resultText": "字迹重新变得清晰锐利，灯下研读前贤掌故，古今多少事都在谈笑与翻卷间释怀。"
+      },
+      {
+        "text": "饭后去护城河畔绿道散步半小时，雷打不动持之以恒",
+        "cashEffect": 0,
+        "effect": { "health": 4, "sanity": 3 },
+        "resultText": "看着沿岸垂柳随风摇曳，慢步匀速调息，肠胃通畅，腿脚筋骨也越走越松快。"
+      },
+      {
+        "text": "学习修剪养护盆景，用铝丝给一株老桩黄杨细致定型",
+        "cashEffect": -50,
+        "effect": { "sanity": 5, "knowledge": 2 },
+        "resultText": "几经修剪蟠扎，原本平庸的枝柯显现出悬崖倒挂的沧桑古意，方寸之间自成天地。"
+      },
+      {
+        "text": "煮一锅喷香的家常杂酱面，邀同楼的老邻居来家围坐共餐",
+        "cashEffect": -50,
+        "effect": { "sanity": 5 },
+        "resultText": "热气腾腾的面条下肚，大伙儿从几十年前粮票时代聊到现在，欢声笑语暖了整个屋子。"
+      },
+      {
+        "text": "彻底清点分类急救与保健药箱，在大药盒上做大字服药标签",
+        "cashEffect": 0,
+        "effect": { "health": 3, "sanity": 3 },
+        "resultText": "过期药物清理干净，每日用药按顿归盒分装，井井有条，心中更添一份从容安稳。"
+      },
+      {
+        "text": "趁着秋高气爽晒透棉被，夜晚伴着干燥清香的阳光气息入梦",
+        "cashEffect": 0,
+        "effect": { "sanity": 5, "health": 2 },
+        "resultText": "蓬松柔软的被窝里蓄满了太阳的暖意，一夜无梦，睡得格外香甜深沉。"
+      }
+    ],
     "options": [
       {
-        "text": "动手做一顿拿手菜",
-        "cashEffect": 0,
-        "effect": {
-          "sanity": 3,
-          "knowledge": 2
-        },
-        "resultText": "你选择动手做一顿拿手菜。这个小小的决定，成为69岁值得记住的一段经历。"
+        "text": "配一副度数适宜的优质老花镜，继续读完大字版文史典籍",
+        "cashEffect": -200,
+        "effect": { "sanity": 4, "knowledge": 3 },
+        "resultText": "字迹重新变得清晰锐利，灯下研读前贤掌故，古今多少事都在谈笑与翻卷间释怀。"
       },
       {
-        "text": "和熟悉的人分享这一年的收获",
+        "text": "饭后去护城河畔绿道散步半小时，雷打不动持之以恒",
         "cashEffect": 0,
-        "effect": {
-          "sanity": 3,
-          "knowledge": 2
-        },
-        "resultText": "你选择和熟悉的人分享这一年的收获。这个小小的决定，成为69岁值得记住的一段经历。"
+        "effect": { "health": 4, "sanity": 3 },
+        "resultText": "看着沿岸垂柳随风摇曳，慢步匀速调息，肠胃通畅，腿脚筋骨也越走越松快。"
       },
       {
-        "text": "为自己摆好餐桌，慢慢吃饭",
-        "cashEffect": 0,
-        "effect": {
-          "sanity": 4,
-          "knowledge": 1
-        },
-        "resultText": "你选择为自己摆好餐桌，慢慢吃饭。这个小小的决定，成为69岁值得记住的一段经历。"
+        "text": "学习修剪养护盆景，用铝丝给一株老桩黄杨细致定型",
+        "cashEffect": -50,
+        "effect": { "sanity": 5, "knowledge": 2 },
+        "resultText": "几经修剪蟠扎，原本平庸的枝柯显现出悬崖倒挂的沧桑古意，方寸之间自成天地。"
       }
     ]
   }

@@ -3,33 +3,91 @@
     "id": "everyday_choice_8",
     "title": "校园活动报名",
     "description": "学校准备开展课后活动，你想把时间花在哪里？",
+    "optionPool": [
+      {
+        "text": "参加田径队，试试自己的速度",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 3,
+          "health": 4,
+          "knowledge": 1
+        },
+        "resultText": "你每天放学后在操场绕圈跑，脚底起了水泡，但100米成绩进了全班前五，运动会上你拿到了人生第一块金牌。"
+      },
+      {
+        "text": "加入合唱团，练习一起唱歌",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 5,
+          "knowledge": 1
+        },
+        "resultText": "合唱团的孩子们手拉手站成一排，你唱的声部让老师当众表扬，六一文艺汇演时你站在舞台中央。"
+      },
+      {
+        "text": "做图书小助手，整理喜欢的书",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 3,
+          "knowledge": 4
+        },
+        "resultText": "你每周二放学负责整理图书架，慢慢读完了两排书，还给每本书贴上了自制的读后感小标签。"
+      },
+      {
+        "text": "加入绘画兴趣小组：用画笔记录身边的世界",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 4,
+          "knowledge": 2
+        },
+        "resultText": "美术老师教你用水彩画秋天的树叶，你的画被贴在了走廊展示墙上，同学们走过时都会停下来看一眼。"
+      },
+      {
+        "text": "报名参加科技制作社：用废料做小机器人和风车",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 3,
+          "knowledge": 5
+        },
+        "resultText": "你用纸盒和吸管做成了一架小风车，放在窗台上转个不停。科技节上你的作品得了二等奖，奖状被夹进了作业本里珍藏。"
+      },
+      {
+        "text": "留在教室提前预习第二天功课，争取成绩进步",
+        "cashEffect": 0,
+        "effect": {
+          "knowledge": 5,
+          "sanity": -1
+        },
+        "resultText": "你在安静的教室里认认真真做完了所有预习，数学老师说你是今年提高最快的学生，期末拿了全科优秀。"
+      }
+    ],
     "options": [
       {
         "text": "参加田径队，试试自己的速度",
         "cashEffect": 0,
         "effect": {
           "sanity": 3,
-          "knowledge": 2
+          "health": 4,
+          "knowledge": 1
         },
-        "resultText": "你选择参加田径队，试试自己的速度。这个小小的决定，成为8岁值得记住的一段经历。"
+        "resultText": "你每天放学后在操场绕圈跑，脚底起了水泡，但100米成绩进了全班前五，运动会上你拿到了人生第一块金牌。"
       },
       {
         "text": "加入合唱团，练习一起唱歌",
         "cashEffect": 0,
         "effect": {
-          "sanity": 3,
-          "knowledge": 2
+          "sanity": 5,
+          "knowledge": 1
         },
-        "resultText": "你选择加入合唱团，练习一起唱歌。这个小小的决定，成为8岁值得记住的一段经历。"
+        "resultText": "合唱团的孩子们手拉手站成一排，你唱的声部让老师当众表扬，六一文艺汇演时你站在舞台中央。"
       },
       {
         "text": "做图书小助手，整理喜欢的书",
         "cashEffect": 0,
         "effect": {
-          "sanity": 4,
-          "knowledge": 1
+          "sanity": 3,
+          "knowledge": 4
         },
-        "resultText": "你选择做图书小助手，整理喜欢的书。这个小小的决定，成为8岁值得记住的一段经历。"
+        "resultText": "你每周二放学负责整理图书架，慢慢读完了两排书，还给每本书贴上了自制的读后感小标签。"
       }
     ]
   }

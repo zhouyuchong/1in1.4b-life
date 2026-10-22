@@ -1,35 +1,64 @@
 [
   {
     "id": "everyday_choice_72",
-    "title": "旧物与回忆",
-    "description": "整理房间时，你翻出了过去保存的物件。",
+    "title": "古稀之年的平和日常",
+    "description": "七十二岁，岁月如水般静静流淌。今天你最想以怎样的方式度过？",
+    "optionPool": [
+      {
+        "text": "添置恒温恒压电动足浴桶，坚持每日睡前药汤泡脚",
+        "cashEffect": -150,
+        "effect": { "health": 4, "sanity": 4 },
+        "resultText": "热气蒸腾驱散了骨缝里的湿寒，浑身暖洋洋的，夜里起夜少了，入睡极沉。"
+      },
+      {
+        "text": "用手机镜头记录每日阳台的天空云彩，发在生活小圈子里",
+        "cashEffect": 0,
+        "effect": { "sanity": 4, "knowledge": 2 },
+        "resultText": "从朝霞满天到暮色沉沉，捕捉光影的流转，街坊老友纷纷留言点赞，生活充满发现之美。"
+      },
+      {
+        "text": "去老茶馆占个临窗桌，点一壶茉莉花茶听上一段地道评书",
+        "cashEffect": -30,
+        "effect": { "sanity": 5, "knowledge": 1 },
+        "resultText": "惊堂木一响，评书艺人绘声绘色，你抿着清香茶汤听得出神，一下午时光悄然而过。"
+      },
+      {
+        "text": "自己引线穿针缝补穿旧的棉马甲，改换保暖领衬",
+        "cashEffect": 0,
+        "effect": { "sanity": 4, "health": 1 },
+        "resultText": "老花镜下滑过银针密线，重新缝整后的旧衣贴身又暖和，指尖保留着老一辈的踏实从容。"
+      },
+      {
+        "text": "在窗台食槽里每日撒上一把小米，静候麻雀和斑鸠啄食",
+        "cashEffect": -10,
+        "effect": { "sanity": 5 },
+        "resultText": "小鸟扑棱着翅膀欢快啄米，叽叽喳喳的鸣声打破了屋里的冷清，心头升起脉脉温意。"
+      },
+      {
+        "text": "去社区卫生站参加慢病健康知识微讲座，听医生讲用药注意事项",
+        "cashEffect": 0,
+        "effect": { "health": 3, "knowledge": 3 },
+        "resultText": "认真做着笔记，弄清了低盐低脂与科学补钙的窍门，科学调养让身体状态保持良好。"
+      }
+    ],
     "options": [
       {
-        "text": "整理成一本纪念册",
-        "cashEffect": 0,
-        "effect": {
-          "sanity": 3,
-          "knowledge": 2
-        },
-        "resultText": "你选择整理成一本纪念册。这个小小的决定，成为72岁值得记住的一段经历。"
+        "text": "添置恒温恒压电动足浴桶，坚持每日睡前药汤泡脚",
+        "cashEffect": -150,
+        "effect": { "health": 4, "sanity": 4 },
+        "resultText": "热气蒸腾驱散了骨缝里的湿寒，浑身暖洋洋的，夜里起夜少了，入睡极沉。"
       },
       {
-        "text": "把闲置用品送给需要的人",
+        "text": "用手机镜头记录每日阳台的天空云彩，发在生活小圈子里",
         "cashEffect": 0,
-        "effect": {
-          "sanity": 3,
-          "knowledge": 2
-        },
-        "resultText": "你选择把闲置用品送给需要的人。这个小小的决定，成为72岁值得记住的一段经历。"
+        "effect": { "sanity": 4, "knowledge": 2 },
+        "resultText": "从朝霞满天到暮色沉沉，捕捉光影的流转，街坊老友纷纷留言点赞，生活充满发现之美。"
       },
       {
-        "text": "邀请老友一起聊聊过去",
-        "cashEffect": 0,
-        "effect": {
-          "sanity": 4,
-          "knowledge": 1
-        },
-        "resultText": "你选择邀请老友一起聊聊过去。这个小小的决定，成为72岁值得记住的一段经历。"
+        "text": "去老茶馆占个临窗桌，点一壶茉莉花茶听上一段地道评书",
+        "cashEffect": -30,
+        "effect": { "sanity": 5, "knowledge": 1 },
+        "resultText": "惊堂木一响，评书艺人绘声绘色，你抿着清香茶汤听得出神，一下午时光悄然而过。"
       }
     ]
   }

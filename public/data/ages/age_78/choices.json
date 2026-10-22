@@ -1,35 +1,64 @@
 [
   {
     "id": "everyday_choice_78",
-    "title": "给生活留点空白",
-    "description": "一个空闲周末，你决定听听自己的想法。",
+    "title": "七十八岁的淡泊闲情",
+    "description": "七十八岁，步入国民平均预期寿命的门槛。平静度日，内心澄澈如洗。",
+    "optionPool": [
+      {
+        "text": "拄着手杖在小区中庭慢走两圈，静观四时草木荣枯",
+        "cashEffect": 0,
+        "effect": { "health": 3, "sanity": 4 },
+        "resultText": "脚步不急不躁，看落叶归根、听松风阵阵，深深感知天地生生不息的韵律。"
+      },
+      {
+        "text": "播放老唱盘里的经典旋律，随着熟悉的曲调轻叩节拍",
+        "cashEffect": 0,
+        "effect": { "sanity": 5, "knowledge": 1 },
+        "resultText": "老歌婉转悠扬，唤起了一生中最明亮动人的片段，笑容不知不觉爬上眼角。"
+      },
+      {
+        "text": "戴镜翻看厚重的国家地理画册，坐在家中神游名山大川",
+        "cashEffect": 0,
+        "effect": { "sanity": 4, "knowledge": 3 },
+        "resultText": "雪山、戈壁、大江大河在指间翻过，虽足不出户，心中早已阅尽华夏万千气象。"
+      },
+      {
+        "text": "将珍藏多年的精美老刺绣挂件端正悬挂在客厅正中",
+        "cashEffect": 0,
+        "effect": { "sanity": 4 },
+        "resultText": "精细的丝线在灯下流光溢彩，简朴的居室顿时多了一抹典雅明丽的古韵。"
+      },
+      {
+        "text": "用小火煨上一壶姜枣红糖茶，趁热小口细啜驱寒",
+        "cashEffect": -10,
+        "effect": { "health": 4, "sanity": 3 },
+        "resultText": "温热的茶水入喉，一股暖意从咽喉直达脚底，骨节舒泰，整个人暖融融的。"
+      },
+      {
+        "text": "同前来关怀的社区青年唠唠嗑，讲讲当年粮油凭票凭证的年代",
+        "cashEffect": 0,
+        "effect": { "sanity": 5, "knowledge": 2 },
+        "resultText": "青年人听得津津有味，连连感叹现在生活的幸福，两代人在攀谈中传递着岁月的厚重。"
+      }
+    ],
     "options": [
       {
-        "text": "在附近步行，发现没去过的街巷",
+        "text": "拄着手杖在小区中庭慢走两圈，静观四时草木荣枯",
         "cashEffect": 0,
-        "effect": {
-          "sanity": 3,
-          "knowledge": 2
-        },
-        "resultText": "你选择在附近步行，发现没去过的街巷。这个小小的决定，成为78岁值得记住的一段经历。"
+        "effect": { "health": 3, "sanity": 4 },
+        "resultText": "脚步不急不躁，看落叶归根、听松风阵阵，深深感知天地生生不息的韵律。"
       },
       {
-        "text": "做一道一直想学的菜",
+        "text": "播放老唱盘里的经典旋律，随着熟悉的曲调轻叩节拍",
         "cashEffect": 0,
-        "effect": {
-          "sanity": 3,
-          "knowledge": 2
-        },
-        "resultText": "你选择做一道一直想学的菜。这个小小的决定，成为78岁值得记住的一段经历。"
+        "effect": { "sanity": 5, "knowledge": 1 },
+        "resultText": "老歌婉转悠扬，唤起了一生中最明亮动人的片段，笑容不知不觉爬上眼角。"
       },
       {
-        "text": "关掉消息提醒，好好休息半天",
+        "text": "戴镜翻看厚重的国家地理画册，坐在家中神游名山大川",
         "cashEffect": 0,
-        "effect": {
-          "sanity": 4,
-          "knowledge": 1
-        },
-        "resultText": "你选择关掉消息提醒，好好休息半天。这个小小的决定，成为78岁值得记住的一段经历。"
+        "effect": { "sanity": 4, "knowledge": 3 },
+        "resultText": "雪山、戈壁、大江大河在指间翻过，虽足不出户，心中早已阅尽华夏万千气象。"
       }
     ]
   }

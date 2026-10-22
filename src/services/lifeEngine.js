@@ -311,8 +311,23 @@ export async function stepNextYear(character) {
   if (['graduate', 'university', 'college'].includes(previousSchooling) && character.lifeState.schooling === 'none') {
     events.push({ required: true, text: previousSchooling === 'graduate' ? '你完成三年研究生学业，硕士毕业。新的学历将提高后续企业与公共岗位的基础收入。' : '你完成了学业，正式取得毕业学历，开始寻找自己的职业方向。', cashEffect: 0, effect: { sanity: 4 } });
   }
-  const choices = loaded.choices.map(choice => ({ ...choice, options: choice.options.map(option =>
-    option.tag === '脱产考研战神' ? { ...graduateOption(character, true), tag: option.tag } : option) })).map(choice => prepareEducationChoice(choice, character));
+  const choices = loaded.choices.map(choice => {
+    // 如果 choice 带有 optionPool，从备选池随机抽取 2-3 个选项展示
+    if (choice.optionPool && choice.optionPool.length > 0) {
+      const pool = choice.optionPool.filter(opt => !opt.condition || checkCondition(opt.condition, character));
+      const required = pool.filter(opt => opt.required);
+      const optional = pool.filter(opt => !opt.required);
+      // 随机打乱可选项
+      for (let i = optional.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [optional[i], optional[j]] = [optional[j], optional[i]];
+      }
+      const drawCount = Math.min(optional.length, Math.max(0, (2 + Math.floor(Math.random() * 2)) - required.length));
+      choice = { ...choice, options: [...required, ...optional.slice(0, drawCount)] };
+    }
+    return { ...choice, options: choice.options.map(option =>
+      option.tag === '脱产考研战神' ? { ...graduateOption(character, true), tag: option.tag } : option) };
+  }).map(choice => prepareEducationChoice(choice, character));
   // 先公布上一年的备考结果，再决定本年是否继续，转行后旧备考结果不会覆盖新职业。
   const priorRecords = [];
   const due = character.scheduledEvents.filter(event => event.dueAge <= age);

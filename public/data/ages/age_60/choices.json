@@ -4,38 +4,68 @@
     "title": "晚年生活：照顾家人还是经营自己的兴趣？",
     "description": "生活进入新的阶段，你开始安排自己的时间，选择更适合自己的晚年节奏。",
     "sourceCase": "真实背景：中国式隔代抚养与银发一族晚年选择",
-    "options": [
+    "optionPool": [
       {
         "text": "前往子女城市带孙辈：做“老漂族”，买菜做饭接送放学，全心奉献下一代",
         "requirements": {},
-        "effect": {
-          "sanity": 3,
-          "health": -4,
-          "wealth": -4
-        },
+        "effect": { "sanity": 3, "health": -4, "wealth": -4 },
         "tag": "中国式隔代奉献",
+        "required": true,
         "resultText": "你在大城市的陌生小区里推着婴儿车，虽然腰酸背痛没有朋友，但看着孙辈一天天长大满心欣慰。",
-        "stateEffect": {
-          "hasGrandchildren": true
-        },
-        "condition": {
-          "lifeState": {
-            "parenthood": "parent"
-          },
-          "minChildAge": 22
-        },
+        "stateEffect": { "hasGrandchildren": true },
+        "condition": { "lifeState": { "parenthood": "parent" }, "minChildAge": 22 },
         "cashEffect": -12000
       },
       {
         "text": "留在老家过独立晚年：养花种菜、跳广场舞、下棋钓鱼，享受属于自己的晚年",
         "requirements": {},
-        "effect": {
-          "sanity": 9,
-          "health": 5,
-          "wealth": 2
-        },
+        "effect": { "sanity": 9, "health": 5, "wealth": 2 },
         "tag": "自在银发族",
-        "resultText": "你和老友们组建了合唱团，清晨打太极下午打麻将，退休生活充实而快活。",
+        "resultText": "你和老友们组建了合唱团，清晨打太极下午打麻将，退休生活过得有滋有味，身体硬朗。",
+        "cashEffect": 6000
+      },
+      {
+        "text": "受聘发挥余热：担任行业技术顾问或返聘返岗，继续在熟悉领域发光发热",
+        "requirements": {},
+        "effect": { "sanity": 4, "wealth": 8, "health": -2 },
+        "tag": "退而不休",
+        "resultText": "你每周去单位指导两三天工作，传授实操经验，拿着一份体面的顾问报酬，退而不闲。",
+        "cashEffect": 24000
+      },
+      {
+        "text": "报名老年大学：重拾年轻时向往的书法、国画与声乐，圆文艺之梦",
+        "requirements": {},
+        "effect": { "sanity": 7, "knowledge": 4, "health": 2 },
+        "tag": "老年大学学员",
+        "resultText": "在墨香与琴音中，你结识了一群同样热爱生活的老同学，展演时你的书法习作被挂在展厅醒目位置。",
+        "cashEffect": -2000
+      },
+      {
+        "text": "结伴开启慢游旅居：冬下江南琼岛避寒、夏赴云贵避暑，饱览祖国大好河山",
+        "requirements": { "wealth": 40 },
+        "effect": { "sanity": 8, "health": 3, "wealth": -5 },
+        "tag": "银发候鸟旅者",
+        "resultText": "你和几个好友相约异地租房慢住，买菜做饭如在故乡，旅途开阔了胸怀，精气神愈发焕发。",
+        "cashEffect": -15000
+      }
+    ],
+    "options": [
+      {
+        "text": "前往子女城市带孙辈：做“老漂族”，买菜做饭接送放学，全心奉献下一代",
+        "requirements": {},
+        "effect": { "sanity": 3, "health": -4, "wealth": -4 },
+        "tag": "中国式隔代奉献",
+        "resultText": "你在大城市的陌生小区里推着婴儿车，虽然腰酸背痛没有朋友，但看着孙辈一天天长大满心欣慰。",
+        "stateEffect": { "hasGrandchildren": true },
+        "condition": { "lifeState": { "parenthood": "parent" }, "minChildAge": 22 },
+        "cashEffect": -12000
+      },
+      {
+        "text": "留在老家过独立晚年：养花种菜、跳广场舞、下棋钓鱼，享受属于自己的晚年",
+        "requirements": {},
+        "effect": { "sanity": 9, "health": 5, "wealth": 2 },
+        "tag": "自在银发族",
+        "resultText": "你和老友们组建了合唱团，清晨打太极下午打麻将，退休生活过得有滋有味，身体硬朗。",
         "cashEffect": 6000
       }
     ]

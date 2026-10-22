@@ -1,35 +1,64 @@
 [
   {
     "id": "everyday_choice_51",
-    "title": "一顿特别的晚饭",
-    "description": "你想让平凡的一天多一点值得记住的事情。",
+    "title": "知天命之年的一点闲适",
+    "description": "年过半百，生活节奏逐渐放缓，你想怎样安排这一天的时光？",
+    "optionPool": [
+      {
+        "text": "动手做一顿家乡风味菜，慢火细炖",
+        "cashEffect": -80,
+        "effect": { "sanity": 4, "health": 1 },
+        "resultText": "你花了一个下午煨了一砂锅老火靓汤，厨房里弥漫着熟悉的药膳与肉香，尝上一口，通体舒泰。"
+      },
+      {
+        "text": "和相识多年的老友聚聚，聊聊近况与旧事",
+        "cashEffect": -150,
+        "effect": { "sanity": 5 },
+        "resultText": "你们挑了一家安静的小馆子，就着清茶小炒聊了半天，感叹时光飞逝，彼此眼角都添了岁月的痕迹。"
+      },
+      {
+        "text": "独自散步到公园水畔，静静欣赏夕阳晚霞",
+        "cashEffect": 0,
+        "effect": { "sanity": 5, "health": 2 },
+        "resultText": "你沿着湖边石子路慢慢走，晚风拂面，水波荡漾，心中那些积年累月的焦虑仿佛都随风散去。"
+      },
+      {
+        "text": "开始晨起练习八段锦，调养身体筋骨",
+        "cashEffect": 0,
+        "effect": { "health": 4, "sanity": 3 },
+        "resultText": "每天清晨跟着口令舒展肢体，几周下来，困扰多年的肩颈酸痛明显缓解，整个人精神头足了不少。"
+      },
+      {
+        "text": "购置一套紫砂茶具，学着静心品茶",
+        "cashEffect": -300,
+        "effect": { "sanity": 4, "knowledge": 2 },
+        "resultText": "你在案头摆上茶盘，热水冲淋紫砂壶，茶香四溢，浮躁的心绪在氤氲茶汽中慢慢沉淀下来。"
+      },
+      {
+        "text": "给自己买一件质地考究的大衣，犒劳半生奔波",
+        "cashEffect": -800,
+        "effect": { "sanity": 5 },
+        "resultText": "你挑了一件做工精细的羊毛大衣，穿在身上暖和又得体，镜子里的自己虽然有了白发，却依然神采奕奕。"
+      }
+    ],
     "options": [
       {
-        "text": "动手做一顿拿手菜",
-        "cashEffect": 0,
-        "effect": {
-          "sanity": 3,
-          "knowledge": 2
-        },
-        "resultText": "你选择动手做一顿拿手菜。这个小小的决定，成为51岁值得记住的一段经历。"
+        "text": "动手做一顿家乡风味菜，慢火细炖",
+        "cashEffect": -80,
+        "effect": { "sanity": 4, "health": 1 },
+        "resultText": "你花了一个下午煨了一砂锅老火靓汤，厨房里弥漫着熟悉的药膳与肉香，尝上一口，通体舒泰。"
       },
       {
-        "text": "和熟悉的人分享这一年的收获",
-        "cashEffect": 0,
-        "effect": {
-          "sanity": 3,
-          "knowledge": 2
-        },
-        "resultText": "你选择和熟悉的人分享这一年的收获。这个小小的决定，成为51岁值得记住的一段经历。"
+        "text": "和相识多年的老友聚聚，聊聊近况与旧事",
+        "cashEffect": -150,
+        "effect": { "sanity": 5 },
+        "resultText": "你们挑了一家安静的小馆子，就着清茶小炒聊了半天，感叹时光飞逝，彼此眼角都添了岁月的痕迹。"
       },
       {
-        "text": "为自己摆好餐桌，慢慢吃饭",
+        "text": "独自散步到公园水畔，静静欣赏夕阳晚霞",
         "cashEffect": 0,
-        "effect": {
-          "sanity": 4,
-          "knowledge": 1
-        },
-        "resultText": "你选择为自己摆好餐桌，慢慢吃饭。这个小小的决定，成为51岁值得记住的一段经历。"
+        "effect": { "sanity": 5, "health": 2 },
+        "resultText": "你沿着湖边石子路慢慢走，晚风拂面，水波荡漾，心中那些积年累月的焦虑仿佛都随风散去。"
       }
     ]
   }

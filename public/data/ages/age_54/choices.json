@@ -1,35 +1,64 @@
 [
   {
     "id": "everyday_choice_54",
-    "title": "旧物与回忆",
-    "description": "整理房间时，你翻出了过去保存的物件。",
+    "title": "旧物与半生沉淀",
+    "description": "柜子深处堆叠着旧笔记本、荣誉证书和老照片，你想如何面对这些岁月的痕迹？",
+    "optionPool": [
+      {
+        "text": "分门别类整理老相册，细细注明年份与故事",
+        "cashEffect": -50,
+        "effect": { "sanity": 4, "knowledge": 1 },
+        "resultText": "你戴着老花镜逐张擦拭相片，指尖拂过青涩的容颜与泛黄的背景，半生经历如潮水般涌上心头。"
+      },
+      {
+        "text": "把闲置的工具书与老物件赠给社区需要的人",
+        "cashEffect": 0,
+        "effect": { "sanity": 4, "knowledge": 1 },
+        "resultText": "你将积攒的十几本专业书籍送给了刚工作的年轻人，对方连声道谢，你感到一种薪火相传的欣慰。"
+      },
+      {
+        "text": "擦去箱底口琴/二胡的灰尘，重温年轻时的旋律",
+        "cashEffect": 0,
+        "effect": { "sanity": 5, "knowledge": 2 },
+        "resultText": "指法虽有些生疏，但悠扬的乐声再次在房间里响起，那一刻你仿佛又变回了那个意气风发的青年。"
+      },
+      {
+        "text": "做一次彻底的断舍离，清空积压杂物以养清气",
+        "cashEffect": 0,
+        "effect": { "sanity": 4, "health": 2 },
+        "resultText": "你扔掉了积灰多年的无用杂件，屋子一下子宽敞明亮起来，心里也顿感轻快通透。"
+      },
+      {
+        "text": "约上老同学故地重游，在当年的校门口合影留念",
+        "cashEffect": -100,
+        "effect": { "sanity": 5 },
+        "resultText": "曾经的校舍已经翻新，林荫道依旧葱郁，你们站在当年的大树下合影，笑容温暖而豁达。"
+      },
+      {
+        "text": "拿起钢笔写写随笔，记下半生走过的风雨感悟",
+        "cashEffect": 0,
+        "effect": { "sanity": 4, "knowledge": 3 },
+        "resultText": "你在硬面抄上写下几篇平实温厚的文字，不为发表，只为给自己几十年的奋斗留个交待。"
+      }
+    ],
     "options": [
       {
-        "text": "整理成一本纪念册",
-        "cashEffect": 0,
-        "effect": {
-          "sanity": 3,
-          "knowledge": 2
-        },
-        "resultText": "你选择整理成一本纪念册。这个小小的决定，成为54岁值得记住的一段经历。"
+        "text": "分门别类整理老相册，细细注明年份与故事",
+        "cashEffect": -50,
+        "effect": { "sanity": 4, "knowledge": 1 },
+        "resultText": "你戴着老花镜逐张擦拭相片，指尖拂过青涩的容颜与泛黄的背景，半生经历如潮水般涌上心头。"
       },
       {
-        "text": "把闲置用品送给需要的人",
+        "text": "把闲置的工具书与老物件赠给社区需要的人",
         "cashEffect": 0,
-        "effect": {
-          "sanity": 3,
-          "knowledge": 2
-        },
-        "resultText": "你选择把闲置用品送给需要的人。这个小小的决定，成为54岁值得记住的一段经历。"
+        "effect": { "sanity": 4, "knowledge": 1 },
+        "resultText": "你将积攒的十几本专业书籍送给了刚工作的年轻人，对方连声道谢，你感到一种薪火相传的欣慰。"
       },
       {
-        "text": "邀请老友一起聊聊过去",
+        "text": "擦去箱底口琴/二胡的灰尘，重温年轻时的旋律",
         "cashEffect": 0,
-        "effect": {
-          "sanity": 4,
-          "knowledge": 1
-        },
-        "resultText": "你选择邀请老友一起聊聊过去。这个小小的决定，成为54岁值得记住的一段经历。"
+        "effect": { "sanity": 5, "knowledge": 2 },
+        "resultText": "指法虽有些生疏，但悠扬的乐声再次在房间里响起，那一刻你仿佛又变回了那个意气风发的青年。"
       }
     ]
   }

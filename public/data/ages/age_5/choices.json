@@ -4,6 +4,70 @@
     "title": "幼小衔接与鸡娃抉择",
     "description": "小学一年级零起点教学政策推行，但许多家长担心不提前学进校会跟不上进度被老师约谈。",
     "sourceCase": "真实背景：超前教育焦虑与素质启蒙博弈",
+    "optionPool": [
+      {
+        "text": "提前报幼小衔接班：硬背拼音与100以内加减法，做题打卡",
+        "requirements": {},
+        "effect": {
+          "sanity": -6,
+          "knowledge": 8,
+          "wealth": -4
+        },
+        "tag": "幼升小抢跑",
+        "resultText": "你每天要坐在书桌前背半小时拼音字母，常常眼泪汪汪，但识字量已经达到一千多字。",
+        "cashEffect": -4000
+      },
+      {
+        "text": "坚持快乐童年：多带去户外运动，培养好奇心与生活自理能力",
+        "requirements": {},
+        "effect": {
+          "sanity": 8,
+          "health": 5,
+          "knowledge": 2
+        },
+        "tag": "快乐童年",
+        "resultText": "你在泥土和阳光下茁壮成长，身体结实性格开朗，虽然认字不多，但动手能力极强。",
+        "cashEffect": 0
+      },
+      {
+        "text": "报一个绘本阅读启蒙班：用故事激发识字兴趣，避免强灌硬塞",
+        "requirements": {},
+        "effect": {
+          "sanity": 3,
+          "knowledge": 5,
+          "wealth": -2
+        },
+        "tag": "阅读启蒙",
+        "resultText": "你迷上了厚厚的绘本，学会了在图画里找故事，认字是悄悄发生的事情，没有让你讨厌学习。",
+        "cashEffect": -2000
+      },
+      {
+        "text": "报美术启蒙和音乐培训：先培养艺术感知，打好综合素养基础",
+        "requirements": {
+          "wealth": 40
+        },
+        "effect": {
+          "sanity": 4,
+          "knowledge": 3,
+          "health": 1,
+          "wealth": -5
+        },
+        "tag": "艺术启蒙",
+        "resultText": "你学了半年儿童声乐和水彩课，学校老师说你画画很有想象力，对音乐节奏也格外敏感。",
+        "cashEffect": -5000
+      },
+      {
+        "text": "让孩子在家和父母多玩益智游戏：搭积木、拼图、讲故事代替课堂",
+        "requirements": {},
+        "effect": {
+          "sanity": 6,
+          "knowledge": 4
+        },
+        "tag": "游戏学习",
+        "resultText": "你和爸爸妈妈用拼图和卡牌游戏度过了许多欢乐的傍晚，在玩耍中慢慢认识了数字和逻辑。",
+        "cashEffect": 0
+      }
+    ],
     "options": [
       {
         "text": "提前报幼小衔接班：硬背拼音与100以内加减法，做题打卡",
@@ -28,6 +92,18 @@
         "tag": "快乐童年",
         "resultText": "你在泥土和阳光下茁壮成长，身体结实性格开朗，虽然认字不多，但动手能力极强。",
         "cashEffect": 0
+      },
+      {
+        "text": "报一个绘本阅读启蒙班：用故事激发识字兴趣，避免强灌硬塞",
+        "requirements": {},
+        "effect": {
+          "sanity": 3,
+          "knowledge": 5,
+          "wealth": -2
+        },
+        "tag": "阅读启蒙",
+        "resultText": "你迷上了厚厚的绘本，学会了在图画里找故事，认字是悄悄发生的事情，没有让你讨厌学习。",
+        "cashEffect": -2000
       }
     ]
   }

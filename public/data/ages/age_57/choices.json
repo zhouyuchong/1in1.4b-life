@@ -1,35 +1,64 @@
 [
   {
     "id": "everyday_choice_57",
-    "title": "一次志愿服务邀请",
-    "description": "社区征集志愿者，你愿意怎样参与？",
+    "title": "临近退休的温情选择",
+    "description": "步入五十七岁，工作担子渐轻，社区与周遭生活向你递来不同的邀约。",
+    "optionPool": [
+      {
+        "text": "在街道长者助餐点做志愿帮工，协助配餐打饭",
+        "cashEffect": 0,
+        "effect": { "sanity": 4, "health": 1 },
+        "resultText": "你热情地为就餐的长辈端饭递汤，听他们唠叨家常，平凡的奉献换来一声声真挚的道谢。"
+      },
+      {
+        "text": "担任社区公道人，凭阅历协助调解邻里琐碎摩擦",
+        "cashEffect": 0,
+        "effect": { "sanity": 4, "knowledge": 2 },
+        "resultText": "凭借半辈子的处世智慧，你三言两语化解了楼上漏水的纠纷，两家人握手言和，邻里关系更融洽了。"
+      },
+      {
+        "text": "在社区公益课堂上分享从业多年的实用小技能",
+        "cashEffect": 0,
+        "effect": { "sanity": 5, "knowledge": 2 },
+        "resultText": "大家围坐一堂认真听你讲解生活技巧，你发现自己的经验依然被需要、受尊重，心里满是充实。"
+      },
+      {
+        "text": "认领小区公共绿地的养护，义务修剪花木杂草",
+        "cashEffect": 0,
+        "effect": { "health": 3, "sanity": 4 },
+        "resultText": "你修剪苗木、浇水除虫，小花园打理得井井有条，路过的居民都夸这片绿景让人心情大好。"
+      },
+      {
+        "text": "帮楼道里高龄腿脚不便的独居邻里代跑腿买菜",
+        "cashEffect": 0,
+        "effect": { "sanity": 4, "health": 1 },
+        "resultText": "下楼买菜时顺手帮老邻居捎上一袋米一把菜，敲门送去时老人感激的目光让你心头温热。"
+      },
+      {
+        "text": "谢绝外事，在自家阳台搭建小花架潜心莳花弄草",
+        "cashEffect": -100,
+        "effect": { "sanity": 5, "health": 2 },
+        "resultText": "你在阳台摆满绿萝、茉莉和多肉，清晨喷水剪枝，闻着清雅花香，独享一份清幽自在。"
+      }
+    ],
     "options": [
       {
-        "text": "帮助整理公共图书",
+        "text": "在街道长者助餐点做志愿帮工，协助配餐打饭",
         "cashEffect": 0,
-        "effect": {
-          "sanity": 3,
-          "knowledge": 2
-        },
-        "resultText": "你选择帮助整理公共图书。这个小小的决定，成为57岁值得记住的一段经历。"
+        "effect": { "sanity": 4, "health": 1 },
+        "resultText": "你热情地为就餐的长辈端饭递汤，听他们唠叨家常，平凡的奉献换来一声声真挚的道谢。"
       },
       {
-        "text": "参与附近的环境清理",
+        "text": "担任社区公道人，凭阅历协助调解邻里琐碎摩擦",
         "cashEffect": 0,
-        "effect": {
-          "sanity": 3,
-          "knowledge": 2
-        },
-        "resultText": "你选择参与附近的环境清理。这个小小的决定，成为57岁值得记住的一段经历。"
+        "effect": { "sanity": 4, "knowledge": 2 },
+        "resultText": "凭借半辈子的处世智慧，你三言两语化解了楼上漏水的纠纷，两家人握手言和，邻里关系更融洽了。"
       },
       {
-        "text": "分享一项自己擅长的小技能",
+        "text": "在社区公益课堂上分享从业多年的实用小技能",
         "cashEffect": 0,
-        "effect": {
-          "sanity": 4,
-          "knowledge": 1
-        },
-        "resultText": "你选择分享一项自己擅长的小技能。这个小小的决定，成为57岁值得记住的一段经历。"
+        "effect": { "sanity": 5, "knowledge": 2 },
+        "resultText": "大家围坐一堂认真听你讲解生活技巧，你发现自己的经验依然被需要、受尊重，心里满是充实。"
       }
     ]
   }

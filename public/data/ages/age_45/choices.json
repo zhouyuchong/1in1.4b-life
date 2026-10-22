@@ -1,35 +1,91 @@
 [
   {
     "id": "everyday_choice_45",
-    "title": "与朋友的分歧",
-    "description": "一次聊天中，你和朋友的观点不太一样。",
-    "options": [
+    "title": "人到中年，与分歧的相处",
+    "description": "一次聊天中，你和朋友或家人的观点产生了明显的分歧。你有自己的立场，对方也有他的理由。",
+    "optionPool": [
       {
-        "text": "认真听完对方的理由",
-        "cashEffect": 0,
-        "effect": {
-          "sanity": 3,
-          "knowledge": 2
-        },
-        "resultText": "你选择认真听完对方的理由。这个小小的决定，成为45岁值得记住的一段经历。"
-      },
-      {
-        "text": "温和表达自己的看法",
-        "cashEffect": 0,
-        "effect": {
-          "sanity": 3,
-          "knowledge": 2
-        },
-        "resultText": "你选择温和表达自己的看法。这个小小的决定，成为45岁值得记住的一段经历。"
-      },
-      {
-        "text": "约好求同存异，换个话题",
+        "text": "认真听完对方的理由，即使不赞同",
         "cashEffect": 0,
         "effect": {
           "sanity": 4,
+          "knowledge": 2
+        },
+        "resultText": "你压下了第一反应，耐心听完了对方说的每一句。你没有被说服，但你知道了对方为什么会这么想，这就够了。"
+      },
+      {
+        "text": "温和但坚定地表达自己的看法",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 4,
+          "knowledge": 2
+        },
+        "resultText": "你平静地说出了自己的判断，没有提高音量，也没有让步。对方沉默了一会儿，最后说：我得好好想想你说的这些。"
+      },
+      {
+        "text": "求同存异，把话题转向更轻松的方向",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 3,
           "knowledge": 1
         },
-        "resultText": "你选择约好求同存异，换个话题。这个小小的决定，成为45岁值得记住的一段经历。"
+        "resultText": "你笑着说算了，别为这个伤感情，然后换了个话题。有些分歧争不出结果，放下就是成熟。"
+      },
+      {
+        "text": "独自回去把双方观点都梳理了一遍",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 3,
+          "knowledge": 4
+        },
+        "resultText": "你回家后在本子上把这场争论里的核心分歧写了出来，写完发现自己的逻辑也有一个漏洞，第二天主动去找对方说了。"
+      },
+      {
+        "text": "直接表达了强硬的立场，不惜起了争执",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": -2,
+          "knowledge": 2
+        },
+        "resultText": "你语气重了一点，对方也急了，两人各自沉默着结束了谈话。冷静之后你后悔了方式，但观点本身你没有后悔。"
+      },
+      {
+        "text": "接受自己无法改变对方，安静地把边界留给各自",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 4,
+          "knowledge": 2
+        },
+        "resultText": "你意识到这件事上你们站在不同的起点上，强行说服只会两败俱伤，于是选择了尊重，也选择了和平。"
+      }
+    ],
+    "options": [
+      {
+        "text": "认真听完对方的理由，即使不赞同",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 4,
+          "knowledge": 2
+        },
+        "resultText": "你压下了第一反应，耐心听完了对方说的每一句。你没有被说服，但你知道了对方为什么会这么想，这就够了。"
+      },
+      {
+        "text": "温和但坚定地表达自己的看法",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 4,
+          "knowledge": 2
+        },
+        "resultText": "你平静地说出了自己的判断，没有提高音量，也没有让步。对方沉默了一会儿，最后说：我得好好想想你说的这些。"
+      },
+      {
+        "text": "求同存异，把话题转向更轻松的方向",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 3,
+          "knowledge": 1
+        },
+        "resultText": "你笑着说算了，别为这个伤感情，然后换了个话题。有些分歧争不出结果，放下就是成熟。"
       }
     ]
   }

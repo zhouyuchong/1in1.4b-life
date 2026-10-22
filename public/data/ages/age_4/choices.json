@@ -3,33 +3,92 @@
     "id": "everyday_choice_4",
     "title": "第一次兴趣体验",
     "description": "家人愿意陪你尝试新事物，你最想做什么？",
-    "options": [
+    "optionPool": [
       {
         "text": "画画，画下想象中的世界",
         "cashEffect": 0,
         "effect": {
-          "sanity": 3,
+          "sanity": 4,
           "knowledge": 2
         },
-        "resultText": "你选择画画，画下想象中的世界。这个小小的决定，成为4岁值得记住的一段经历。"
+        "resultText": "你用蜡笔把整个本子涂得五彩斑斓，歪歪扭扭的太阳和小人让妈妈贴在了冰箱上。"
       },
       {
         "text": "去户外观察小虫和树叶",
         "cashEffect": 0,
         "effect": {
           "sanity": 3,
+          "health": 3,
           "knowledge": 2
         },
-        "resultText": "你选择去户外观察小虫和树叶。这个小小的决定，成为4岁值得记住的一段经历。"
+        "resultText": "你蹲在院子里盯着一只蚂蚁搬运面包屑，忘了时间，裤子膝盖沾了一大片泥土。"
       },
       {
         "text": "听音乐，跟着节拍唱歌",
         "cashEffect": 0,
         "effect": {
-          "sanity": 4,
+          "sanity": 5,
           "knowledge": 1
         },
-        "resultText": "你选择听音乐，跟着节拍唱歌。这个小小的决定，成为4岁值得记住的一段经历。"
+        "resultText": "你跟着音箱里的儿歌手舞足蹈，不管歌词对不对，唱得格外起劲，奶奶在旁边笑得合不拢嘴。"
+      },
+      {
+        "text": "捏橡皮泥，做小动物和食物",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 4,
+          "knowledge": 2
+        },
+        "resultText": "你捏了一只胖嘟嘟的泥兔子，歪了脑袋，两只耳朵一长一短，但你对它爱不释手地摆在床头。"
+      },
+      {
+        "text": "跟爷爷学种小盆栽，每天浇水观察",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 3,
+          "health": 2,
+          "knowledge": 3
+        },
+        "resultText": "你负责给花盆浇水，有时浇多了土都溢出来，爷爷在旁边假装叹气，其实眼里都是笑意。"
+      },
+      {
+        "text": "学搭积木，把房间角落堆成一座小城",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 3,
+          "knowledge": 4
+        },
+        "resultText": "你搭了一座有城墙、有停车场的乐高小城，积木塔倒了三次才终于立住，那一刻比什么都开心。"
+      }
+    ],
+    "options": [
+      {
+        "text": "画画，画下想象中的世界",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 4,
+          "knowledge": 2
+        },
+        "resultText": "你用蜡笔把整个本子涂得五彩斑斓，歪歪扭扭的太阳和小人让妈妈贴在了冰箱上。"
+      },
+      {
+        "text": "去户外观察小虫和树叶",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 3,
+          "health": 3,
+          "knowledge": 2
+        },
+        "resultText": "你蹲在院子里盯着一只蚂蚁搬运面包屑，忘了时间，裤子膝盖沾了一大片泥土。"
+      },
+      {
+        "text": "听音乐，跟着节拍唱歌",
+        "cashEffect": 0,
+        "effect": {
+          "sanity": 5,
+          "knowledge": 1
+        },
+        "resultText": "你跟着音箱里的儿歌手舞足蹈，不管歌词对不对，唱得格外起劲，奶奶在旁边笑得合不拢嘴。"
       }
     ]
   }

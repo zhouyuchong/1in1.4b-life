@@ -1,35 +1,64 @@
 [
   {
     "id": "everyday_choice_63",
-    "title": "与朋友的分歧",
-    "description": "一次聊天中，你和朋友的观点不太一样。",
+    "title": "花甲之年的养生之道",
+    "description": "六十三岁，身心康健成了最挂心的大事，你打算如何调理日常起居？",
+    "optionPool": [
+      {
+        "text": "清晨去公园林荫道快走慢跑，配合全身拍打拉筋",
+        "cashEffect": 0,
+        "effect": { "health": 4, "sanity": 3 },
+        "resultText": "晨光微熹中微汗舒畅，步履日益轻捷，整天都觉神清气爽，气色红润。"
+      },
+      {
+        "text": "研习中医食疗药膳，每天用养生壶温煮五谷茶饮",
+        "cashEffect": -50,
+        "effect": { "health": 3, "sanity": 4 },
+        "resultText": "枸杞黄芪黄精配比得当，一壶暖茶伴着书页，脾胃温煦，睡眠质量大为改善。"
+      },
+      {
+        "text": "在社区石桌旁与街坊切磋象棋，排兵布阵活络脑力",
+        "cashEffect": 0,
+        "effect": { "sanity": 4, "knowledge": 2 },
+        "resultText": "楚河汉界前斗智斗勇，观棋者起哄支招，嬉笑怒骂间脑筋转得飞快，毫无迟暮之感。"
+      },
+      {
+        "text": "戴上老花镜钻研智能机新功能，独立掌握网上挂号与缴费",
+        "cashEffect": 0,
+        "effect": { "knowledge": 4, "sanity": 3 },
+        "resultText": "一番摸索后终于把生活缴费与扫码支付弄得滚瓜烂熟，不必再求助于人，自立感油然而生。"
+      },
+      {
+        "text": "在阳台打理小型立体菜箱，吃上自己亲手浇水的小白菜",
+        "cashEffect": -80,
+        "effect": { "sanity": 5, "health": 2 },
+        "resultText": "看着菜苗破土抽嫩叶，每天细心浇水捉虫，餐桌上多了一盘碧绿鲜脆，别有一番欣喜。"
+      },
+      {
+        "text": "相约去近郊农场垂钓，在水塘边静坐一整日",
+        "cashEffect": -100,
+        "effect": { "sanity": 5, "health": 2 },
+        "resultText": "浮漂微动间屏息凝神，鱼儿跃起溅起水花，远离车马喧嚣，心境如水面般清澄宁静。"
+      }
+    ],
     "options": [
       {
-        "text": "认真听完对方的理由",
+        "text": "清晨去公园林荫道快走慢跑，配合全身拍打拉筋",
         "cashEffect": 0,
-        "effect": {
-          "sanity": 3,
-          "knowledge": 2
-        },
-        "resultText": "你选择认真听完对方的理由。这个小小的决定，成为63岁值得记住的一段经历。"
+        "effect": { "health": 4, "sanity": 3 },
+        "resultText": "晨光微熹中微汗舒畅，步履日益轻捷，整天都觉神清气爽，气色红润。"
       },
       {
-        "text": "温和表达自己的看法",
-        "cashEffect": 0,
-        "effect": {
-          "sanity": 3,
-          "knowledge": 2
-        },
-        "resultText": "你选择温和表达自己的看法。这个小小的决定，成为63岁值得记住的一段经历。"
+        "text": "研习中医食疗药膳，每天用养生壶温煮五谷茶饮",
+        "cashEffect": -50,
+        "effect": { "health": 3, "sanity": 4 },
+        "resultText": "枸杞黄芪黄精配比得当，一壶暖茶伴着书页，脾胃温煦，睡眠质量大为改善。"
       },
       {
-        "text": "约好求同存异，换个话题",
+        "text": "在社区石桌旁与街坊切磋象棋，排兵布阵活络脑力",
         "cashEffect": 0,
-        "effect": {
-          "sanity": 4,
-          "knowledge": 1
-        },
-        "resultText": "你选择约好求同存异，换个话题。这个小小的决定，成为63岁值得记住的一段经历。"
+        "effect": { "sanity": 4, "knowledge": 2 },
+        "resultText": "楚河汉界前斗智斗勇，观棋者起哄支招，嬉笑怒骂间脑筋转得飞快，毫无迟暮之感。"
       }
     ]
   }

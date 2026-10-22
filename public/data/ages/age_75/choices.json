@@ -1,35 +1,64 @@
 [
   {
     "id": "everyday_choice_75",
-    "title": "一次志愿服务邀请",
-    "description": "社区征集志愿者，你愿意怎样参与？",
+    "title": "七十五岁的颐养时刻",
+    "description": "七十五载风霜雨雪已过，生命步入从容安详的深秋。你想给今天留下怎样的光彩？",
+    "optionPool": [
+      {
+        "text": "坐在阳台向阳躺椅上打个盹，让融融暖阳晒透后背",
+        "cashEffect": 0,
+        "effect": { "health": 3, "sanity": 5 },
+        "resultText": "阳光暖融融地烘着周身经络，耳畔伴着微风拂过绿叶的沙沙声，心头没有半点牵挂，惬意至极。"
+      },
+      {
+        "text": "趁着春回大地，给阳台上的老金桔和海棠翻土施肥",
+        "cashEffect": -30,
+        "effect": { "sanity": 4, "health": 2 },
+        "resultText": "手握小花铲轻慢培土，嫩绿的芽苞在枝头悄悄探头，侍弄生命的喜悦让老人精神焕发。"
+      },
+      {
+        "text": "在院落石凳前听老邻居讲述当年开山修渠的往事",
+        "cashEffect": 0,
+        "effect": { "sanity": 4, "knowledge": 2 },
+        "resultText": "老人口中的岁月惊心动魄，你们感叹着时代的翻天覆地，共同举起茶杯向逝去的岁月致意。"
+      },
+      {
+        "text": "每日坚持用木梳轻叩头皮百下，配合眼部经穴按摩",
+        "cashEffect": 0,
+        "effect": { "health": 4, "sanity": 3 },
+        "resultText": "指尖生温，头脑顿觉清爽不少，眼角虽有重重皱纹，眼神却依旧清亮温和。"
+      },
+      {
+        "text": "小火慢炖一盅红豆莲子百合羹，熬至软糯清甜",
+        "cashEffect": -20,
+        "effect": { "sanity": 5, "health": 2 },
+        "resultText": "汤羹细腻温润，入口即化，滋养着脾胃，简单的一小碗甜汤盛满了对生活的知足与感恩。"
+      },
+      {
+        "text": "拿出珍藏的旧私章与工作纪念章细致擦拭，回顾一生的荣誉",
+        "cashEffect": 0,
+        "effect": { "sanity": 5, "knowledge": 1 },
+        "resultText": "红布盒里的纪念章在光下依然闪着光芒，抚摸着上面的铸字，你问心无愧：这一生，自己竭尽所能地走过了。"
+      }
+    ],
     "options": [
       {
-        "text": "帮助整理公共图书",
+        "text": "坐在阳台向阳躺椅上打个盹，让融融暖阳晒透后背",
         "cashEffect": 0,
-        "effect": {
-          "sanity": 3,
-          "knowledge": 2
-        },
-        "resultText": "你选择帮助整理公共图书。这个小小的决定，成为75岁值得记住的一段经历。"
+        "effect": { "health": 3, "sanity": 5 },
+        "resultText": "阳光暖融融地烘着周身经络，耳畔伴着微风拂过绿叶的沙沙声，心头没有半点牵挂，惬意至极。"
       },
       {
-        "text": "参与附近的环境清理",
-        "cashEffect": 0,
-        "effect": {
-          "sanity": 3,
-          "knowledge": 2
-        },
-        "resultText": "你选择参与附近的环境清理。这个小小的决定，成为75岁值得记住的一段经历。"
+        "text": "趁着春回大地，给阳台上的老金桔和海棠翻土施肥",
+        "cashEffect": -30,
+        "effect": { "sanity": 4, "health": 2 },
+        "resultText": "手握小花铲轻慢培土，嫩绿的芽苞在枝头悄悄探头，侍弄生命的喜悦让老人精神焕发。"
       },
       {
-        "text": "分享一项自己擅长的小技能",
+        "text": "在院落石凳前听老邻居讲述当年开山修渠的往事",
         "cashEffect": 0,
-        "effect": {
-          "sanity": 4,
-          "knowledge": 1
-        },
-        "resultText": "你选择分享一项自己擅长的小技能。这个小小的决定，成为75岁值得记住的一段经历。"
+        "effect": { "sanity": 4, "knowledge": 2 },
+        "resultText": "老人口中的岁月惊心动魄，你们感叹着时代的翻天覆地，共同举起茶杯向逝去的岁月致意。"
       }
     ]
   }

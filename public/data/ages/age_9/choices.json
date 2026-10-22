@@ -4,15 +4,11 @@
     "title": "奥数班与课外补习班热潮",
     "description": "三年级是小升初掐尖暗流涌动的开端，许多家长开始四处托人给孩子报名校外的神秘“占坑班”与奥数竞赛。",
     "sourceCase": "真实背景：双减政策前的全民奥数热与校外教培大狂欢",
-    "options": [
+    "optionPool": [
       {
         "text": "加入补习大军：周六周天排满奥数和英语培优班，疯狂刷题",
         "requirements": {},
-        "effect": {
-          "wealth": -8,
-          "sanity": -8,
-          "knowledge": 10
-        },
+        "effect": { "wealth": -8, "sanity": -8, "knowledge": 10 },
         "tag": "鸡娃战车",
         "resultText": "你的周末被一张张奥数讲义填满，虽然解出了鸡兔同笼和流水行船，但眼里常常带着黑眼圈。",
         "cashEffect": -16000
@@ -20,15 +16,60 @@
       {
         "text": "拒绝课外鸡血：完成学校作业即可，把课余时间留给体育和阅读",
         "requirements": {},
-        "effect": {
-          "wealth": 2,
-          "sanity": 8,
-          "health": 5,
-          "knowledge": 2
-        },
+        "effect": { "wealth": 2, "sanity": 8, "health": 5, "knowledge": 2 },
         "tag": "自主成长",
         "resultText": "你读完了厚厚的整套《十万个为什么》和儿童名著，每天下午在操场打羽毛球，体能出色。",
         "cashEffect": 4000
+      },
+      {
+        "text": "只报一门英语培训：集中突破一个弱科，不贪多",
+        "requirements": {},
+        "effect": { "wealth": -4, "sanity": -2, "knowledge": 6 },
+        "tag": "精准补习",
+        "resultText": "你在英语培训班里认识了一个来自东北的同学，两人一起背单词，期末英语从70分涨到了92分。",
+        "cashEffect": -8000
+      },
+      {
+        "text": "报一个编程启蒙班：抓住数字经济时代的入场券",
+        "requirements": { "wealth": 40 },
+        "effect": { "wealth": -5, "sanity": 1, "knowledge": 7 },
+        "tag": "编程少年",
+        "resultText": "你跟着老师用Scratch制作了第一个小游戏，虽然只是让一只猫来回走动，但看到自己的代码运行起来，那份兴奋久久未散。",
+        "cashEffect": -10000
+      },
+      {
+        "text": "参加学校奥数兴趣小组但不额外花钱报班：借学校平台参赛",
+        "requirements": {},
+        "effect": { "sanity": 0, "knowledge": 5, "health": 1 },
+        "tag": "校内奥数",
+        "resultText": "你参加了学校免费的奥数小组，每周一节课，老师讲得不快但讲得扎实，期末你在全区数学联赛里拿了三等奖。",
+        "cashEffect": 0
+      }
+    ],
+    "options": [
+      {
+        "text": "加入补习大军：周六周天排满奥数和英语培优班，疯狂刷题",
+        "requirements": {},
+        "effect": { "wealth": -8, "sanity": -8, "knowledge": 10 },
+        "tag": "鸡娃战车",
+        "resultText": "你的周末被一张张奥数讲义填满，虽然解出了鸡兔同笼和流水行船，但眼里常常带着黑眼圈。",
+        "cashEffect": -16000
+      },
+      {
+        "text": "拒绝课外鸡血：完成学校作业即可，把课余时间留给体育和阅读",
+        "requirements": {},
+        "effect": { "wealth": 2, "sanity": 8, "health": 5, "knowledge": 2 },
+        "tag": "自主成长",
+        "resultText": "你读完了厚厚的整套《十万个为什么》和儿童名著，每天下午在操场打羽毛球，体能出色。",
+        "cashEffect": 4000
+      },
+      {
+        "text": "只报一门英语培训：集中突破一个弱科，不贪多",
+        "requirements": {},
+        "effect": { "wealth": -4, "sanity": -2, "knowledge": 6 },
+        "tag": "精准补习",
+        "resultText": "你在英语培训班里认识了一个来自东北的同学，两人一起背单词，期末英语从70分涨到了92分。",
+        "cashEffect": -8000
       }
     ]
   }
